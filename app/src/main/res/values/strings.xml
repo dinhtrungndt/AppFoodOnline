@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Fool App</string>
+    <string name="app_name">Food App</string>
     <string name="Open">Open</string>
     <string name="Close">Close</string>
     <string name="title_activity_maps_lien_he_cua_hang">MapsLienHeCuaHangActivity</string>
