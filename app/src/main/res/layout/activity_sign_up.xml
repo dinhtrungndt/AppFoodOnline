@@ -103,14 +103,31 @@
         android:layout_width="match_parent"
         android:layout_height="0dp" />
 
-    <TextView
-        android:textSize="16sp"
-        android:layout_marginBottom="10dp"
-        android:textColor="#E49116"
-        android:padding="5dp"
-        android:gravity="center"
-        android:text="Bạn đã có tài khoản ? Đăng Nhập"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_gravity="center"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:textSize="16sp"
+            android:layout_marginBottom="10dp"
+            android:textColor="#E49116"
+            android:padding="5dp"
+            android:text="Bạn đã có tài khoản ?"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/txtLogin"
+            android:textSize="16sp"
+            android:layout_marginBottom="10dp"
+            android:textColor="#FF0000"
+            android:padding="5dp"
+            android:textStyle="bold"
+            android:onClick="txtLogin"
+            android:text="Đăng nhập"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
 
 </LinearLayout>

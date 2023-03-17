@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -19,6 +20,7 @@ import com.example.appfoodv2.View.HomeActivity;
 public class SignUpActivity extends AppCompatActivity  implements UserView , View.OnClickListener {
     private Button btndangky;
     private EditText editemail,editpass,editpass_repeat;
+    private TextView txtLogin;
     private UserPreSenter userPreSenter;
 
     @Override
@@ -39,6 +41,7 @@ public class SignUpActivity extends AppCompatActivity  implements UserView , Vie
         btndangky = findViewById(R.id.btndangky);
         editemail=findViewById(R.id.editEmail);
         editpass = findViewById(R.id.editmatkhau);
+        txtLogin = findViewById(R.id.txtLogin);
         editpass_repeat = findViewById(R.id.editmatkhau_repeat);
     }
 
@@ -93,6 +96,9 @@ public class SignUpActivity extends AppCompatActivity  implements UserView , Vie
                 String repass =editpass_repeat.getText().toString().trim();
                 userPreSenter.HandleRegist(email,pass,repass);
         }
+    }
+    public void txtLogin(View view){
+        startActivity(new Intent(SignUpActivity.this,SignInActivity.class));
     }
 }
 
