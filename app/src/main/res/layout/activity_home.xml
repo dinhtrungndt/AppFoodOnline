@@ -22,11 +22,14 @@
                 android:singleLine="true"
                 android:hint="Mời bạn nhập món"
                 android:textColor="#000000"
+                android:background="@drawable/edt_text_bg"
+                android:padding="10dp"
+                android:paddingStart="20dp"
                 android:drawablePadding="10dp"
                 android:drawableLeft="@drawable/ic_baseline_search_24"
                 android:id="@+id/editSearch"
                 android:textSize="16sp"
-                android:layout_width="match_parent"
+                android:layout_width="300dp"
                 android:layout_height="wrap_content"/>
 
         </androidx.appcompat.widget.Toolbar>
