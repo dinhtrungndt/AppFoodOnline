@@ -21,6 +21,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 
+import com.example.appfoodv2.View.FragMent.FragMent_Message;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
@@ -133,6 +134,9 @@ public class HomeActivity extends AppCompatActivity implements FragMent_Home.Fra
                         break;
                     case R.id.your_bill:
                         fm = new FragMent_Bill();
+                        break;
+                    case R.id.message:
+                        fm = new FragMent_Message();
                         break;
                     case R.id.your_cart:
                         startActivity(new Intent(HomeActivity.this, CartActivity.class));
