@@ -62,6 +62,7 @@ public class ProductActivity extends AppCompatActivity {
                 rcv.setAdapter(adapter);
                 dialog.dismiss();
             }
+
             @Override
             public void getDataSanPhamHQ(String id, String tensp, Long giatien, String hinhanh, String loaisp, String mota, Long soluong, String nhasanxuat, Long type, String trongluong) {
                 arr_sp.add(new SanPhamModels(id, tensp, giatien, hinhanh, loaisp, mota, soluong, nhasanxuat, type, trongluong));
@@ -69,6 +70,7 @@ public class ProductActivity extends AppCompatActivity {
                 rcv.setAdapter(adapter);
                 dialog.dismiss();
             }
+
             @Override
             public void getDataSanPhamMC(String id, String tensp, Long giatien, String hinhanh, String loaisp, String mota, Long soluong, String nhasanxuat, Long type, String trongluong) {
                 arr_sp.add(new SanPhamModels(id, tensp, giatien, hinhanh, loaisp, mota, soluong, nhasanxuat, type, trongluong));
@@ -76,6 +78,7 @@ public class ProductActivity extends AppCompatActivity {
                 rcv.setAdapter(adapter);
                 dialog.dismiss();
             }
+
             @Override
             public void getDataSanPhamYT(String id, String tensp, Long giatien, String hinhanh, String loaisp, String mota, Long soluong, String nhasanxuat, Long type, String trongluong) {
                 arr_sp.add(new SanPhamModels(id, tensp, giatien, hinhanh, loaisp, mota, soluong, nhasanxuat, type, trongluong));
@@ -83,6 +86,7 @@ public class ProductActivity extends AppCompatActivity {
                 rcv.setAdapter(adapter);
                 dialog.dismiss();
             }
+
             @Override
             public void getDataSanPhamLau(String id, String tensp, Long giatien, String hinhanh, String loaisp, String mota, Long soluong, String nhasanxuat, Long type, String trongluong) {
                 arr_sp.add(new SanPhamModels(id, tensp, giatien, hinhanh, loaisp, mota, soluong, nhasanxuat, type, trongluong));
@@ -90,6 +94,7 @@ public class ProductActivity extends AppCompatActivity {
                 rcv.setAdapter(adapter);
                 dialog.dismiss();
             }
+
             @Override
             public void getDataSanPhamGY(String id, String tensp, Long giatien, String hinhanh, String loaisp, String mota, Long soluong, String nhasanxuat, Long type, String trongluong) {
                 arr_sp.add(new SanPhamModels(id, tensp, giatien, hinhanh, loaisp, mota, soluong, nhasanxuat, type, trongluong));

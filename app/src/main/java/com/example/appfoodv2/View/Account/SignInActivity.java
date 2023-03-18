@@ -17,9 +17,9 @@ import com.example.appfoodv2.R;
 import com.example.appfoodv2.View.Admin.SignInAdminActivity;
 import com.example.appfoodv2.View.HomeActivity;
 
-public class SignInActivity  extends AppCompatActivity  implements UserView , View.OnClickListener {
+public class SignInActivity extends AppCompatActivity implements UserView, View.OnClickListener {
     private Button btndangnhap;
-    private EditText editemail,editpass;
+    private EditText editemail, editpass;
     private UserPreSenter userPreSenter;
 
     @Override
@@ -36,14 +36,14 @@ public class SignInActivity  extends AppCompatActivity  implements UserView , Vi
         findViewById(R.id.txtdangky).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(SignInActivity.this,SignUpActivity.class));
+                startActivity(new Intent(SignInActivity.this, SignUpActivity.class));
 
             }
         });
         findViewById(R.id.txtadmin).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent( SignInActivity.this, SignInAdminActivity.class));
+                startActivity(new Intent(SignInActivity.this, SignInAdminActivity.class));
 
             }
         });
@@ -52,7 +52,7 @@ public class SignInActivity  extends AppCompatActivity  implements UserView , Vi
 
     private void InitWidget() {
         btndangnhap = findViewById(R.id.btndangnhap);
-        editemail=findViewById(R.id.editEmail);
+        editemail = findViewById(R.id.editEmail);
         editpass = findViewById(R.id.editmatkhau);
     }
 
@@ -95,14 +95,15 @@ public class SignInActivity  extends AppCompatActivity  implements UserView , Vi
     public void OnPassNotSame() {
         Toast.makeText(this, "Tài khoản mật khẩu không khớp", Toast.LENGTH_SHORT).show();
     }
-/// ẤN đang nhap
+
+    /// ẤN đang nhap
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
-            case  R.id.btndangnhap:
-                String email=editemail.getText().toString();
-                String pass =editpass.getText().toString().trim();
-                userPreSenter.HandleLoginUser(email,pass);
+        switch (v.getId()) {
+            case R.id.btndangnhap:
+                String email = editemail.getText().toString();
+                String pass = editpass.getText().toString().trim();
+                userPreSenter.HandleLoginUser(email, pass);
         }
     }
 }

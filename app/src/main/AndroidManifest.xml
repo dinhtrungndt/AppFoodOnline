@@ -21,6 +21,13 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".MessigeActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name="com.example.appfoodv2.View.Admin.ProductActivity"
             android:exported="false" />
         <activity
@@ -71,10 +78,8 @@
             android:screenOrientation="portrait" />
         <activity
             android:name="com.example.appfoodv2.View.Admin.HomeAdminActivity"
-            android:screenOrientation="portrait"
-            android:exported="true">
-
-        </activity>
+            android:exported="true"
+            android:screenOrientation="portrait"></activity>
         <activity
             android:name="com.example.appfoodv2.View.Admin.BillADMiNActivity"
             android:screenOrientation="portrait" />

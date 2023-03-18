@@ -21,35 +21,35 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 import com.example.appfoodv2.R;
 
-public class ContactActivity  extends AppCompatActivity implements OnMapReadyCallback {
+public class ContactActivity extends AppCompatActivity implements OnMapReadyCallback {
     private Toolbar toolbar;
     private FirebaseFirestore db;
-    private TextView txtdiachi,txtsdt,txtnoidung;
+    private TextView txtdiachi, txtsdt, txtnoidung;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contact);
         toolbar = findViewById(R.id.toolbar);
-        txtdiachi=findViewById(R.id.txtdiachi);
+        txtdiachi = findViewById(R.id.txtdiachi);
         txtsdt = findViewById(R.id.txtsdt);
         txtnoidung = findViewById(R.id.txtnoidung);
 
-        db =FirebaseFirestore.getInstance();
-
+        db = FirebaseFirestore.getInstance();
 
 
         db.collection("ThongTinCuaHang").document("ioBK44CW8qPAqeQvVuEg")
                 .get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-            @Override
-            public void onSuccess(@NonNull DocumentSnapshot documentSnapshot) {
+                    @Override
+                    public void onSuccess(@NonNull DocumentSnapshot documentSnapshot) {
 
-                txtdiachi.setText("Địa chỉ : "+documentSnapshot.getString("diachi"));
-                txtsdt.setText("Liên hệ : "+documentSnapshot.getString("sdt"));
-                txtnoidung.setText("Nội Dung : "+documentSnapshot.getString("noidung"));
+                        txtdiachi.setText("Địa chỉ : " + documentSnapshot.getString("diachi"));
+                        txtsdt.setText("Liên hệ : " + documentSnapshot.getString("sdt"));
+                        txtnoidung.setText("Nội Dung : " + documentSnapshot.getString("noidung"));
 
 
-            }
-        });
+                    }
+                });
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle("Back");
@@ -64,16 +64,17 @@ public class ContactActivity  extends AppCompatActivity implements OnMapReadyCal
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
     }
+
     @Override
     public void onMapReady(@NonNull GoogleMap googleMap) { //đọc vị trí gg map
-        LatLng latLng = new LatLng(10.4009358,106.22868); // vĩ độ trên ggmaps
+        LatLng latLng = new LatLng(10.4009358, 106.22868); // vĩ độ trên ggmaps
         MarkerOptions options = new MarkerOptions();
         options.position(latLng);
         options.title("Châu Thành District");
         options.snippet("Châu Thành is a rural district of Tien Giang province in the Mekong Delta region of Vietnam. As of 2003 the district had a population of 252,068. The district covers an area of 256 km². The district capital lies at Tân Hiệp"); // option hiển thị thông tin vị trí lấy từ gg map
         googleMap.addMarker(options);
         googleMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
-        googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng,18)); // đọc camera
+        googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 18)); // đọc camera
 
 
     }
