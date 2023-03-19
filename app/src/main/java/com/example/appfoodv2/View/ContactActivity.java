@@ -66,11 +66,11 @@ public class ContactActivity  extends AppCompatActivity implements OnMapReadyCal
     }
     @Override
     public void onMapReady(@NonNull GoogleMap googleMap) { //đọc vị trí gg map
-        LatLng latLng = new LatLng(10.4009358,106.22868); // vĩ độ trên ggmaps
+        LatLng latLng = new LatLng(10.8529444,106.6273561); // vĩ độ trên ggmaps
         MarkerOptions options = new MarkerOptions();
         options.position(latLng);
-        options.title("Châu Thành District");
-        options.snippet("Châu Thành is a rural district of Tien Giang province in the Mekong Delta region of Vietnam. As of 2003 the district had a population of 252,068. The district covers an area of 256 km². The district capital lies at Tân Hiệp"); // option hiển thị thông tin vị trí lấy từ gg map
+        options.title("food app FPOLY");
+        options.snippet("food app FPOLY .du an 1 . "); // option hiển thị thông tin vị trí lấy từ gg map
         googleMap.addMarker(options);
         googleMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
         googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng,18)); // đọc camera
