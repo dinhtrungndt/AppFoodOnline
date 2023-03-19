@@ -3,12 +3,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/logo2"
+
     android:orientation="vertical"
     tools:context=".ThongtinungdungFragment">
 
 
     <ImageView
+        android:background="@drawable/home_app"
         android:layout_width="150dp"
         android:layout_height="152dp"
         android:layout_marginLeft="130dp"
@@ -27,7 +28,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="15sp"
         android:layout_marginTop="-10dp"
-        android:text="  Đỗ Thanh Nhàn "
+        android:text=" Nhóm làm Dự án 1 - food shop "
         android:textAllCaps="true"
         android:textColor="@color/colorBlack"
         android:textSize="15sp" />
@@ -47,7 +48,48 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="15sp"
         android:layout_marginTop="7dp"
-        android:text="   1. Đỗ Thanh Nhàn (Leader):"
+        android:text="   1. Nguyễn Đình Trưng (Leader):"
+
+        android:textColor="@color/colorBlack"
+
+        android:textSize="15sp" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15sp"
+        android:layout_marginTop="7dp"
+        android:text="   2. Quang trung Hiếu:"
+
+        android:textColor="@color/colorBlack"
+
+        android:textSize="15sp" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15sp"
+        android:layout_marginTop="7dp"
+        android:text="   3.Nguyễn Phúc Chinh :"
+
+        android:textColor="@color/colorBlack"
+
+        android:textSize="15sp" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15sp"
+        android:layout_marginTop="7dp"
+        android:text="   4.Trịnh Quang Hưng :"
+
+        android:textColor="@color/colorBlack"
+
+        android:textSize="15sp" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15sp"
+        android:layout_marginTop="7dp"
+        android:text="   5.Nguyễn Duy Thanh :"
+
         android:textColor="@color/colorBlack"
 
         android:textSize="15sp" />
@@ -75,7 +117,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="15sp"
         android:layout_marginTop="-10dp"
-        android:text="   TS. Nguyễn Hà Giang"
+        android:text="   GV.NGuyễn Thị Thanh Xuân"
         android:textAllCaps="true"
         android:textColor="@color/colorBlack"
         android:textSize="15sp" />
@@ -85,7 +127,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="15sp"
         android:layout_marginTop="8dp"
-        android:text="   GV. Trường đại học kinh tế tài chính thành phố hồ chí minh đã hướng dẫn nhóm em hoàn thành dự án này"
+        android:text="   GV. Trường Cao Đẳng FPT Polytechnic thành phố hồ chí minh đã hướng dẫn nhóm em hoàn thành dự án 1 này"
         android:textAllCaps="true"
         android:textColor="@color/colorBlack"
         android:textSize="15sp" />
@@ -105,8 +147,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="15sp"
         android:layout_marginTop="8dp"
-        android:text="   Trường Đại học Kinh tế - Tài chính Thành phố Hồ Chí Minh - UEF
-Trụ sở 141 - 145 Điện Biên Phủ Phường 15, Quận Bình Thạnh, TP.HCM"
+        android:text=" Trường Cao Đẳng FPT Polytechnic Thành phố Hồ Chí Minh - FPOLY
+cơ sở 3 , Công viên Phần Mền Quang Trung ,Gò Vấp, TP.HCM"
         android:textAllCaps="true"
         android:textColor="@color/colorBlack"
         android:textSize="15sp" />
@@ -126,7 +168,7 @@ Trụ sở 141 - 145 Điện Biên Phủ Phường 15, Quận Bình Thạnh, TP.
         android:layout_height="wrap_content"
         android:layout_marginStart="15sp"
         android:layout_marginTop="8dp"
-        android:text="   Là sinh viên năm 4 đã có 2 năm kinh nghiệm lập trình ứng dụng di động Android bằng ngôn ngữ java, Hiện đang là Lập trình viên Mobile app React Native tai cty Cổ phần vinova hcm"
+        android:text="   Là sinh viên năm 2 đã có 1 năm kinh nghiệm lập trình ứng dụng di động Android bằng ngôn ngữ java"
         android:textAllCaps="true"
         android:textColor="@color/colorBlack"
         android:textSize="15sp" />
