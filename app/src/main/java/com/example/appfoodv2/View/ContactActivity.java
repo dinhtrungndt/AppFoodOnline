@@ -1,5 +1,9 @@
 package com.example.appfoodv2.View;
 
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -8,11 +12,14 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.ContextCompat;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptor;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -38,7 +45,7 @@ public class ContactActivity  extends AppCompatActivity implements OnMapReadyCal
 
 
 
-        db.collection("ThongTinCuaHang").document("ioBK44CW8qPAqeQvVuEg")
+        db.collection("ThongTinCuaHang").document("wObs1mNNJdVbQN19iYSv")
                 .get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
             public void onSuccess(@NonNull DocumentSnapshot documentSnapshot) {
@@ -70,11 +77,24 @@ public class ContactActivity  extends AppCompatActivity implements OnMapReadyCal
         MarkerOptions options = new MarkerOptions();
         options.position(latLng);
         options.title("food app FPOLY");
-        options.snippet("food app FPOLY .du an 1 . "); // option hiển thị thông tin vị trí lấy từ gg map
+        options.snippet("food app FPOLY .du an 1 . ").icon(bitmapDescriptor(getApplicationContext(),R.drawable.icfood_baseline_fastfood_24)); // option hiển thị thông tin vị trí lấy từ gg map
+
         googleMap.addMarker(options);
+
         googleMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
         googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng,18)); // đọc camera
 
 
     }
+    private BitmapDescriptor bitmapDescriptor (Context context, int vID){
+        Drawable vD = ContextCompat.getDrawable(context,vID);
+        vD.setBounds(0,0,vD.getIntrinsicWidth(),
+                vD.getIntrinsicHeight());
+        Bitmap bitmap = Bitmap.createBitmap(vD.getIntrinsicWidth(),
+                vD.getIntrinsicHeight(),Bitmap.Config.ARGB_8888);
+        Canvas canvas = new Canvas(bitmap);
+        vD.draw(canvas);
+        return BitmapDescriptorFactory.fromBitmap(bitmap);
+    }
+
 }

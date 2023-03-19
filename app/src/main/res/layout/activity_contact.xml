@@ -3,7 +3,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/layoutuser"
+    android:background="@drawable/home_app"
    >
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
@@ -39,7 +39,7 @@
         android:padding="5dp"
         android:textColor="#ff0000"
         android:textSize="18sp"
-        android:text="Liên hệ: nhóm 8 sdt 088888888"
+        android:text="Liên hệ: nhóm 3 sdt 0333333333"
 
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
@@ -51,7 +51,7 @@
         android:padding="5dp"
         android:textColor="#008000"
         android:textSize="18sp"
-        android:text="Địa Chỉ store: Châu Thành - Tiền Giang"
+        android:text="Địa Chỉ store: FPOLY - TP HCM"
 
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
@@ -78,7 +78,7 @@
         android:padding="5dp"
         android:textColor="#A1A09E"
         android:textSize="14sp"
-        android:text="Địa Chỉ :  Tiền Giang "
+        android:text="Địa Chỉ :  TP HCM "
 
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
