@@ -31,7 +31,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:maxLines="2"
-                android:text="Máy Tính Asus 2020"
+                android:text="Món ăn số 1"
                 android:textColor="#ff0000"
                 android:textSize="18sp" />
             <TextView
@@ -40,7 +40,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:maxLines="2"
-                android:text="Nhom 08"
+                android:text="Nhom 03"
                 android:textColor="#000000"
                 android:textSize="18sp" />
 
@@ -52,7 +52,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:maxLines="2"
-                android:text="141 dien bien phu"
+                android:text="Công Viên Phần Mền Quang Trung"
                 android:textColor="#008000"
                 android:textSize="18sp" />
 

@@ -39,7 +39,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:maxLines="2"
-                android:text="Máy Tính Asus 2020"
+                android:text="Món ăn 1"
                 android:textColor="#ff0000"
                 android:textSize="23sp" />
 
@@ -60,7 +60,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:maxLines="2"
-                android:text="Asus"
+                android:text="Loại sản phẩm"
                 android:textColor="#000000"
                 android:textSize="16sp" />
 
@@ -71,7 +71,7 @@
                 android:layout_height="wrap_content"
 
                 android:layout_marginTop="10dp"
-                android:text="Bảo hành 12 tháng kể từ khi mua"
+                android:text="thông tin sản phẩn"
                 android:textColor="#4b0082"
                 android:textSize="14sp" />
 

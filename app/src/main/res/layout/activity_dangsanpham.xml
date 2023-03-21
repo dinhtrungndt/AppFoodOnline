@@ -60,7 +60,7 @@
             android:layout_marginTop="35dp"
             android:layout_marginEnd="10dp"
             android:scaleType="fitXY"
-            android:src="@drawable/pl"
+            android:src="@drawable/home_app"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/edt_tensp"
             app:layout_constraintTop_toBottomOf="@id/layout_add" />
@@ -83,7 +83,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginTop="20dp"
-            android:text="Tên sản phẩm:"
+            android:text="Tên Món Ăn:"
             android:textColor="@color/purple_500"
             android:textSize="18sp"
             app:layout_constraintStart_toStartOf="parent"
@@ -161,7 +161,7 @@
                     android:background="@drawable/curve_bottom"
                     android:drawableRight="@drawable/ic_arrow_drop_down_black_24dp"
                     android:gravity="center"
-                    android:text="Bàn phím"
+                    android:text="Loại Món"
                     android:textAllCaps="false"
                     android:textColor="@color/colorWhite"
                     android:textSize="15sp" />
@@ -283,7 +283,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Mô tả chi tiết sản phẩm"
+                    android:text="Mô tả chi tiết món ăn"
                     android:textColor="@color/purple_700"
 
                     android:textSize="16sp"
@@ -296,7 +296,7 @@
                     android:layout_marginTop="5dp"
                     android:background="@drawable/button"
 
-                    android:hint="Hiển thị thông tin sản phẩm"
+                    android:hint="Hiển thị thông tin món ăn"
                     android:padding="10dp"
                     android:textColor="@color/colorBlack"
                     android:textSize="16sp" />

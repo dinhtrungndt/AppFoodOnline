@@ -29,7 +29,7 @@
         android:padding="6dp"
         android:textColor="#000000"
         android:textSize="20sp"
-        android:text="PC 2021 Asus"
+        android:text="Món ăn 1"
         android:id="@+id/txttensp"
         android:maxLines="1"
         android:singleLine="true"
