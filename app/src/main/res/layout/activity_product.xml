@@ -32,7 +32,7 @@
         android:layout_margin="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/sdt" />
+        app:srcCompat="@drawable/iconadd" />
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/image_add2"
         android:layout_width="48dp"
@@ -40,5 +40,5 @@
         android:layout_margin="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/sdt" />
+        app:srcCompat="@drawable/iconadd" />
 </androidx.constraintlayout.widget.ConstraintLayout>
