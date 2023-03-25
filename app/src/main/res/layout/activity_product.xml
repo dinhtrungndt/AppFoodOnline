@@ -32,7 +32,8 @@
         android:layout_margin="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/sdt" />
+        app:srcCompat="@drawable/ic_add_black_24dp"
+        android:tint="#00BCD4"/>
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/image_add2"
         android:layout_width="48dp"
@@ -40,5 +41,6 @@
         android:layout_margin="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/sdt" />
+        app:srcCompat="@drawable/ic_add_black_24dp"
+        android:tint="#00BCD4"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

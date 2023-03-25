@@ -12,8 +12,8 @@
     <TextView
         android:id="@+id/txtngaydat"
         android:textColor="#008000"
-        android:textSize="23sp"
-        android:text="20/01/2021"
+        android:textSize="24sp"
+        android:text="24/03/2023"
         android:gravity="center"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
@@ -31,7 +31,7 @@
             android:padding="3dp"
             android:textColor="#ff0000"
             android:textSize="20sp"
-            android:text="PC 2021 Asus"
+            android:text="Món Ăn"
             android:id="@+id/txthoten"
             android:maxLines="1"
             android:singleLine="true"
@@ -42,7 +42,7 @@
             android:padding="3dp"
             android:textColor="#000000"
             android:textSize="18sp"
-            android:text="255.555 Đ"
+            android:text="999.999 Đ"
             android:id="@+id/txtsdt"
             android:maxLines="1"
             android:singleLine="true"
