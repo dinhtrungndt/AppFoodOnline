@@ -1,12 +1,16 @@
 package com.example.appfoodv2.View.FragMent;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -15,6 +19,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
+import com.example.appfoodv2.View.XemthemActivity;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
@@ -39,6 +44,8 @@ public class FragMent_Home extends Fragment implements SanPhamView {
     private SanPhamAdapter sanPhamAdapter, sanPhamNBAdapter, sanPhamTUAdapter, sanPhamHQAdapter, sanPhamMCAdapter, sanPhamYTAdapter, sanPhamLauAdapter, sanPhamGYAdapter;
     private RecyclerView rcvSP, rcvSpNoiBat, rcvSPThucUong, rcvSPHQ, rcvSPMC, rcvSPYT, rcvSPLau, rcvSPGY;
     private ImageButton imgBtnDanhMuc;
+    private ImageView btn_category_home;
+    private TextView category_text;
 
     FragMent_HomeListener activityCallback;
 
@@ -137,6 +144,22 @@ public class FragMent_Home extends Fragment implements SanPhamView {
         rcvSPLau = view.findViewById(R.id.rcvLau);
         rcvSPGY = view.findViewById(R.id.rcvGY);
         imgBtnDanhMuc = view.findViewById(R.id.home_danhmuc);
+        btn_category_home = view.findViewById(R.id.btn_category_home);
+        category_text = view.findViewById(R.id.category_text);
+
+        btn_category_home.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getContext(), "Bạn đang bên Trang chủ !!!", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        category_text.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getContext(), XemthemActivity.class));
+            }
+        });
     }
 
     @Override

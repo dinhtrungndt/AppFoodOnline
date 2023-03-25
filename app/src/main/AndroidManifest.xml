@@ -21,14 +21,14 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".MessigeActivity"
+            android:name=".View.XemthemActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name="com.example.appfoodv2.View.Admin.ProductActivity"
+            android:name=".View.Admin.ProductActivity"
             android:exported="false" />
         <activity
             android:name="com.example.appfoodv2.dangsanphamActivity"
@@ -42,10 +42,10 @@
             <!-- </intent-filter> -->
         </activity>
         <activity
-            android:name="com.example.appfoodv2.View.Bill.CartActivity"
+            android:name=".View.Bill.CartActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.example.appfoodv2.View.Bill.ContentBillAdMinActivity"
+            android:name=".View.Bill.ContentBillAdMinActivity"
             android:screenOrientation="portrait" />
 
         <meta-data
@@ -53,41 +53,41 @@
             android:value="@string/google_maps_key" />
 
         <activity
-            android:name="com.example.appfoodv2.View.HomeActivity"
+            android:name=".View.HomeActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.example.appfoodv2.View.Bill.ContentProDuctActivity"
+            android:name=".View.Bill.ContentProDuctActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.example.appfoodv2.View.Admin.SignInAdminActivity"
+            android:name=".View.Admin.SignInAdminActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.example.appfoodv2.View.ContactActivity"
+            android:name=".View.ContactActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.example.appfoodv2.View.Admin.ChartBillActivity"
+            android:name=".View.Admin.ChartBillActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.example.appfoodv2.View.Bill.ContentBillActivity"
+            android:name=".View.Bill.ContentBillActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.example.appfoodv2.View.SearchActivity"
+            android:name=".View.SearchActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.example.appfoodv2.View.ThongKeDanhMucActivity"
+            android:name=".View.ThongKeDanhMucActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.example.appfoodv2.View.Admin.HomeAdminActivity"
+            android:name=".View.Admin.HomeAdminActivity"
             android:exported="true"
-            android:screenOrientation="portrait"></activity>
-        <activity
-            android:name="com.example.appfoodv2.View.Admin.BillADMiNActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.example.appfoodv2.View.Account.SignInActivity"
+            android:name=".View.Admin.BillADMiNActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.example.appfoodv2.View.Account.SignUpActivity"
+            android:name=".View.Account.SignInActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".View.Account.SignUpActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name="com.example.appfoodv2.MainActivity"
