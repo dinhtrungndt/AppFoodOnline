@@ -5,18 +5,19 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.appfoodv2.R;
 import com.example.appfoodv2.View.FragMent.FragMent_Bill;
 
 public class XemthemActivity extends AppCompatActivity {
-private TextView test1;
+private LinearLayout test1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_xemthem);
-        test1 = findViewById(R.id.test1);
+        test1 = findViewById(R.id.SupportCourse);
 
         test1.setOnClickListener(new View.OnClickListener() {
             @Override
