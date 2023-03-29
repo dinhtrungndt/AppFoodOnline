@@ -44,7 +44,7 @@ public class FragMent_Home extends Fragment implements SanPhamView {
     private SanPhamAdapter sanPhamAdapter, sanPhamNBAdapter, sanPhamTUAdapter, sanPhamHQAdapter, sanPhamMCAdapter, sanPhamYTAdapter, sanPhamLauAdapter, sanPhamGYAdapter;
     private RecyclerView rcvSP, rcvSpNoiBat, rcvSPThucUong, rcvSPHQ, rcvSPMC, rcvSPYT, rcvSPLau, rcvSPGY;
     private ImageButton imgBtnDanhMuc;
-    private ImageView btn_category_home;
+    private ImageView btn_category_home,tab_Homeic;
     private TextView category_text;
 
     FragMent_HomeListener activityCallback;
@@ -146,6 +146,8 @@ public class FragMent_Home extends Fragment implements SanPhamView {
         imgBtnDanhMuc = view.findViewById(R.id.home_danhmuc);
         btn_category_home = view.findViewById(R.id.btn_category_home);
         category_text = view.findViewById(R.id.category_text);
+        tab_Homeic = view.findViewById(R.id.tab_Homeic);
+
 
         btn_category_home.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -158,6 +160,13 @@ public class FragMent_Home extends Fragment implements SanPhamView {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(getContext(), XemthemActivity.class));
+            }
+        });
+
+        tab_Homeic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getContext(), "Bạn đang đứng ở trang chủ !!!", Toast.LENGTH_SHORT).show();
             }
         });
     }
