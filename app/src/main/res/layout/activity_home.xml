@@ -42,61 +42,6 @@
             android:layout_width="match_parent"
             android:layout_height="620dp" />
 
-        <LinearLayout
-            android:id="@+id/linearLayout"
-            android:layout_width="375dp"
-            android:layout_height="52dp"
-            android:layout_gravity="center"
-            android:background="@drawable/list_home_form"
-            android:gravity="center"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.326"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <ImageView
-                android:id="@+id/tab_Homeic"
-                android:layout_width="30dp"
-                android:layout_gravity="center"
-                android:layout_height="30dp"
-                android:background="@drawable/ic_baseline_home_24"
-               />
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="40dp"
-                android:layout_gravity="center"
-                android:background="@drawable/ic_baseline_chat_bubble_24" />
-
-            <Button
-                android:id="@+id/button5"
-                android:layout_width="43dp"
-                android:layout_height="45dp"
-                android:layout_marginLeft="27dp"
-                android:layout_gravity="center"
-                android:background="@drawable/ic_baseline_shopping_cart_24"
-                app:layout_constraintBottom_toTopOf="@+id/linearLayout"
-                app:layout_constraintEnd_toStartOf="@+id/button3"
-                app:layout_constraintHorizontal_bias="0.063"
-                app:layout_constraintStart_toStartOf="parent" />
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
-                android:layout_gravity="center"
-                android:background="@drawable/ic_baseline_account_circle_24" />
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_gravity="center"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="50dp"
-                android:background="@drawable/ic_baseline_menu_24"
-                android:onClick="onAcc" />
-        </LinearLayout>
-
     </LinearLayout>
 
     <com.google.android.material.navigation.NavigationView
