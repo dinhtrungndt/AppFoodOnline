@@ -15,7 +15,7 @@ public class UserModel {
     private  String pass;
     private IUSER callback;
 
-    public  UserModel(){
+    public  UserModel(Object o, Object o1, String message, Object o2){
 
     }
 //dùng interface callback đến Iuser Presenter
