@@ -4,7 +4,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/back7">
+    android:background="@drawable/bglogin">
 
     <ImageView
         android:layout_marginTop="15dp"
@@ -22,7 +22,7 @@
         android:layout_height="wrap_content">
 
         <LinearLayout
-            android:background="@drawable/border8"
+            android:background="#5BC3F1"
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -37,7 +37,7 @@
                 <EditText
                     android:singleLine="true"
                     android:drawableRight="@drawable/ic_baseline_email_24"
-                    android:background="@android:color/background_light"
+                    android:background="@color/colorGray"
 
                     android:hint="Nhập Email"
                     android:id="@+id/editEmail"
@@ -99,9 +99,8 @@
     </androidx.cardview.widget.CardView>
 
     <LinearLayout
-        android:layout_weight="1"
         android:layout_width="match_parent"
-        android:layout_height="0dp" />
+        android:layout_height="150dp" />
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -109,7 +108,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
         <TextView
-            android:textSize="16sp"
+            android:textSize="24sp"
             android:layout_marginBottom="10dp"
             android:textColor="#E49116"
             android:padding="5dp"
@@ -118,7 +117,7 @@
             android:layout_height="wrap_content" />
         <TextView
             android:id="@+id/txtLogin"
-            android:textSize="16sp"
+            android:textSize="24sp"
             android:layout_marginBottom="10dp"
             android:textColor="#FF0000"
             android:padding="5dp"

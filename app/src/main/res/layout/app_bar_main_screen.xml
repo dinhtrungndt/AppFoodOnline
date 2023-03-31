@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="170dp"
-    android:background="@color/light_blue_A200"
+    android:background="@drawable/bgbarmenu"
     android:orientation="horizontal"
     android:theme="@style/ThemeOverlay.AppCompat.Dark"
     android:id="@+id/nav_header_layout"
@@ -37,7 +37,7 @@
         android:layout_marginTop="50dp"
         android:layout_marginLeft="-200dp"
         android:text="Alex Nicolas"
-        android:textColor="#008000"
+        android:textColor="#0C0C0C"
         android:textSize="18sp"
         android:textStyle="bold" />
 
