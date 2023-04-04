@@ -14,7 +14,7 @@ import com.example.appfoodv2.R;
 
 import java.util.ArrayList;
 
-public class BannerAdapter  extends PagerAdapter {
+public class BannerAdapter extends PagerAdapter {
     private Context context;
     private ArrayList<String> arrayList;
 
@@ -30,13 +30,13 @@ public class BannerAdapter  extends PagerAdapter {
 
     @Override
     public boolean isViewFromObject(@NonNull View view, @NonNull Object object) {
-        return view ==object;
+        return view == object;
     }
 
     @NonNull
     @Override
     public Object instantiateItem(@NonNull ViewGroup container, int position) {
-        View view = LayoutInflater.from(context).inflate(R.layout.dong_banner,null);
+        View view = LayoutInflater.from(context).inflate(R.layout.dong_banner, null);
         ImageView banner_image = view.findViewById(R.id.image_banner);
 
         Picasso.get().load(arrayList.get(position).trim()).into(banner_image);

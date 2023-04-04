@@ -54,20 +54,19 @@ public class HomeAdminActivity extends AppCompatActivity {
         });
     }
 
-    @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.cHoaDon:
+            case R.id.cvHoaDon:
                 startActivity(new Intent(HomeAdminActivity.this, BillADMiNActivity.class));
                 break;
 
-            case R.id.cThongKe:
+            case R.id.cvThongKe:
                 startActivity(new Intent(HomeAdminActivity.this, ChartBillActivity.class));
                 break;
-            case R.id.cSignOut:
+            case R.id.cvSignOut:
                 finish();
                 break;
-            case R.id.imgdangsanpham:
+            case R.id.cvSanpham:
                 startActivity(new Intent(HomeAdminActivity.this, ProductActivity.class));
                 break;
 

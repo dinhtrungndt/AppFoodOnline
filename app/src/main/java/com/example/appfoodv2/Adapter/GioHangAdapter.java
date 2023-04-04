@@ -21,28 +21,29 @@ import java.util.ArrayList;
 public class GioHangAdapter extends RecyclerView.Adapter<GioHangAdapter.ViewHodler> {
     private Context context;
     private ArrayList<SanPhamModels> arrayList;
-    private  int type = 0;
+    private int type = 0;
 
     public GioHangAdapter(Context context, ArrayList<SanPhamModels> arrayList) {
         this.context = context;
         this.arrayList = arrayList;
     }
+
     public GioHangAdapter(Context context, ArrayList<SanPhamModels> arrayList, int type) {
         this.context = context;
         this.arrayList = arrayList;
-        this.type= type;
+        this.type = type;
     }
 
     @NonNull
     @Override
     public GioHangAdapter.ViewHodler onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view;
-        if(type==0){
-             view = LayoutInflater.from(context).inflate(R.layout.dong_sanpham,parent,false);
-        }else if(type ==2){
-            view = LayoutInflater.from(context).inflate(R.layout.dong_sanpham_noibat,parent,false);
-        }else{
-            view = LayoutInflater.from(context).inflate(R.layout.dong_giohang,parent,false);
+        if (type == 0) {
+            view = LayoutInflater.from(context).inflate(R.layout.dong_sanpham, parent, false);
+        } else if (type == 2) {
+            view = LayoutInflater.from(context).inflate(R.layout.dong_sanpham_noibat, parent, false);
+        } else {
+            view = LayoutInflater.from(context).inflate(R.layout.dong_giohang, parent, false);
         }
 
 
@@ -56,7 +57,7 @@ public class GioHangAdapter extends RecyclerView.Adapter<GioHangAdapter.ViewHodl
 
         holder.txttensp.setText(sanPhamModels.getTensp());
 
-        holder.txtgiasp.setText(NumberFormat.getInstance().format(sanPhamModels.getGiatien())+" Đ");
+        holder.txtgiasp.setText(NumberFormat.getInstance().format(sanPhamModels.getGiatien()) + " Đ");
         Picasso.get().load(sanPhamModels.getHinhanh()).into(holder.hinhanh);
         holder.SetOnItem(new SetOnItemClick() {
             @Override
@@ -65,9 +66,9 @@ public class GioHangAdapter extends RecyclerView.Adapter<GioHangAdapter.ViewHodl
 
             }
         });
-        if(type==1){
+        if (type == 1) {
             holder.txtbaohanh.setText(sanPhamModels.getTrongluong());
-            holder.txtsoluong.setText(sanPhamModels.getSoluong()+"");
+            holder.txtsoluong.setText(sanPhamModels.getSoluong() + "");
         }
 
     }
@@ -77,29 +78,30 @@ public class GioHangAdapter extends RecyclerView.Adapter<GioHangAdapter.ViewHodl
         return arrayList.size();
     }
 
-    public class ViewHodler extends RecyclerView.ViewHolder implements  View.OnClickListener {
-        TextView txttensp,txtgiasp,txtbaohanh,txtsoluong;
+    public class ViewHodler extends RecyclerView.ViewHolder implements View.OnClickListener {
+        TextView txttensp, txtgiasp, txtbaohanh, txtsoluong;
         ImageView hinhanh;
         SetOnItemClick itemClick;
 
         public ViewHodler(@NonNull View itemView) {
             super(itemView);
-            txtgiasp= itemView.findViewById(R.id.txtgiatien);
-            txttensp= itemView.findViewById(R.id.txttensp);
-            hinhanh= itemView.findViewById(R.id.hinhanh);
-            if(type==1){
+            txtgiasp = itemView.findViewById(R.id.txtgiatien);
+            txttensp = itemView.findViewById(R.id.txttensp);
+            hinhanh = itemView.findViewById(R.id.hinhanh);
+            if (type == 1) {
                 txtbaohanh = itemView.findViewById(R.id.txtbaohanh);
                 txtsoluong = itemView.findViewById(R.id.txtsoluong);
             }
             itemView.setOnClickListener(this);
         }
-        public  void  SetOnItem(SetOnItemClick itemClick){
+
+        public void SetOnItem(SetOnItemClick itemClick) {
             this.itemClick = itemClick;
         }
 
         @Override
         public void onClick(View v) {
-            itemClick.SetItemClick(v,getAdapterPosition());
+            itemClick.SetItemClick(v, getAdapterPosition());
         }
     }
 }

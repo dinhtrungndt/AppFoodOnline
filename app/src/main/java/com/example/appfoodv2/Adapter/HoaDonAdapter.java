@@ -1,4 +1,5 @@
 package com.example.appfoodv2.Adapter;
+
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -20,26 +21,27 @@ import java.util.ArrayList;
 public class HoaDonAdapter extends RecyclerView.Adapter<HoaDonAdapter.ViewHodler> {
     private Context context;
     private ArrayList<HoaDonModels> arrayList;
-    private  int type = 0;
+    private int type = 0;
 
     public HoaDonAdapter(Context context, ArrayList<HoaDonModels> arrayList) {
         this.context = context;
         this.arrayList = arrayList;
     }
+
     public HoaDonAdapter(Context context, ArrayList<HoaDonModels> arrayList, int type) {
         this.context = context;
         this.arrayList = arrayList;
-        this.type= type;
+        this.type = type;
     }
 
     @NonNull
     @Override
     public HoaDonAdapter.ViewHodler onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view;
-        if(type==0 || type==5){
-             view = LayoutInflater.from(context).inflate(R.layout.dong_hoadon,parent,false);
-        }else{
-            view = LayoutInflater.from(context).inflate(R.layout.dong_giohang,parent,false);
+        if (type == 0 || type == 5) {
+            view = LayoutInflater.from(context).inflate(R.layout.dong_hoadon, parent, false);
+        } else {
+            view = LayoutInflater.from(context).inflate(R.layout.dong_giohang, parent, false);
         }
 
 
@@ -51,18 +53,18 @@ public class HoaDonAdapter extends RecyclerView.Adapter<HoaDonAdapter.ViewHodler
 
         HoaDonModels sanPhamModels = arrayList.get(position);
 
-        holder.txthoten.setText("Họ tên : "+sanPhamModels.getHoten());
-        holder.txtdiachi.setText("Địa chỉ : "+sanPhamModels.getDiachi());
-        holder.txtsdt.setText("Số điện thoại : "+sanPhamModels.getSdt());
-        holder.txttongtien.setText("Tổng tiền :"+NumberFormat.getInstance().format(sanPhamModels.getTongtien()) +" Đ");
+        holder.txthoten.setText("Họ tên : " + sanPhamModels.getHoten());
+        holder.txtdiachi.setText("Địa chỉ : " + sanPhamModels.getDiachi());
+        holder.txtsdt.setText("Số điện thoại : " + sanPhamModels.getSdt());
+        holder.txttongtien.setText("Tổng tiền :" + NumberFormat.getInstance().format(sanPhamModels.getTongtien()) + " Đ");
         holder.txtngaydat.setText(sanPhamModels.getNgaydat());
 
         holder.SetOnItem(new SetOnItemClick() {
             @Override
             public void SetItemClick(View view, int pos) {
                 Intent intent = new Intent(context, ContentBillActivity.class);
-                intent.putExtra("HD",sanPhamModels);
-                intent.putExtra("TYPE",type);
+                intent.putExtra("HD", sanPhamModels);
+                intent.putExtra("TYPE", type);
                 context.startActivity(intent);
 
             }
@@ -76,27 +78,28 @@ public class HoaDonAdapter extends RecyclerView.Adapter<HoaDonAdapter.ViewHodler
         return arrayList.size();
     }
 
-    public class ViewHodler extends RecyclerView.ViewHolder implements  View.OnClickListener {
-        TextView txthoten,txtsdt,txtdiachi,txtngaydat,txttongtien;
+    public class ViewHodler extends RecyclerView.ViewHolder implements View.OnClickListener {
+        TextView txthoten, txtsdt, txtdiachi, txtngaydat, txttongtien;
         SetOnItemClick itemClick;
 
         public ViewHodler(@NonNull View itemView) {
             super(itemView);
-            txthoten= itemView.findViewById(R.id.txthoten);
-            txtsdt= itemView.findViewById(R.id.txtsdt);
-            txtdiachi= itemView.findViewById(R.id.txtdiachi);
-            txtngaydat= itemView.findViewById(R.id.txtngaydat);
-            txttongtien= itemView.findViewById(R.id.txttongtien);
+            txthoten = itemView.findViewById(R.id.txthoten);
+            txtsdt = itemView.findViewById(R.id.txtsdt);
+            txtdiachi = itemView.findViewById(R.id.txtdiachi);
+            txtngaydat = itemView.findViewById(R.id.txtngaydat);
+            txttongtien = itemView.findViewById(R.id.txttongtien);
 
             itemView.setOnClickListener(this);
         }
-        public  void  SetOnItem(SetOnItemClick itemClick){
+
+        public void SetOnItem(SetOnItemClick itemClick) {
             this.itemClick = itemClick;
         }
 
         @Override
         public void onClick(View v) {
-            itemClick.SetItemClick(v,getAdapterPosition());
+            itemClick.SetItemClick(v, getAdapterPosition());
         }
     }
 }
