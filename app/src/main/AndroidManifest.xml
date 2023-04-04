@@ -21,7 +21,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name="com.example.appfoodv2.View.Admin.ProductActivity"
+            android:name=".View.Admin.ProductActivity"
             android:exported="false" />
         <activity
             android:name="com.example.appfoodv2.dangsanphamActivity"
@@ -52,13 +52,13 @@
             android:name="com.example.appfoodv2.View.Bill.ContentProDuctActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.example.appfoodv2.View.Admin.SignInAdminActivity"
+            android:name=".View.Admin.SignInAdminActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name="com.example.appfoodv2.View.ContactActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.example.appfoodv2.View.Admin.ChartBillActivity"
+            android:name=".View.Admin.ChartBillActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name="com.example.appfoodv2.View.Bill.ContentBillActivity"
@@ -70,13 +70,13 @@
             android:name="com.example.appfoodv2.View.ThongKeDanhMucActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.example.appfoodv2.View.Admin.HomeAdminActivity"
-            android:screenOrientation="portrait"
-            android:exported="true">
+            android:name=".View.Admin.HomeAdminActivity"
+            android:exported="true"
+            android:screenOrientation="portrait">
 
         </activity>
         <activity
-            android:name="com.example.appfoodv2.View.Admin.BillADMiNActivity"
+            android:name=".View.Admin.BillADMiNActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name="com.example.appfoodv2.View.Account.SignInActivity"

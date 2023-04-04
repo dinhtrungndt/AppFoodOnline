@@ -3,21 +3,24 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/res9"
+    android:background="@drawable/backgroundfood"
     android:orientation="vertical">
 
-    <ImageView
-
-        android:layout_width="100dp"
-        android:layout_height="30dp"
+    <TextView
+        android:text="HELLO"
+        android:textSize="36sp"
+        android:textStyle="bold"
+        android:textColor="#03A9F4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="120dp" />
+        android:layout_marginTop="133dp" />
 
 
     <androidx.cardview.widget.CardView
 
         android:layout_width="match_parent"
-        android:layout_height="370dp"
+        android:layout_height="400dp"
         android:layout_margin="15dp"
         app:cardCornerRadius="20dp"
         app:cardElevation="5dp">
@@ -101,31 +104,19 @@
                 app:backgroundTint="#f5f5dc" />
 
 
+            <TextView
+                android:id="@+id/txtadmin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:padding="5dp"
+                android:layout_marginTop="10dp"
+                android:text="@string/admin"
+                android:textColor="#008000"
+                android:textSize="16sp" />
+
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/txtadmin"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="80dp"
-            android:padding="5dp"
-            android:text="@string/admin"
-            android:textColor="#008000"
-            android:textSize="16sp" />
-    </LinearLayout>
-
-
-
-
-
 
 </LinearLayout>
