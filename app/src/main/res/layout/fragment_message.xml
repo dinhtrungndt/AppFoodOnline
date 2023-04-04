@@ -7,9 +7,9 @@
     android:orientation="vertical">
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rcvChat"
         android:layout_width="311dp"
         android:layout_height="wrap_content"
-        android:id="@+id/rcvChat"
         android:layout_marginTop="396dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

@@ -1,6 +1,9 @@
 package com.example.appfoodv2.Model;
 
-public class HoaDonPreSenter  implements IHoaDon{
+import com.example.appfoodv2.Interface.HoaDonView;
+import com.example.appfoodv2.Interface.IHoaDon;
+
+public class HoaDonPreSenter implements IHoaDon {
 
     private HoaDonModels hoaDonModels;
     private HoaDonView callback;
@@ -9,13 +12,14 @@ public class HoaDonPreSenter  implements IHoaDon{
         this.callback = callback;
         hoaDonModels = new HoaDonModels(this);
     }
-    public  void HandleReadDataHD(){
+
+    public void HandleReadDataHD() {
         hoaDonModels.HandleReadData();
     }
 
     @Override
-    public void getDataHD(String id, String uid, String diachi, String hoten, String ngaydat, String phuongthuc, String sdt, Long tongtien,Long type) {
-        callback.getDataHD(id,uid,diachi,hoten,ngaydat,phuongthuc,sdt,tongtien,type);
+    public void getDataHD(String id, String uid, String diachi, String hoten, String ngaydat, String phuongthuc, String sdt, Long tongtien, Long type) {
+        callback.getDataHD(id, uid, diachi, hoten, ngaydat, phuongthuc, sdt, tongtien, type);
     }
 
     @Override
@@ -26,11 +30,11 @@ public class HoaDonPreSenter  implements IHoaDon{
 
     @Override
     public void OnFail() {
-      callback.OnFail();
+        callback.OnFail();
     }
 
-    public void CapNhatTrangThai(int i,String id) {
-        hoaDonModels.HandleUpdateStatusBill(i,id);
+    public void CapNhatTrangThai(int i, String id) {
+        hoaDonModels.HandleUpdateStatusBill(i, id);
     }
 
     public void HandleReadDataHD(int position) {

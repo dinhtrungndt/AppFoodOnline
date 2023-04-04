@@ -34,6 +34,7 @@
                 android:text="Món ăn số 1"
                 android:textColor="#ff0000"
                 android:textSize="18sp" />
+
             <TextView
 
                 android:id="@+id/txthoten"
@@ -43,7 +44,6 @@
                 android:text="Nhom 03"
                 android:textColor="#000000"
                 android:textSize="18sp" />
-
 
 
             <TextView
@@ -65,6 +65,7 @@
                 android:text="012345678"
                 android:textColor="#008000"
                 android:textSize="18sp" />
+
             <TextView
 
                 android:id="@+id/txttongtien"
@@ -74,6 +75,7 @@
                 android:text="1000000Đ"
                 android:textColor="	#000000"
                 android:textSize="18sp" />
+
             <TextView
 
                 android:id="@+id/txtrangthaidonhang"
@@ -94,13 +96,13 @@
         android:layout_marginRight="10dp"
         android:background="@color/purple_200" />
 
-     <androidx.recyclerview.widget.RecyclerView
-         android:layout_width="match_parent"
-         android:layout_margin="10dp"
-         android:layout_weight="1"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rcvSP"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
 
-         android:id="@+id/rcvSP"
-         android:layout_height="0dp"/>
+        android:layout_margin="10dp"
+        android:layout_weight="1" />
 
     <Button
         android:id="@+id/btncapnhat"

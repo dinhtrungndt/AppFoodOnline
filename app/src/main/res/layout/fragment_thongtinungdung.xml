@@ -9,11 +9,11 @@
 
 
     <ImageView
-        android:background="@drawable/home_app"
         android:layout_width="150dp"
         android:layout_height="152dp"
         android:layout_marginLeft="130dp"
-        android:layout_marginTop="10dp" />
+        android:layout_marginTop="10dp"
+        android:background="@drawable/home_app" />
 
     <TextView
         android:layout_width="match_parent"
@@ -53,6 +53,7 @@
         android:textColor="@color/colorBlack"
 
         android:textSize="15sp" />
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -63,6 +64,7 @@
         android:textColor="@color/colorBlack"
 
         android:textSize="15sp" />
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -73,6 +75,7 @@
         android:textColor="@color/colorBlack"
 
         android:textSize="15sp" />
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -83,6 +86,7 @@
         android:textColor="@color/colorBlack"
 
         android:textSize="15sp" />
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

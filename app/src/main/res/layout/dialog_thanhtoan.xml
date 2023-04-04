@@ -79,13 +79,13 @@
                 android:hint="Nhập ghi chú "
                 android:textSize="18dp" />
         </com.google.android.material.textfield.TextInputLayout>
+
         <Spinner
             android:id="@+id/spinerphguongthuc"
 
             android:layout_width="match_parent"
             android:layout_height="55dp"
-            android:layout_margin="0dp"
-            />
+            android:layout_margin="0dp" />
 
         <View
             android:layout_width="match_parent"

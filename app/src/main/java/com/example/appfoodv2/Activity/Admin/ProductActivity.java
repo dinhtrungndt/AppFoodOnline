@@ -9,7 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.appfoodv2.Model.SanPhamModels;
-import com.example.appfoodv2.Model.ISanPham;
+import com.example.appfoodv2.Interface.ISanPham;
 import com.example.appfoodv2.R;
 import com.example.appfoodv2.Activity.upSPActivity;
 

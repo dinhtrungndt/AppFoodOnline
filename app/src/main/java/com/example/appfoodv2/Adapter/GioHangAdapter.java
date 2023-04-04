@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Picasso;
 import com.example.appfoodv2.Model.SanPhamModels;
-import com.example.appfoodv2.Model.SetOnItemClick;
+import com.example.appfoodv2.Interface.SetOnItemClick;
 import com.example.appfoodv2.R;
 
 import java.text.NumberFormat;

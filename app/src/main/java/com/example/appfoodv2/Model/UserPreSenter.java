@@ -1,26 +1,30 @@
 package com.example.appfoodv2.Model;
 
-public class UserPreSenter  implements  IUSER{
+import com.example.appfoodv2.Interface.IUSER;
+import com.example.appfoodv2.Interface.UserView;
+
+public class UserPreSenter implements IUSER {
     private UserModel userModel;
-    private  UserView callback;
+    private UserView callback;
 
     public UserPreSenter(UserView callback) {
         this.callback = callback;
-         userModel = new UserModel(this);
+        userModel = new UserModel(this);
     }
-    public  void HandleLoginUser(String email,String pass){
-        userModel.HandleLoginUser(email,pass);
+
+    public void HandleLoginUser(String email, String pass) {
+        userModel.HandleLoginUser(email, pass);
     }
 
 
     @Override
     public void OnLengthEmail() {
-         callback.OnLengthEmail();
+        callback.OnLengthEmail();
     }
 
     @Override
     public void OnValidEmail() {
-       callback.OnValidEmail();
+        callback.OnValidEmail();
     }
 
     @Override
@@ -52,6 +56,6 @@ public class UserPreSenter  implements  IUSER{
     }
 
     public void HandleRegist(String email, String pass, String repass) {
-        userModel.HandleRegistUser(email,pass,repass);
+        userModel.HandleRegistUser(email, pass, repass);
     }
 }

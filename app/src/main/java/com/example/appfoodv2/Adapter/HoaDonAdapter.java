@@ -10,7 +10,7 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.appfoodv2.Model.HoaDonModels;
-import com.example.appfoodv2.Model.SetOnItemClick;
+import com.example.appfoodv2.Interface.SetOnItemClick;
 import com.example.appfoodv2.R;
 import com.example.appfoodv2.Activity.Bill.ContentBillActivity;
 

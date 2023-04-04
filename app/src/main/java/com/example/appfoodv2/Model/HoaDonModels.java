@@ -1,5 +1,6 @@
 package com.example.appfoodv2.Model;
 
+import com.example.appfoodv2.Interface.IHoaDon;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -12,28 +13,28 @@ import java.io.Serializable;
 
 public class HoaDonModels implements Serializable {
 
-    private  String id;
-    private  String uid;
-    private  String diachi;
-    private  String hoten;
-    private  String ngaydat;
-    private  String phuongthuc;
-    private  String sdt;
-    private  long tongtien;
-    private  long type;
+    private String id;
+    private String uid;
+    private String diachi;
+    private String hoten;
+    private String ngaydat;
+    private String phuongthuc;
+    private String sdt;
+    private long tongtien;
+    private long type;
     private IHoaDon callback;
     private FirebaseFirestore db;
 
     public HoaDonModels(IHoaDon callback) {
-        this.callback=callback;
-        db=FirebaseFirestore.getInstance();
+        this.callback = callback;
+        db = FirebaseFirestore.getInstance();
     }
 
     public HoaDonModels() {
 
     }
 
-    public HoaDonModels(String id, String uid, String diachi, String hoten, String ngaydat, String phuongthuc, String sdt, long tongtien,long type) {
+    public HoaDonModels(String id, String uid, String diachi, String hoten, String ngaydat, String phuongthuc, String sdt, long tongtien, long type) {
         this.id = id;
         this.uid = uid;
         this.diachi = diachi;
@@ -42,23 +43,24 @@ public class HoaDonModels implements Serializable {
         this.phuongthuc = phuongthuc;
         this.sdt = sdt;
         this.tongtien = tongtien;
-        this.type=type;
+        this.type = type;
     }
-    public  void HandleReadData(){
-        db.collection("HoaDon").whereEqualTo("UID",FirebaseAuth.getInstance().getCurrentUser().getUid())
-                .get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-            @Override
-            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                if(queryDocumentSnapshots.size()>0){
-                    for(QueryDocumentSnapshot d : queryDocumentSnapshots){
-                        callback.getDataHD(d.getId(),d.getString("UID"),d.getString("diachi"),
-                                d.getString("hoten"),d.getString("ngaydat"),d.getString("phuongthuc"),d.getString("sdt"),
-                                d.getLong("tongtien"),d.getLong("trangthai"));
-                    }
-                }
 
-            }
-        });
+    public void HandleReadData() {
+        db.collection("HoaDon").whereEqualTo("UID", FirebaseAuth.getInstance().getCurrentUser().getUid())
+                .get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                    @Override
+                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                        if (queryDocumentSnapshots.size() > 0) {
+                            for (QueryDocumentSnapshot d : queryDocumentSnapshots) {
+                                callback.getDataHD(d.getId(), d.getString("UID"), d.getString("diachi"),
+                                        d.getString("hoten"), d.getString("ngaydat"), d.getString("phuongthuc"), d.getString("sdt"),
+                                        d.getLong("tongtien"), d.getLong("trangthai"));
+                            }
+                        }
+
+                    }
+                });
     }
 
     public long getType() {
@@ -129,51 +131,51 @@ public class HoaDonModels implements Serializable {
         this.tongtien = tongtien;
     }
 
-    public void HandleUpdateStatusBill(int i,String id) {
+    public void HandleUpdateStatusBill(int i, String id) {
         db.collection("HoaDon")
-                .document(id).update("trangthai",i).addOnCompleteListener(new OnCompleteListener<Void>() {
-            @Override
-            public void onComplete(Task<Void> task) {
-                if(task.isSuccessful()){
-                    callback.OnSucess();
-                }else{
-                    callback.OnFail();
-                }
-            }
-        });
+                .document(id).update("trangthai", i).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(Task<Void> task) {
+                        if (task.isSuccessful()) {
+                            callback.OnSucess();
+                        } else {
+                            callback.OnFail();
+                        }
+                    }
+                });
     }
 
     public void HandleReadData(int position) {
-        if(position==0){
+        if (position == 0) {
             db.collection("HoaDon")
                     .get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-                @Override
-                public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                    if(queryDocumentSnapshots.size()>0){
-                        for(QueryDocumentSnapshot d : queryDocumentSnapshots){
-                            callback.getDataHD(d.getId(),d.getString("UID"),d.getString("diachi"),
-                                    d.getString("hoten"),d.getString("ngaydat"),d.getString("phuongthuc"),d.getString("sdt"),
-                                    d.getLong("tongtien"),d.getLong("trangthai"));
-                        }
-                    }
+                        @Override
+                        public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                            if (queryDocumentSnapshots.size() > 0) {
+                                for (QueryDocumentSnapshot d : queryDocumentSnapshots) {
+                                    callback.getDataHD(d.getId(), d.getString("UID"), d.getString("diachi"),
+                                            d.getString("hoten"), d.getString("ngaydat"), d.getString("phuongthuc"), d.getString("sdt"),
+                                            d.getLong("tongtien"), d.getLong("trangthai"));
+                                }
+                            }
 
-                }
-            });
-        }else{
-            db.collection("HoaDon").whereEqualTo("trangthai",position)
+                        }
+                    });
+        } else {
+            db.collection("HoaDon").whereEqualTo("trangthai", position)
                     .get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-                @Override
-                public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                    if(queryDocumentSnapshots.size()>0){
-                        for(QueryDocumentSnapshot d : queryDocumentSnapshots){
-                            callback.getDataHD(d.getId(),d.getString("UID"),d.getString("diachi"),
-                                    d.getString("hoten"),d.getString("ngaydat"),d.getString("phuongthuc"),d.getString("sdt"),
-                                    d.getLong("tongtien"),d.getLong("trangthai"));
-                        }
-                    }
+                        @Override
+                        public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                            if (queryDocumentSnapshots.size() > 0) {
+                                for (QueryDocumentSnapshot d : queryDocumentSnapshots) {
+                                    callback.getDataHD(d.getId(), d.getString("UID"), d.getString("diachi"),
+                                            d.getString("hoten"), d.getString("ngaydat"), d.getString("phuongthuc"), d.getString("sdt"),
+                                            d.getLong("tongtien"), d.getLong("trangthai"));
+                                }
+                            }
 
-                }
-            });
+                        }
+                    });
         }
 
     }

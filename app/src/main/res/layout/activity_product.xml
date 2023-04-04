@@ -30,17 +30,18 @@
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:layout_margin="20dp"
+        android:tint="#00BCD4"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/ic_add_black_24dp"
-        android:tint="#00BCD4"/>
+        app:srcCompat="@drawable/ic_add_black_24dp" />
+
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/image_add2"
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:layout_margin="20dp"
+        android:tint="#00BCD4"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/ic_add_black_24dp"
-        android:tint="#00BCD4"/>
+        app:srcCompat="@drawable/ic_add_black_24dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

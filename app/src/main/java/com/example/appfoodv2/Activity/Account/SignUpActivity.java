@@ -13,7 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.example.appfoodv2.Model.UserPreSenter;
-import com.example.appfoodv2.Model.UserView;
+import com.example.appfoodv2.Interface.UserView;
 import com.example.appfoodv2.R;
 import com.example.appfoodv2.Activity.HomeActivity;
 

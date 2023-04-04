@@ -73,11 +73,11 @@ public class ContactActivity extends AppCompatActivity implements OnMapReadyCall
 
     @Override
     public void onMapReady(GoogleMap googleMap) { //đọc vị trí gg map
-        LatLng latLng = new LatLng(10.8529444,106.6273561); // vĩ độ trên ggmaps
+        LatLng latLng = new LatLng(10.8529444, 106.6273561); // vĩ độ trên ggmaps
         MarkerOptions options = new MarkerOptions();
         options.position(latLng);
         options.title("food app FPOLY");
-        options.snippet("food app FPOLY .du an 1 . ").icon(bitmapDescriptor(getApplicationContext(),R.drawable.icfood_baseline_fastfood_24)); // option hiển thị thông tin vị trí lấy từ gg map
+        options.snippet("food app FPOLY .du an 1 . ").icon(bitmapDescriptor(getApplicationContext(), R.drawable.icfood_baseline_fastfood_24)); // option hiển thị thông tin vị trí lấy từ gg map
 
         googleMap.addMarker(options);
 
@@ -86,12 +86,13 @@ public class ContactActivity extends AppCompatActivity implements OnMapReadyCall
 
 
     }
-    private BitmapDescriptor bitmapDescriptor (Context context, int vID){
-        Drawable vD = ContextCompat.getDrawable(context,vID);
-        vD.setBounds(0,0,vD.getIntrinsicWidth(),
+
+    private BitmapDescriptor bitmapDescriptor(Context context, int vID) {
+        Drawable vD = ContextCompat.getDrawable(context, vID);
+        vD.setBounds(0, 0, vD.getIntrinsicWidth(),
                 vD.getIntrinsicHeight());
         Bitmap bitmap = Bitmap.createBitmap(vD.getIntrinsicWidth(),
-                vD.getIntrinsicHeight(),Bitmap.Config.ARGB_8888);
+                vD.getIntrinsicHeight(), Bitmap.Config.ARGB_8888);
         Canvas canvas = new Canvas(bitmap);
         vD.draw(canvas);
         return BitmapDescriptorFactory.fromBitmap(bitmap);

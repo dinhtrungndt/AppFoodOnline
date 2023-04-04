@@ -15,7 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.appfoodv2.Adapter.HoaDonAdapter;
 import com.example.appfoodv2.Model.HoaDonModels;
 import com.example.appfoodv2.Model.HoaDonPreSenter;
-import com.example.appfoodv2.Model.HoaDonView;
+import com.example.appfoodv2.Interface.HoaDonView;
 import com.example.appfoodv2.R;
 import com.example.appfoodv2.Activity.HomeActivity;
 

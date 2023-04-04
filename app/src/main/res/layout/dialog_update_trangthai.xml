@@ -1,21 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="300dp"
-android:layout_margin="20dp"
+    android:layout_margin="20dp"
+    android:background="@drawable/home_app"
 
 
-    android:background="@drawable/home_app">
+    android:orientation="vertical">
 
     <Spinner
 
         android:id="@+id/spinerCapNhat"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_marginTop="320dp"
-        />
-
+        android:layout_marginTop="320dp" />
 
 
 </LinearLayout>

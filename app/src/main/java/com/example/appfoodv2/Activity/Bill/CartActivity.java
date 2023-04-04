@@ -28,7 +28,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.example.appfoodv2.Adapter.GioHangAdapter;
 import com.example.appfoodv2.Model.SanPhamModels;
 import com.example.appfoodv2.Model.GioHangPreSenter;
-import com.example.appfoodv2.Model.GioHangView;
+import com.example.appfoodv2.Interface.GioHangView;
 import com.example.appfoodv2.R;
 
 import org.json.JSONException;

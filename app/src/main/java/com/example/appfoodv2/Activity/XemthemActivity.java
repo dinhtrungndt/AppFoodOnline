@@ -10,7 +10,8 @@ import android.widget.LinearLayout;
 import com.example.appfoodv2.R;
 
 public class XemthemActivity extends AppCompatActivity {
-private LinearLayout test1;
+    private LinearLayout test1;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

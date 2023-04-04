@@ -64,6 +64,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/edt_tensp"
             app:layout_constraintTop_toBottomOf="@id/layout_add" />
+
         <ImageView
             android:id="@+id/image_add2"
             android:layout_width="50dp"
@@ -71,9 +72,9 @@
             android:layout_marginStart="10dp"
             android:layout_marginTop="205dp"
             android:layout_marginEnd="10dp"
+            android:background="@drawable/banner4"
             android:scaleType="fitXY"
             android:src="@drawable/pl"
-            android:background="@drawable/banner4"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/edt_tensp"
             app:layout_constraintTop_toBottomOf="@id/layout_add" />
@@ -314,8 +315,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="10dp"
                     android:layout_weight="1"
-                    android:visibility="gone"
-                    android:text="Xoá" />
+                    android:text="Xoá"
+                    android:visibility="gone" />
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/btn_edit"
@@ -323,8 +324,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="10dp"
                     android:layout_weight="1"
-                    android:visibility="gone"
-                    android:text="Lưu" />
+                    android:text="Lưu"
+                    android:visibility="gone" />
             </LinearLayout>
 
         </LinearLayout>

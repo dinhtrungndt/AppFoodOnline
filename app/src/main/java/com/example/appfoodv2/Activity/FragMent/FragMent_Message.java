@@ -20,7 +20,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class FragMent_Message extends Fragment {
     private DatabaseReference mDatabase;
-    private EditText editTextMessage,editTextName,editTextEmail,edtCall;
+    private EditText editTextMessage, editTextName, editTextEmail, edtCall;
 
 
     @Nullable
@@ -44,7 +44,7 @@ public class FragMent_Message extends Fragment {
         String message = editTextMessage.getText().toString();
 
 // Ghi thông tin liên hệ vào Firebase Realtime Database
-        UserModel contact = new UserModel(name, email, message,call);
+        UserModel contact = new UserModel(name, email, message, call);
         mDatabase.child("contacts").push().setValue(contact);
 
         mDatabase.child("contacts").push().setValue(contact)

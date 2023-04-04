@@ -1,4 +1,4 @@
-package com.example.appfoodv2.Model;
+package com.example.appfoodv2.Interface;
 
 public interface IUSER {
     void OnLengthEmail();

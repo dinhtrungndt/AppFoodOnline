@@ -27,7 +27,7 @@ import com.example.appfoodv2.Adapter.BannerAdapter;
 import com.example.appfoodv2.Adapter.SanPhamAdapter;
 import com.example.appfoodv2.Model.SanPhamModels;
 import com.example.appfoodv2.Model.SanPhamPreSenter;
-import com.example.appfoodv2.Model.SanPhamView;
+import com.example.appfoodv2.Interface.SanPhamView;
 import com.example.appfoodv2.R;
 
 import java.util.ArrayList;

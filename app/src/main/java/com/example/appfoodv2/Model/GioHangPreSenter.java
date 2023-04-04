@@ -1,22 +1,28 @@
 package com.example.appfoodv2.Model;
 
+import com.example.appfoodv2.Interface.GioHangView;
+import com.example.appfoodv2.Interface.IGioHang;
+
 import java.util.ArrayList;
 
-public class GioHangPreSenter implements  IGioHang{
+public class GioHangPreSenter implements IGioHang {
     private GioHangModels gioHangModels;
     private GioHangView callback;
 
-    public GioHangPreSenter( GioHangView callback) {
+    public GioHangPreSenter(GioHangView callback) {
         this.callback = callback;
-        gioHangModels  = new GioHangModels(this);
+        gioHangModels = new GioHangModels(this);
     }
-    public  void AddCart(String idsp){
+
+    public void AddCart(String idsp) {
         gioHangModels.AddCart(idsp);
     }
-    public  void  HandlegetDataGioHang(){
+
+    public void HandlegetDataGioHang() {
         gioHangModels.HandlegetDataGioHang();
     }
-    public  void  HandlegetDataGioHang(String id){
+
+    public void HandlegetDataGioHang(String id) {
         gioHangModels.HandlegetDataGioHang(id);
     }
 
@@ -31,20 +37,21 @@ public class GioHangPreSenter implements  IGioHang{
     }
 
     @Override
-    public void getDataSanPham(String id, String idsp,String tensp, Long giatien, String hinhanh, String loaisp, Long soluong, String hansudung, Long type, String trongluong) {
-        callback.getDataSanPham(id,idsp,tensp,giatien,hinhanh,loaisp,soluong,hansudung,type,trongluong);
+    public void getDataSanPham(String id, String idsp, String tensp, Long giatien, String hinhanh, String loaisp, Long soluong, String hansudung, Long type, String trongluong) {
+        callback.getDataSanPham(id, idsp, tensp, giatien, hinhanh, loaisp, soluong, hansudung, type, trongluong);
     }
 
     public void HandleAddHoaDon(String ngaydat, String diachi, String hoten, String sdt, String phuongthuc, long tongtien, ArrayList<SanPhamModels> arrayList) {
-        gioHangModels.HandleThanhToan(ngaydat,diachi,hoten,sdt,phuongthuc,tongtien,arrayList);
+        gioHangModels.HandleThanhToan(ngaydat, diachi, hoten, sdt, phuongthuc, tongtien, arrayList);
     }
 
     public void HandlegetDataCTHD(String id) {
         gioHangModels.HandleGetDataCTHD(id);
 
     }
-    public void HandlegetDataCTHD(String id,String uid) {
-        gioHangModels.HandleGetDataCTHD(id,uid);
+
+    public void HandlegetDataCTHD(String id, String uid) {
+        gioHangModels.HandleGetDataCTHD(id, uid);
 
     }
 }
