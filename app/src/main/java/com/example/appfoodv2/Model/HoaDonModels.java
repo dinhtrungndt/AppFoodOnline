@@ -1,7 +1,5 @@
 package com.example.appfoodv2.Model;
 
-import androidx.annotation.NonNull;
-
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -9,7 +7,6 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
-import com.example.appfoodv2.Presenter.IHoaDon;
 
 import java.io.Serializable;
 
@@ -51,7 +48,7 @@ public class HoaDonModels implements Serializable {
         db.collection("HoaDon").whereEqualTo("UID",FirebaseAuth.getInstance().getCurrentUser().getUid())
                 .get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
             @Override
-            public void onSuccess(@NonNull QuerySnapshot queryDocumentSnapshots) {
+            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
                 if(queryDocumentSnapshots.size()>0){
                     for(QueryDocumentSnapshot d : queryDocumentSnapshots){
                         callback.getDataHD(d.getId(),d.getString("UID"),d.getString("diachi"),
@@ -136,7 +133,7 @@ public class HoaDonModels implements Serializable {
         db.collection("HoaDon")
                 .document(id).update("trangthai",i).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
-            public void onComplete(@NonNull Task<Void> task) {
+            public void onComplete(Task<Void> task) {
                 if(task.isSuccessful()){
                     callback.OnSucess();
                 }else{
@@ -151,7 +148,7 @@ public class HoaDonModels implements Serializable {
             db.collection("HoaDon")
                     .get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                 @Override
-                public void onSuccess(@NonNull QuerySnapshot queryDocumentSnapshots) {
+                public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
                     if(queryDocumentSnapshots.size()>0){
                         for(QueryDocumentSnapshot d : queryDocumentSnapshots){
                             callback.getDataHD(d.getId(),d.getString("UID"),d.getString("diachi"),
@@ -166,7 +163,7 @@ public class HoaDonModels implements Serializable {
             db.collection("HoaDon").whereEqualTo("trangthai",position)
                     .get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                 @Override
-                public void onSuccess(@NonNull QuerySnapshot queryDocumentSnapshots) {
+                public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
                     if(queryDocumentSnapshots.size()>0){
                         for(QueryDocumentSnapshot d : queryDocumentSnapshots){
                             callback.getDataHD(d.getId(),d.getString("UID"),d.getString("diachi"),

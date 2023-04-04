@@ -8,14 +8,13 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Picasso;
 import com.example.appfoodv2.Model.SanPhamModels;
-import com.example.appfoodv2.Presenter.SetOnItemClick;
+import com.example.appfoodv2.Model.SetOnItemClick;
 import com.example.appfoodv2.R;
-import com.example.appfoodv2.View.Bill.ContentProDuctActivity;
+import com.example.appfoodv2.Activity.Bill.ContentProDuctActivity;
 
 import java.text.NumberFormat;
 import java.util.ArrayList;
@@ -36,9 +35,8 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.ViewHodl
         this.type = type;
     }
 
-    @NonNull
     @Override
-    public SanPhamAdapter.ViewHodler onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public SanPhamAdapter.ViewHodler onCreateViewHolder(ViewGroup parent, int viewType) {
         View view;
         if (type == 0) {
             view = LayoutInflater.from(context).inflate(R.layout.dong_sanpham, parent, false);
@@ -60,12 +58,11 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.ViewHodl
             view = LayoutInflater.from(context).inflate(R.layout.dong_giohang, parent, false);
         }
 
-
         return new ViewHodler(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull SanPhamAdapter.ViewHodler holder, int position) {
+    public void onBindViewHolder(SanPhamAdapter.ViewHodler holder, int position) {
 
         SanPhamModels sanPhamModels = arrayList.get(position);
 
@@ -99,7 +96,7 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.ViewHodl
         ImageView hinhanh;
         SetOnItemClick itemClick;
 
-        public ViewHodler(@NonNull View itemView) {
+        public ViewHodler(View itemView) {
             super(itemView);
             txtgiasp = itemView.findViewById(R.id.txtgiatien);
             txttensp = itemView.findViewById(R.id.txttensp);

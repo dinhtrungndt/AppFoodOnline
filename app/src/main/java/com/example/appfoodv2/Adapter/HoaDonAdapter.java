@@ -7,13 +7,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.appfoodv2.Model.HoaDonModels;
-import com.example.appfoodv2.Presenter.SetOnItemClick;
+import com.example.appfoodv2.Model.SetOnItemClick;
 import com.example.appfoodv2.R;
-import com.example.appfoodv2.View.Bill.ContentBillActivity;
+import com.example.appfoodv2.Activity.Bill.ContentBillActivity;
 
 import java.text.NumberFormat;
 import java.util.ArrayList;
@@ -34,9 +33,8 @@ public class HoaDonAdapter extends RecyclerView.Adapter<HoaDonAdapter.ViewHodler
         this.type = type;
     }
 
-    @NonNull
     @Override
-    public HoaDonAdapter.ViewHodler onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public HoaDonAdapter.ViewHodler onCreateViewHolder(ViewGroup parent, int viewType) {
         View view;
         if (type == 0 || type == 5) {
             view = LayoutInflater.from(context).inflate(R.layout.dong_hoadon, parent, false);
@@ -49,7 +47,7 @@ public class HoaDonAdapter extends RecyclerView.Adapter<HoaDonAdapter.ViewHodler
     }
 
     @Override
-    public void onBindViewHolder(@NonNull HoaDonAdapter.ViewHodler holder, int position) {
+    public void onBindViewHolder(HoaDonAdapter.ViewHodler holder, int position) {
 
         HoaDonModels sanPhamModels = arrayList.get(position);
 
@@ -82,7 +80,7 @@ public class HoaDonAdapter extends RecyclerView.Adapter<HoaDonAdapter.ViewHodler
         TextView txthoten, txtsdt, txtdiachi, txtngaydat, txttongtien;
         SetOnItemClick itemClick;
 
-        public ViewHodler(@NonNull View itemView) {
+        public ViewHodler(View itemView) {
             super(itemView);
             txthoten = itemView.findViewById(R.id.txthoten);
             txtsdt = itemView.findViewById(R.id.txtsdt);

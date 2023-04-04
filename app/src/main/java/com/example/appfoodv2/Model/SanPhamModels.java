@@ -1,13 +1,10 @@
 package com.example.appfoodv2.Model;
 
-import androidx.annotation.NonNull;
-
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
-import com.example.appfoodv2.Presenter.ISanPham;
 
 import java.io.Serializable;
 
@@ -69,7 +66,7 @@ public class SanPhamModels implements Serializable {
         db.collection("SanPham").
                 get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
             @Override
-            public void onSuccess(@NonNull QuerySnapshot queryDocumentSnapshots) {
+            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
                 if(queryDocumentSnapshots.size()>0){
                     for(QueryDocumentSnapshot d : queryDocumentSnapshots){
 
@@ -90,7 +87,7 @@ public class SanPhamModels implements Serializable {
                 whereEqualTo("type",1).
                 get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
             @Override
-            public void onSuccess(@NonNull QuerySnapshot queryDocumentSnapshots) {
+            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
                   if(queryDocumentSnapshots.size()>0){
                       for(QueryDocumentSnapshot d : queryDocumentSnapshots){
 
@@ -111,7 +108,7 @@ public class SanPhamModels implements Serializable {
                 whereEqualTo("type",2).
                 get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
             @Override
-            public void onSuccess(@NonNull QuerySnapshot queryDocumentSnapshots) {
+            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
                 if(queryDocumentSnapshots.size()>0){
                     for(QueryDocumentSnapshot d : queryDocumentSnapshots){
                               // lấy id trên firebase
@@ -132,7 +129,7 @@ public  void  HandlegetDataSanPhamThucUong(){
             whereEqualTo("type",3).
             get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                 @Override
-                public void onSuccess(@NonNull QuerySnapshot queryDocumentSnapshots) {
+                public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
                     if(queryDocumentSnapshots.size()>0){
                         for(QueryDocumentSnapshot d : queryDocumentSnapshots){
                             // lấy id trên firebase
@@ -157,7 +154,7 @@ public  void  HandlegetDataSanPhamMiCay(){
             whereEqualTo("type",5).
             get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                 @Override
-                public void onSuccess(@NonNull QuerySnapshot queryDocumentSnapshots) {
+                public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
                     if(queryDocumentSnapshots.size()>0){
                         for(QueryDocumentSnapshot d : queryDocumentSnapshots){
                             callback.getDataSanPhamMC(d.getId(),d.getString("tensp"),
@@ -177,7 +174,7 @@ public  void  HandlegetDataSanPhamMiCay(){
                 whereEqualTo("type",4).
                 get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                     @Override
-                    public void onSuccess(@NonNull QuerySnapshot queryDocumentSnapshots) {
+                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
                         if(queryDocumentSnapshots.size()>0){
                             for(QueryDocumentSnapshot d : queryDocumentSnapshots){
                                 // lấy id trên firebase
@@ -202,7 +199,7 @@ public  void  HandlegetDataSanPhamMiCay(){
                 whereEqualTo("type",6).
                 get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                     @Override
-                    public void onSuccess(@NonNull QuerySnapshot queryDocumentSnapshots) {
+                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
                         if(queryDocumentSnapshots.size()>0){
                             for(QueryDocumentSnapshot d : queryDocumentSnapshots){
                                 // lấy id trên firebase
@@ -223,7 +220,7 @@ public  void  HandlegetDataSanPhamMiCay(){
                 whereEqualTo("type",7).
                 get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                     @Override
-                    public void onSuccess(@NonNull QuerySnapshot queryDocumentSnapshots) {
+                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
                         if(queryDocumentSnapshots.size()>0){
                             for(QueryDocumentSnapshot d : queryDocumentSnapshots){
                                 // lấy id trên firebase
@@ -244,7 +241,7 @@ public  void  HandlegetDataSanPhamMiCay(){
                 whereEqualTo("type",8).
                 get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                     @Override
-                    public void onSuccess(@NonNull QuerySnapshot queryDocumentSnapshots) {
+                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
                         if(queryDocumentSnapshots.size()>0){
                             for(QueryDocumentSnapshot d : queryDocumentSnapshots){
                                 // lấy id trên firebase
@@ -351,7 +348,7 @@ public  void  HandlegetDataSanPhamMiCay(){
                          whereEqualTo(key,loaisp).
                          get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                      @Override
-                     public void onSuccess(@NonNull QuerySnapshot queryDocumentSnapshots) {
+                     public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
                          if(queryDocumentSnapshots.size()>0){
                              for(QueryDocumentSnapshot d : queryDocumentSnapshots){
 
@@ -373,7 +370,7 @@ public  void  HandlegetDataSanPhamMiCay(){
                          whereLessThanOrEqualTo(key,loaisp).
                          get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                      @Override
-                     public void onSuccess(@NonNull QuerySnapshot queryDocumentSnapshots) {
+                     public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
                          if(queryDocumentSnapshots.size()>0){
                              for(QueryDocumentSnapshot d : queryDocumentSnapshots){
 

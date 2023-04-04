@@ -1,12 +1,9 @@
 package com.example.appfoodv2.Model;
 
-import androidx.annotation.NonNull;
-
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.example.appfoodv2.Presenter.IUSER;
 
 public class UserModel {
     private FirebaseAuth firebaseAuth;
@@ -31,7 +28,7 @@ public class UserModel {
                 if(pass.length()>0){
                     firebaseAuth.signInWithEmailAndPassword(email,pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
-                        public void onComplete(@NonNull Task<AuthResult> task) {
+                        public void onComplete(Task<AuthResult> task) {
                             if(task.isSuccessful()){
                                 //ktra xac thuc email hay chua
                                 if(firebaseAuth.getCurrentUser().isEmailVerified()){
@@ -67,7 +64,7 @@ public class UserModel {
                     if(pass.equals(repass)){
                         firebaseAuth.createUserWithEmailAndPassword(email,pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                             @Override
-                            public void onComplete(@NonNull Task<AuthResult> task) {
+                            public void onComplete(Task<AuthResult> task) {
                                 if(task.isSuccessful()){
                                     callback.OnAuthEmail();
                                 }else{
