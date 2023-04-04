@@ -28,35 +28,35 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 import com.example.appfoodv2.R;
 
-public class ContactActivity  extends AppCompatActivity implements OnMapReadyCallback {
+public class ContactActivity extends AppCompatActivity implements OnMapReadyCallback {
     private Toolbar toolbar;
     private FirebaseFirestore db;
-    private TextView txtdiachi,txtsdt,txtnoidung;
+    private TextView txtdiachi, txtsdt, txtnoidung;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contact);
         toolbar = findViewById(R.id.toolbar);
-        txtdiachi=findViewById(R.id.txtdiachi);
+        txtdiachi = findViewById(R.id.txtdiachi);
         txtsdt = findViewById(R.id.txtsdt);
         txtnoidung = findViewById(R.id.txtnoidung);
 
-        db =FirebaseFirestore.getInstance();
-
+        db = FirebaseFirestore.getInstance();
 
 
         db.collection("ThongTinCuaHang").document("wObs1mNNJdVbQN19iYSv")
                 .get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-            @Override
-            public void onSuccess(@NonNull DocumentSnapshot documentSnapshot) {
+                    @Override
+                    public void onSuccess(@NonNull DocumentSnapshot documentSnapshot) {
 
-                txtdiachi.setText("Địa chỉ : "+documentSnapshot.getString("diachi"));
-                txtsdt.setText("Liên hệ : "+documentSnapshot.getString("sdt"));
-                txtnoidung.setText("Nội Dung : "+documentSnapshot.getString("noidung"));
+                        txtdiachi.setText("Địa chỉ : " + documentSnapshot.getString("diachi"));
+                        txtsdt.setText("Liên hệ : " + documentSnapshot.getString("sdt"));
+                        txtnoidung.setText("Nội Dung : " + documentSnapshot.getString("noidung"));
 
 
-            }
-        });
+                    }
+                });
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle("Back");
@@ -71,9 +71,14 @@ public class ContactActivity  extends AppCompatActivity implements OnMapReadyCal
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
     }
+
     @Override
     public void onMapReady(@NonNull GoogleMap googleMap) { //đọc vị trí gg map
+<<<<<<< HEAD
         LatLng latLng = new LatLng(10.8529444,106.6273561); // vĩ độ trên ggmaps
+=======
+        LatLng latLng = new LatLng(10.4009358, 106.22868); // vĩ độ trên ggmaps
+>>>>>>> trung
         MarkerOptions options = new MarkerOptions();
         options.position(latLng);
         options.title("food app FPOLY");
@@ -82,7 +87,7 @@ public class ContactActivity  extends AppCompatActivity implements OnMapReadyCal
         googleMap.addMarker(options);
 
         googleMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
-        googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng,18)); // đọc camera
+        googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 18)); // đọc camera
 
 
     }

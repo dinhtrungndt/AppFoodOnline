@@ -17,9 +17,9 @@ import com.example.appfoodv2.Presenter.UserView;
 import com.example.appfoodv2.R;
 import com.example.appfoodv2.View.HomeActivity;
 
-public class SignUpActivity extends AppCompatActivity  implements UserView , View.OnClickListener {
+public class SignUpActivity extends AppCompatActivity implements UserView, View.OnClickListener {
     private Button btndangky;
-    private EditText editemail,editpass,editpass_repeat;
+    private EditText editemail, editpass, editpass_repeat;
     private TextView txtLogin;
     private UserPreSenter userPreSenter;
 
@@ -39,7 +39,7 @@ public class SignUpActivity extends AppCompatActivity  implements UserView , Vie
 
     private void InitWidget() {
         btndangky = findViewById(R.id.btndangky);
-        editemail=findViewById(R.id.editEmail);
+        editemail = findViewById(R.id.editEmail);
         editpass = findViewById(R.id.editmatkhau);
         txtLogin = findViewById(R.id.txtLogin);
         editpass_repeat = findViewById(R.id.editmatkhau_repeat);
@@ -89,16 +89,17 @@ public class SignUpActivity extends AppCompatActivity  implements UserView , Vie
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
-            case  R.id.btndangky:
-                String email=editemail.getText().toString();
-                String pass =editpass.getText().toString().trim();
-                String repass =editpass_repeat.getText().toString().trim();
-                userPreSenter.HandleRegist(email,pass,repass);
+        switch (v.getId()) {
+            case R.id.btndangky:
+                String email = editemail.getText().toString();
+                String pass = editpass.getText().toString().trim();
+                String repass = editpass_repeat.getText().toString().trim();
+                userPreSenter.HandleRegist(email, pass, repass);
         }
     }
-    public void txtLogin(View view){
-        startActivity(new Intent(SignUpActivity.this,SignInActivity.class));
+
+    public void txtLogin(View view) {
+        startActivity(new Intent(SignUpActivity.this, SignInActivity.class));
     }
 }
 

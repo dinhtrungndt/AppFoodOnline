@@ -24,9 +24,9 @@ import com.example.appfoodv2.R;
 
 import java.util.ArrayList;
 
-public class ChartBillActivity  extends AppCompatActivity  {
+public class ChartBillActivity extends AppCompatActivity {
     private PieChart pieChart;
-    private  float dangxuly = 0,danggiaohang=0,giaohangthanhcong=0,huyhang=0;
+    private float dangxuly = 0, danggiaohang = 0, giaohangthanhcong = 0, huyhang = 0;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -50,27 +50,27 @@ public class ChartBillActivity  extends AppCompatActivity  {
         db.collection("HoaDon").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
             @Override
             public void onSuccess(@NonNull QuerySnapshot queryDocumentSnapshots) {
-                for(QueryDocumentSnapshot q : queryDocumentSnapshots){
-                    if(q.getLong("trangthai")==1){
+                for (QueryDocumentSnapshot q : queryDocumentSnapshots) {
+                    if (q.getLong("trangthai") == 1) {
                         dangxuly++;
-                    }else if(q.getLong("trangthai")==2){
+                    } else if (q.getLong("trangthai") == 2) {
                         danggiaohang++;
-                    }else if(q.getLong("trangthai")==3){
+                    } else if (q.getLong("trangthai") == 3) {
                         giaohangthanhcong++;
-                    }else{
+                    } else {
                         huyhang++;
                     }
                 }
-                barEntries.add(new PieEntry(dangxuly,"Đang Xử  Lý"));
-                barEntries.add(new PieEntry(danggiaohang,"Đang giao hàng"));
-                barEntries.add(new PieEntry(giaohangthanhcong,"Đã nhận hàng"));
-                barEntries.add(new PieEntry(huyhang,"Hủy hàng"));
-                ArrayList<Integer> arrayList=new ArrayList<>();
+                barEntries.add(new PieEntry(dangxuly, "Đang Xử  Lý"));
+                barEntries.add(new PieEntry(danggiaohang, "Đang giao hàng"));
+                barEntries.add(new PieEntry(giaohangthanhcong, "Đã nhận hàng"));
+                barEntries.add(new PieEntry(huyhang, "Hủy hàng"));
+                ArrayList<Integer> arrayList = new ArrayList<>();
 
-                for(int color : ColorTemplate.MATERIAL_COLORS){
+                for (int color : ColorTemplate.MATERIAL_COLORS) {
                     arrayList.add(color);
                 }
-                for(int color : ColorTemplate.VORDIPLOM_COLORS){
+                for (int color : ColorTemplate.VORDIPLOM_COLORS) {
                     arrayList.add(color);
                 }
                 Legend l = pieChart.getLegend();
@@ -78,7 +78,7 @@ public class ChartBillActivity  extends AppCompatActivity  {
                 l.setVerticalAlignment(Legend.LegendVerticalAlignment.TOP);
                 l.setHorizontalAlignment(Legend.LegendHorizontalAlignment.RIGHT);
                 l.setOrientation(Legend.LegendOrientation.VERTICAL);
-                PieDataSet pieDataSet = new PieDataSet(barEntries,"Biểu Đồ Trạng Thái Đơn Hàng");
+                PieDataSet pieDataSet = new PieDataSet(barEntries, "Biểu Đồ Trạng Thái Đơn Hàng");
                 pieDataSet.setColors(arrayList);
                 PieData pieData = new PieData(pieDataSet);
                 pieData.setDrawValues(true);
@@ -96,15 +96,6 @@ public class ChartBillActivity  extends AppCompatActivity  {
 
             }
         });
-
-
-
-
-
-
-
-
-
 
 
     }

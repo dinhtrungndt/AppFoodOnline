@@ -26,11 +26,12 @@ import java.util.ArrayList;
 public class BillADMiNActivity extends AppCompatActivity implements HoaDonView {
     private Toolbar toolbar;
     private RecyclerView rcvBill;
-    private  String[] s = {"Tất cả","Đang xử lý","Đang giao hàng","Giao hàng thành công","Hủy hàng"};
+    private String[] s = {"Tất cả", "Đang xử lý", "Đang giao hàng", "Giao hàng thành công", "Hủy hàng"};
     private Spinner spinner;
     private HoaDonPreSenter hoaDonPreSenter;
     private ArrayList<HoaDonModels> arrayList;
     private HoaDonAdMinAdapter hoaDonAdapter;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,13 +45,13 @@ public class BillADMiNActivity extends AppCompatActivity implements HoaDonView {
     private void Init() {
         hoaDonPreSenter = new HoaDonPreSenter(this);
         arrayList = new ArrayList<>();
-        ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1,s);
+        ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, s);
         spinner.setAdapter(arrayAdapter);
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 arrayList.clear();
-                if(hoaDonAdapter!=null){
+                if (hoaDonAdapter != null) {
                     hoaDonAdapter.notifyDataSetChanged();
                 }
                 hoaDonPreSenter.HandleReadDataHD(position);
@@ -71,7 +72,7 @@ public class BillADMiNActivity extends AppCompatActivity implements HoaDonView {
             }
         });
 
-        ItemTouchHelper.SimpleCallback simpleCallback = new ItemTouchHelper.SimpleCallback(0,ItemTouchHelper.LEFT) {
+        ItemTouchHelper.SimpleCallback simpleCallback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {
             @Override
             public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
                 return false;
@@ -94,19 +95,19 @@ public class BillADMiNActivity extends AppCompatActivity implements HoaDonView {
         Dialog dialog = new Dialog(this);
         dialog.setContentView(R.layout.dialog_update_trangthai);
         dialog.show();
-         hoaDonAdapter.notifyDataSetChanged();
+        hoaDonAdapter.notifyDataSetChanged();
 
         Spinner spiner = dialog.findViewById(R.id.spinerCapNhat);
-        String[] s = {"Chọn Mục","Đang xử lý","Đang giao hàng","Giao hàng thành công","Hủy hàng"} ;
-        ArrayAdapter arrayAdapter  = new ArrayAdapter(this, android.R.layout.simple_list_item_1,s);
-        spiner.setAdapter( arrayAdapter);
+        String[] s = {"Chọn Mục", "Đang xử lý", "Đang giao hàng", "Giao hàng thành công", "Hủy hàng"};
+        ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, s);
+        spiner.setAdapter(arrayAdapter);
         spiner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                       if(position>0){
-                           hoaDonPreSenter.CapNhatTrangThai(4,arrayList.get(pos).getId());
-                           dialog.cancel();
-                       }
+                if (position > 0) {
+                    hoaDonPreSenter.CapNhatTrangThai(4, arrayList.get(pos).getId());
+                    dialog.cancel();
+                }
             }
 
             @Override
@@ -119,8 +120,8 @@ public class BillADMiNActivity extends AppCompatActivity implements HoaDonView {
 
     @Override
     public void getDataHD(String id, String uid, String diachi, String hoten, String ngaydat, String phuongthuc, String sdt, Long tongtien, Long type) {
-        arrayList.add(new HoaDonModels(id,uid,diachi,hoten,ngaydat,phuongthuc,sdt,tongtien,type));
-        hoaDonAdapter = new HoaDonAdMinAdapter(this,arrayList,5);
+        arrayList.add(new HoaDonModels(id, uid, diachi, hoten, ngaydat, phuongthuc, sdt, tongtien, type));
+        hoaDonAdapter = new HoaDonAdMinAdapter(this, arrayList, 5);
         rcvBill.setLayoutManager(new LinearLayoutManager(this));
         rcvBill.setAdapter(hoaDonAdapter);
 
@@ -134,7 +135,7 @@ public class BillADMiNActivity extends AppCompatActivity implements HoaDonView {
     @Override
     public void OnSucess() {
         arrayList.clear();
-        if(hoaDonAdapter!=null){
+        if (hoaDonAdapter != null) {
             hoaDonAdapter.notifyDataSetChanged();
         }
         hoaDonPreSenter.HandleReadDataHD(0);

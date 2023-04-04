@@ -51,13 +51,13 @@ ContentProDuctActivity extends AppCompatActivity implements GioHangView {
                 finish();
             }
         });
-        intent=getIntent();
+        intent = getIntent();
         sanPhamModels = (SanPhamModels) intent.getSerializableExtra("SP");
-        txtnsx.setText("Hạn sử dụng: "+sanPhamModels.getHansudung());
-        txtmota.setText("Mô tả: "+sanPhamModels.getMota());
-        txtbaohanh.setText("Trọng lượng: "+sanPhamModels.getTrongluong());
-        txttensp.setText("Tên sản phẩm: "+sanPhamModels.getTensp());
-        txtgiatien.setText("Giá tiền: "+NumberFormat.getNumberInstance().format(sanPhamModels.getGiatien()));
+        txtnsx.setText("Hạn sử dụng: " + sanPhamModels.getHansudung());
+        txtmota.setText("Mô tả: " + sanPhamModels.getMota());
+        txtbaohanh.setText("Trọng lượng: " + sanPhamModels.getTrongluong());
+        txttensp.setText("Tên sản phẩm: " + sanPhamModels.getTensp());
+        txtgiatien.setText("Giá tiền: " + NumberFormat.getNumberInstance().format(sanPhamModels.getGiatien()));
         Picasso.get().load(sanPhamModels.getHinhanh()).into(hinhanh);
         gioHangPreSenter = new GioHangPreSenter(this);
         btndathang.setOnClickListener(new View.OnClickListener() {
@@ -73,19 +73,19 @@ ContentProDuctActivity extends AppCompatActivity implements GioHangView {
         toolbar = findViewById(R.id.toolbar);
         txtbaohanh = findViewById(R.id.txtbaohanh);
         txtgiatien = findViewById(R.id.txtgiatien);
-        txtmota=findViewById(R.id.txtmota);
-        txtnsx=findViewById(R.id.txtthuonghieu);
-        txtbaohanh=findViewById(R.id.txtbaohanh);
-        txttensp=findViewById(R.id.txttensp);
-        hinhanh=findViewById(R.id.image_product);
-        btndathang=findViewById(R.id.btndathang);
+        txtmota = findViewById(R.id.txtmota);
+        txtnsx = findViewById(R.id.txtthuonghieu);
+        txtbaohanh = findViewById(R.id.txtbaohanh);
+        txttensp = findViewById(R.id.txttensp);
+        hinhanh = findViewById(R.id.image_product);
+        btndathang = findViewById(R.id.btndathang);
 
     }
 
     @Override
     public void OnSucess() {
         Toast.makeText(this, "Thêm sản phẩm vào giỏ hàng thành công!", Toast.LENGTH_SHORT).show();
-        startActivity(new Intent( ContentProDuctActivity.this, HomeActivity.class));
+        startActivity(new Intent(ContentProDuctActivity.this, HomeActivity.class));
         finish();
     }
 

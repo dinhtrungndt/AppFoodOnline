@@ -71,7 +71,7 @@ public class dangsanphamActivity extends AppCompatActivity {
             edtSl.setText(sanPhamModels.getSoluong() + "");
             edtTien.setText(sanPhamModels.getGiatien() + "");
             edtTenSp.setText(sanPhamModels.getTensp());
-            edtType.setText(sanPhamModels.getType()+"");
+            edtType.setText(sanPhamModels.getType() + "");
             btnEdit.setVisibility(View.VISIBLE);
             btnDel.setVisibility(View.VISIBLE);
             if (!TextUtils.isEmpty(sanPhamModels.getHinhanh())) {
@@ -222,11 +222,11 @@ public class dangsanphamActivity extends AppCompatActivity {
                                 finish();
                             }
                         }).addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(dangsanphamActivity.this, "Cập nhật sản phẩm thất bại!!!", Toast.LENGTH_SHORT).show();
-                    }
-                });
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Toast.makeText(dangsanphamActivity.this, "Cập nhật sản phẩm thất bại!!!", Toast.LENGTH_SHORT).show();
+                            }
+                        });
             } catch (Exception e) {
                 e.printStackTrace();
             }

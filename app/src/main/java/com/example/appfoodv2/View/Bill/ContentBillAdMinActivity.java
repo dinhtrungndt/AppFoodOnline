@@ -35,13 +35,13 @@ import java.util.ArrayList;
 public class ContentBillAdMinActivity extends AppCompatActivity implements GioHangView, HoaDonView {
     private Intent intent;
     private HoaDonModels hoaDonModels;
-    private TextView txtmaHD, txthoten, txtdiachi, txtsdt, txttongtien,txtrangthai;
+    private TextView txtmaHD, txthoten, txtdiachi, txtsdt, txttongtien, txtrangthai;
     private Toolbar toolbar;
     private ImageView hinhanh;
     private Button btncapnhat;
     private GioHangPreSenter gioHangPreSenter;
     private ArrayList<SanPhamModels> arrayList;
-    private  SanPhamAdapter sanPhamAdapter;
+    private SanPhamAdapter sanPhamAdapter;
     private RecyclerView rcvBill;
     private HoaDonPreSenter hoaDonPreSenter;
 
@@ -64,62 +64,70 @@ public class ContentBillAdMinActivity extends AppCompatActivity implements GioHa
                 finish();
             }
         });
-        intent=getIntent();
+        intent = getIntent();
         hoaDonModels = (HoaDonModels) intent.getSerializableExtra("HD");
-        int type = intent.getIntExtra("TYPE",0);
-        txtdiachi.setText("Địa chỉ : "+hoaDonModels.getDiachi());
-        txtmaHD.setText("Mã HD :"+hoaDonModels.getId());
-        txthoten.setText("Họ tên : "+hoaDonModels.getHoten());
-        txtsdt.setText("Liên hệ : "+hoaDonModels.getSdt());
-        txttongtien.setText("Giá tiền: "+NumberFormat.getNumberInstance().format(hoaDonModels.getTongtien()));
+        int type = intent.getIntExtra("TYPE", 0);
+        txtdiachi.setText("Địa chỉ : " + hoaDonModels.getDiachi());
+        txtmaHD.setText("Mã HD :" + hoaDonModels.getId());
+        txthoten.setText("Họ tên : " + hoaDonModels.getHoten());
+        txtsdt.setText("Liên hệ : " + hoaDonModels.getSdt());
+        txttongtien.setText("Giá tiền: " + NumberFormat.getNumberInstance().format(hoaDonModels.getTongtien()));
 
-        switch ((int) hoaDonModels.getType()){
-            case  1: txtrangthai.setText("Trạng Thái : Đang xử lý");break;
-            case  2: txtrangthai.setText("Trạng Thái : Đang giao hàng");break;
-            case  3: txtrangthai.setText("Trạng Thái : Giao Hàng Thành Công");break;
-            case  4: txtrangthai.setText("Trạng Thái : Hủy Đơn Hàng");break;
+        switch ((int) hoaDonModels.getType()) {
+            case 1:
+                txtrangthai.setText("Trạng Thái : Đang xử lý");
+                break;
+            case 2:
+                txtrangthai.setText("Trạng Thái : Đang giao hàng");
+                break;
+            case 3:
+                txtrangthai.setText("Trạng Thái : Giao Hàng Thành Công");
+                break;
+            case 4:
+                txtrangthai.setText("Trạng Thái : Hủy Đơn Hàng");
+                break;
         }
-
 
 
         gioHangPreSenter = new GioHangPreSenter(this);
         hoaDonPreSenter = new HoaDonPreSenter(this);
         arrayList = new ArrayList<>();
-        if(type == 5){
-            gioHangPreSenter.HandlegetDataCTHD(hoaDonModels.getId(),hoaDonModels.getUid());
-        }else{
+        if (type == 5) {
+            gioHangPreSenter.HandlegetDataCTHD(hoaDonModels.getId(), hoaDonModels.getUid());
+        } else {
             gioHangPreSenter.HandlegetDataCTHD(hoaDonModels.getId());
         }
 
         btncapnhat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               DiaLogUpDate();
+                DiaLogUpDate();
             }
         });
 
     }
-//Hàm kiểm tra hủy đơn hàng
+
+    //Hàm kiểm tra hủy đơn hàng
     private void DiaLogUpDate() {
         Dialog dialog = new Dialog(this);
         dialog.setContentView(R.layout.dialog_update_trangthai);
         dialog.show();
         getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         Spinner spiner = dialog.findViewById(R.id.spinerCapNhat);
-        String[] s = {"Chọn Mục","Đang xử lý","Đang giao hàng","Giao Hàng Thành Công","Hủy Đơn Hàng"} ;
+        String[] s = {"Chọn Mục", "Đang xử lý", "Đang giao hàng", "Giao Hàng Thành Công", "Hủy Đơn Hàng"};
 
-        ArrayAdapter arrayAdapter  = new ArrayAdapter(this, android.R.layout.simple_list_item_1,s);
-        spiner.setAdapter( arrayAdapter);
+        ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, s);
+        spiner.setAdapter(arrayAdapter);
         spiner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                if(position>0){
-                    if(hoaDonModels.getType() <3){
-                        hoaDonPreSenter.CapNhatTrangThai(spiner.getSelectedItemPosition(),hoaDonModels.getId());
+                if (position > 0) {
+                    if (hoaDonModels.getType() < 3) {
+                        hoaDonPreSenter.CapNhatTrangThai(spiner.getSelectedItemPosition(), hoaDonModels.getId());
                         dialog.cancel();
-                    }else if(hoaDonModels.getType() == 4){
+                    } else if (hoaDonModels.getType() == 4) {
                         Toast.makeText(ContentBillAdMinActivity.this, "Đơn hàng đã hủy!", Toast.LENGTH_SHORT).show();
-                    }else{
+                    } else {
                         Toast.makeText(ContentBillAdMinActivity.this, "Đơn hàng bạn không thể hủy", Toast.LENGTH_SHORT).show();
                     }
 
@@ -138,13 +146,13 @@ public class ContentBillAdMinActivity extends AppCompatActivity implements GioHa
         toolbar = findViewById(R.id.toolbar);
         txtdiachi = findViewById(R.id.txtdiachi);
         txthoten = findViewById(R.id.txthoten);
-        txtrangthai=findViewById(R.id.txtrangthaidonhang);
-        txtsdt=findViewById(R.id.txtsdt);
-        txttongtien=findViewById(R.id.txttongtien);
-        txtmaHD=findViewById(R.id.txtmaHD);
-        rcvBill=findViewById(R.id.rcvSP);
+        txtrangthai = findViewById(R.id.txtrangthaidonhang);
+        txtsdt = findViewById(R.id.txtsdt);
+        txttongtien = findViewById(R.id.txttongtien);
+        txtmaHD = findViewById(R.id.txtmaHD);
+        rcvBill = findViewById(R.id.rcvSP);
 
-        btncapnhat=findViewById(R.id.btncapnhat);
+        btncapnhat = findViewById(R.id.btncapnhat);
 
     }
 
@@ -161,8 +169,8 @@ public class ContentBillAdMinActivity extends AppCompatActivity implements GioHa
 
     @Override
     public void getDataSanPham(String id, String idsp, String tensp, Long giatien, String hinhanh, String loaisp, Long soluong, String hansudung, Long type, String trongluong) {
-        arrayList.add(new SanPhamModels(id,idsp,tensp,giatien,hinhanh,loaisp,soluong,hansudung,type,trongluong));
-        sanPhamAdapter = new SanPhamAdapter(this,arrayList,1);
+        arrayList.add(new SanPhamModels(id, idsp, tensp, giatien, hinhanh, loaisp, soluong, hansudung, type, trongluong));
+        sanPhamAdapter = new SanPhamAdapter(this, arrayList, 1);
         rcvBill.setLayoutManager(new LinearLayoutManager(this));
         rcvBill.setAdapter(sanPhamAdapter);
     }
