@@ -74,11 +74,7 @@ public class ContactActivity extends AppCompatActivity implements OnMapReadyCall
 
     @Override
     public void onMapReady(@NonNull GoogleMap googleMap) { //đọc vị trí gg map
-<<<<<<< HEAD
         LatLng latLng = new LatLng(10.8529444,106.6273561); // vĩ độ trên ggmaps
-=======
-        LatLng latLng = new LatLng(10.4009358, 106.22868); // vĩ độ trên ggmaps
->>>>>>> trung
         MarkerOptions options = new MarkerOptions();
         options.position(latLng);
         options.title("food app FPOLY");

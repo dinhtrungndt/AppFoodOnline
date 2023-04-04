@@ -22,7 +22,6 @@ import com.google.firebase.database.FirebaseDatabase;
 public class FragMent_Message extends Fragment {
     private DatabaseReference mDatabase;
     private EditText editTextMessage,editTextName,editTextEmail,edtCall;
-    private
 
 
     @Nullable

@@ -1,7 +1,2 @@
-
-<<<<<<< HEAD
 rootProject.name = "AppFoodOnline"
-=======
-rootProject.name = "AppFoofOnline"
->>>>>>> trung
 include ':app'
