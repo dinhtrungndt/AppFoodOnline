@@ -30,7 +30,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.squareup.picasso.Picasso;
 import com.example.appfoodv2.R;
-import com.example.appfoodv2.Activity.Account.SignInActivity;
+import com.example.appfoodv2.Activity.Account.LoginActivity;
 import com.example.appfoodv2.Activity.Bill.CartActivity;
 import com.example.appfoodv2.Activity.FragMent.FragMent_Bill;
 import com.example.appfoodv2.Activity.FragMent.FragMent_Home;
@@ -125,7 +125,7 @@ public class HomeActivity extends AppCompatActivity implements FragMent_Home.Fra
                         fm = new FragMent_Home();
                         break;
                     case R.id.dangnhap:
-                        startActivity(new Intent(HomeActivity.this, SignInActivity.class));
+                        startActivity(new Intent(HomeActivity.this, LoginActivity.class));
                         break;
                     case R.id.lienhe:
                         startActivity(new Intent(HomeActivity.this, ContactActivity.class));
@@ -144,7 +144,7 @@ public class HomeActivity extends AppCompatActivity implements FragMent_Home.Fra
                         break;
                     case R.id.signout:
                         FirebaseAuth.getInstance().signOut();
-                        startActivity(new Intent(HomeActivity.this, SignInActivity.class));
+                        startActivity(new Intent(HomeActivity.this, LoginActivity.class));
                         finish();
                         break;
                     case R.id.danhmuc:

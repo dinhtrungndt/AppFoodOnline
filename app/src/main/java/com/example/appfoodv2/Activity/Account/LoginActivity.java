@@ -17,7 +17,7 @@ import com.example.appfoodv2.R;
 import com.example.appfoodv2.Activity.Admin.SignInAdminActivity;
 import com.example.appfoodv2.Activity.HomeActivity;
 
-public class SignInActivity extends AppCompatActivity implements UserView, View.OnClickListener {
+public class LoginActivity extends AppCompatActivity implements UserView, View.OnClickListener {
     private Button btndangnhap;
     private EditText editemail, editpass;
     private UserPreSenter userPreSenter;
@@ -36,14 +36,14 @@ public class SignInActivity extends AppCompatActivity implements UserView, View.
         findViewById(R.id.txtdangky).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(SignInActivity.this, SignUpActivity.class);
+                Intent intent = new Intent(LoginActivity.this, SignUpActivity.class);
                 startActivity(intent);
             }
         });
         findViewById(R.id.txtadmin).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(SignInActivity.this, SignInAdminActivity.class);
+                Intent intent = new Intent(LoginActivity.this, SignInAdminActivity.class);
                 startActivity(intent);
             }
         });

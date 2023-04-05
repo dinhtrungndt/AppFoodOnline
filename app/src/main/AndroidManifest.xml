@@ -87,7 +87,7 @@
             android:name=".Activity.Admin.BillADMiNActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Activity.Account.SignInActivity"
+            android:name=".Activity.Account.LoginActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".Activity.Account.SignUpActivity"

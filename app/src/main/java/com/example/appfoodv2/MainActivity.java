@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.os.Handler;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.example.appfoodv2.Activity.Account.SignInActivity;
+import com.example.appfoodv2.Activity.Account.LoginActivity;
 import com.example.appfoodv2.Activity.HomeActivity;
 
 public class MainActivity extends AppCompatActivity {
@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
                         startActivity(new Intent(MainActivity.this, HomeActivity.class));
                     }
                 } else {
-                    startActivity(new Intent(MainActivity.this, SignInActivity.class));
+                    startActivity(new Intent(MainActivity.this, LoginActivity.class));
                 }
 
                 finish();

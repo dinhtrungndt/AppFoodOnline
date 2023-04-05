@@ -99,7 +99,7 @@ public class SignUpActivity extends AppCompatActivity implements UserView, View.
     }
 
     public void txtLogin(View view) {
-        startActivity(new Intent(SignUpActivity.this, SignInActivity.class));
+        startActivity(new Intent(SignUpActivity.this, LoginActivity.class));
     }
 }
 
