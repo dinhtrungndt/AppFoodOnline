@@ -27,17 +27,6 @@
            android:singleLine="true"
            android:layout_width="match_parent"
            android:layout_height="wrap_content"/>
-       <TextView
-
-           android:padding="10dp"
-           android:textColor="#000000"
-           android:textSize="20sp"
-           android:text="999.999 Đ"
-           android:id="@+id/txtgiatien"
-           android:maxLines="1"
-           android:singleLine="true"
-           android:layout_width="match_parent"
-           android:layout_height="wrap_content"/>
 
         <TextView
 
