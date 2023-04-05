@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -18,29 +19,30 @@ import com.example.appfoodv2.Activity.Admin.SignInAdminActivity;
 import com.example.appfoodv2.Activity.HomeActivity;
 
 public class LoginActivity extends AppCompatActivity implements UserView, View.OnClickListener {
-    private Button btndangnhap;
+    private Button btnDangnhap,btnDangky;
     private EditText editemail, editpass;
+    private TextView txtadmin;
     private UserPreSenter userPreSenter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
-        InitWidget();
-        Init();
+        Anhxa();
+        onClick();
     }
 
-    private void Init() {
+    private void onClick() {
         userPreSenter = new UserPreSenter(this);
-        btndangnhap.setOnClickListener(this);
-        findViewById(R.id.txtdangky).setOnClickListener(new View.OnClickListener() {
+        btnDangnhap.setOnClickListener(this);
+        btnDangky.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(LoginActivity.this, SignUpActivity.class);
                 startActivity(intent);
             }
         });
-        findViewById(R.id.txtadmin).setOnClickListener(new View.OnClickListener() {
+        txtadmin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(LoginActivity.this, SignInAdminActivity.class);
@@ -50,10 +52,12 @@ public class LoginActivity extends AppCompatActivity implements UserView, View.O
 
     }
 
-    private void InitWidget() {
-        btndangnhap = findViewById(R.id.btndangnhap);
+    private void Anhxa() {
+        btnDangnhap = findViewById(R.id.btndangnhap);
         editemail = findViewById(R.id.editEmail);
         editpass = findViewById(R.id.editmatkhau);
+        btnDangky = findViewById(R.id.btnDangky);
+        txtadmin = findViewById(R.id.txtadmin);
     }
 
     @Override
