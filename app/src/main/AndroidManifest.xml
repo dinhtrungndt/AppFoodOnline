@@ -18,11 +18,18 @@
         android:theme="@style/AppTheme" >
 
         <activity
-            android:name=".Activity.XemthemActivity"
-            android:exported="false" >
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
+            android:name=".View.Admin.ProductActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.example.appfoodv2.dangsanphamActivity"
+            android:exported="true">
+
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
         </activity>
         <activity
             android:name=".Activity.Admin.ProductActivity"
@@ -50,13 +57,13 @@
             android:name=".Activity.Bill.ContentProDuctActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Activity.Admin.SignInAdminActivity"
+            android:name=".View.Admin.SignInAdminActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".Activity.ContactActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Activity.Admin.ChartBillActivity"
+            android:name=".View.Admin.ChartBillActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".Activity.Bill.ContentBillActivity"
@@ -68,8 +75,13 @@
             android:name=".Activity.ThongKeDanhMucActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Activity.Admin.HomeAdminActivity"
+            android:name=".View.Admin.HomeAdminActivity"
             android:exported="true"
+            android:screenOrientation="portrait">
+
+        </activity>
+        <activity
+            android:name=".View.Admin.BillADMiNActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".Activity.Admin.BillADMiNActivity"

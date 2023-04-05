@@ -36,15 +36,15 @@ public class SignInActivity extends AppCompatActivity implements UserView, View.
         findViewById(R.id.txtdangky).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(SignInActivity.this, SignUpActivity.class));
-
+                Intent intent = new Intent(SignInActivity.this, SignUpActivity.class);
+                startActivity(intent);
             }
         });
         findViewById(R.id.txtadmin).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(SignInActivity.this, SignInAdminActivity.class));
-
+                Intent intent = new Intent(SignInActivity.this, SignInAdminActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -107,4 +107,3 @@ public class SignInActivity extends AppCompatActivity implements UserView, View.
         }
     }
 }
-
