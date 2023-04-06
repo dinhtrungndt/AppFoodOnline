@@ -9,11 +9,10 @@
 
 
     <ImageView
-        android:background="@drawable/home_app"
-        android:layout_width="150dp"
+        android:background="@drawable/logo_duan"
+        android:layout_width="250dp"
         android:layout_height="152dp"
-        android:layout_marginLeft="130dp"
-        android:layout_marginTop="10dp" />
+        android:layout_gravity="center" />
 
     <TextView
         android:layout_width="match_parent"
@@ -127,7 +126,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="15sp"
         android:layout_marginTop="8dp"
-        android:text="   GV. Trường Cao Đẳng FPT Polytechnic thành phố hồ chí minh đã hướng dẫn nhóm em hoàn thành dự án 1 này"
+        android:text="   GV. Trường Cao Đẳng FPT Polytechnic thành phố hồ chí minh đã hướng dẫn nhóm em hoàn thành dự án 1 này."
         android:textAllCaps="true"
         android:textColor="@color/colorBlack"
         android:textSize="15sp" />
@@ -148,7 +147,7 @@
         android:layout_marginStart="15sp"
         android:layout_marginTop="8dp"
         android:text=" Trường Cao Đẳng FPT Polytechnic Thành phố Hồ Chí Minh - FPOLY
-cơ sở 3 , Công viên Phần Mền Quang Trung ,Gò Vấp, TP.HCM"
+cơ sở 3 , Công viên Phần Mền Quang Trung ,Gò Vấp, TP.HCM."
         android:textAllCaps="true"
         android:textColor="@color/colorBlack"
         android:textSize="15sp" />
@@ -168,7 +167,7 @@ cơ sở 3 , Công viên Phần Mền Quang Trung ,Gò Vấp, TP.HCM"
         android:layout_height="wrap_content"
         android:layout_marginStart="15sp"
         android:layout_marginTop="8dp"
-        android:text="   Là sinh viên năm 2 đã có 1 năm kinh nghiệm lập trình ứng dụng di động Android bằng ngôn ngữ java"
+        android:text="   Là sinh viên năm 2 đã có 1 năm kinh nghiệm lập trình ứng dụng di động Android bằng ngôn ngữ java."
         android:textAllCaps="true"
         android:textColor="@color/colorBlack"
         android:textSize="15sp" />
