@@ -27,12 +27,14 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
+import com.example.appfoodv2.Activity.Bill.CartActivity;
 import com.example.appfoodv2.Activity.ThongKeDanhMucActivity;
 import com.example.appfoodv2.Activity.XemthemActivity;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomappbar.BottomAppBar;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
@@ -59,6 +61,7 @@ public class FragMent_Home extends Fragment implements SanPhamView {
     private ImageButton imgBtnDanhMuc;
     private ImageView btn_category_home;
     private TextView category_text;
+    private FloatingActionButton fab;
     private BottomNavigationView bottomNavigationView;
 
     FragMent_HomeListener activityCallback;
@@ -152,6 +155,7 @@ public class FragMent_Home extends Fragment implements SanPhamView {
         viewPager = view.findViewById(R.id.viewpager);
         rcvSP = view.findViewById(R.id.rcvSP);
         rcvSpNoiBat = view.findViewById(R.id.rcvNB);
+        fab = view.findViewById(R.id.fab);
         rcvSPThucUong = view.findViewById(R.id.rcvTU);
         rcvSPHQ = view.findViewById(R.id.rcvHQ);
         rcvSPMC = view.findViewById(R.id.rcvMC);
@@ -205,7 +209,7 @@ public class FragMent_Home extends Fragment implements SanPhamView {
                             return true;
                         }
                         if (item.getItemId() == R.id.chat) {
-                            Fragment newFragment = new FragMent_Message();
+                            FragMent_Message newFragment = new FragMent_Message();
                             FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                             fragmentTransaction.replace(R.id.framelayout, newFragment);
@@ -215,7 +219,7 @@ public class FragMent_Home extends Fragment implements SanPhamView {
                             return true;
                         }
                         if (item.getItemId() == R.id.profile) {
-                            Fragment newFragment = new FragMent_ProFile();
+                            FragMent_ProFile newFragment = new FragMent_ProFile();
                             FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                             fragmentTransaction.replace(R.id.framelayout, newFragment);
@@ -233,6 +237,14 @@ public class FragMent_Home extends Fragment implements SanPhamView {
         return false;
     }
 });
+
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getContext(),CartActivity.class));
+                Toast.makeText(getContext(), "Giỏ hàng !!!", Toast.LENGTH_SHORT).show();
+            }
+        });
 
         }
 

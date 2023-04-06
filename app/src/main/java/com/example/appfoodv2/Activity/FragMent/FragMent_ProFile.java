@@ -26,12 +26,14 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.example.appfoodv2.Activity.Bill.CartActivity;
 import com.example.appfoodv2.Activity.ThongKeDanhMucActivity;
 import com.example.appfoodv2.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -57,7 +59,7 @@ public class FragMent_ProFile extends Fragment implements View.OnClickListener {
     private StorageReference storageReference;
     private CircleImageView avatar;
     private BottomNavigationView bottomNavigationView;
-
+    private FloatingActionButton fab;
 
     @Nullable
     @Override
@@ -68,6 +70,15 @@ public class FragMent_ProFile extends Fragment implements View.OnClickListener {
         txtsdt = view.findViewById(R.id.txtsdt);
         avatar = view.findViewById(R.id.avatar);
         txtmail = view.findViewById(R.id.txtemail);
+        fab = view.findViewById(R.id.fab);
+
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getContext(), CartActivity.class));
+                Toast.makeText(getContext(), "Giỏ hàng !!!", Toast.LENGTH_SHORT).show();
+            }
+        });
         bottomNavigationView = view.findViewById(R.id.bottomNavigationView);
 
         bottomNavigationView.setOnNavigationItemSelectedListener(
