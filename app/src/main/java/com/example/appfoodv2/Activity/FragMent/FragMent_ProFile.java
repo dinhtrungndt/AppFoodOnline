@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.text.InputType;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -19,13 +20,18 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
+import com.example.appfoodv2.Activity.ThongKeDanhMucActivity;
 import com.example.appfoodv2.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -50,6 +56,7 @@ public class FragMent_ProFile extends Fragment implements View.OnClickListener {
     private String key = "";
     private StorageReference storageReference;
     private CircleImageView avatar;
+    private BottomNavigationView bottomNavigationView;
 
 
     @Nullable
@@ -61,6 +68,46 @@ public class FragMent_ProFile extends Fragment implements View.OnClickListener {
         txtsdt = view.findViewById(R.id.txtsdt);
         avatar = view.findViewById(R.id.avatar);
         txtmail = view.findViewById(R.id.txtemail);
+        bottomNavigationView = view.findViewById(R.id.bottomNavigationView);
+
+        bottomNavigationView.setOnNavigationItemSelectedListener(
+                new BottomNavigationView.OnNavigationItemSelectedListener() {
+                    @Override
+                    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                        if (item.getItemId() == R.id.home) {
+                            Fragment newFragment = new FragMent_Home();
+                            FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                            fragmentTransaction.replace(R.id.framelayout, newFragment);
+                            fragmentTransaction.addToBackStack(null);
+                            fragmentTransaction.commit();
+                            Toast.makeText(getContext(), "Trang chủ !!!", Toast.LENGTH_SHORT).show();
+                            return true;
+                        }
+                        if (item.getItemId() == R.id.chat) {
+                            Fragment newFragment = new FragMent_Message();
+                            FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                            fragmentTransaction.replace(R.id.framelayout, newFragment);
+                            fragmentTransaction.addToBackStack(null);
+                            fragmentTransaction.commit();
+                            Toast.makeText(getContext(), "Chat !!!", Toast.LENGTH_SHORT).show();
+                            return true;
+                        }
+                        if (item.getItemId() == R.id.profile) {
+                            Toast.makeText(getContext(), "Bạn đang cập nhập !!!", Toast.LENGTH_SHORT).show();
+                            return true;
+                        }
+                        if (item.getItemId() == R.id.menu) {
+                            startActivity(new Intent(getContext(), ThongKeDanhMucActivity.class));
+                            Toast.makeText(getContext(), "Danh mục !!!", Toast.LENGTH_SHORT).show();
+                            return true;
+                        }
+
+                        return false;
+                    }
+                });
+
         db = FirebaseFirestore.getInstance();
         txtmail.setText(FirebaseAuth.getInstance().getCurrentUser().getEmail());
         db.collection("thongtinUser").document(FirebaseAuth.getInstance().getCurrentUser().getUid())

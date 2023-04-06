@@ -1,5 +1,6 @@
 package com.example.appfoodv2.Activity;
 
+import android.animation.ObjectAnimator;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -10,9 +11,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
@@ -22,6 +25,9 @@ import androidx.fragment.app.Fragment;
 
 import com.example.appfoodv2.Activity.FragMent.FragMent_Message;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.appbar.AppBarLayout;
+import com.google.android.material.bottomappbar.BottomAppBar;
+import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -198,6 +204,7 @@ public class HomeActivity extends AppCompatActivity implements FragMent_Home.Fra
         tvusername = headerLayout.findViewById(R.id.tvusername);
         tvemail = headerLayout.findViewById(R.id.tvemail);
         imaProfile = headerLayout.findViewById(R.id.profile_image);
+
 
     }
 

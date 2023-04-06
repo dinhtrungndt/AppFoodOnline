@@ -2,19 +2,28 @@ package com.example.appfoodv2.Activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.appfoodv2.Activity.FragMent.FragMent_Home;
+import com.example.appfoodv2.Activity.FragMent.FragMent_Message;
+import com.example.appfoodv2.Activity.FragMent.FragMent_ProFile;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -36,20 +45,18 @@ public class ThongKeDanhMucActivity extends AppCompatActivity implements SanPham
     private SanPhamPreSenter sanPhamPreSenter;
     private RecyclerView rCvSP;
     private SanPhamAdapter sanPhamAdapter;
-
+    private BottomNavigationView bottomNavigationView;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_thongke);
-        InitWidget();
+        Anhxa();
         Init();
     }
 
     private void Init() {
         Intent intent = getIntent();
-
-
         sanPhamPreSenter = new SanPhamPreSenter(this);
         arrayList = new ArrayList<>();
         setSupportActionBar(toolbar);
@@ -105,10 +112,20 @@ public class ThongKeDanhMucActivity extends AppCompatActivity implements SanPham
         });
     }
 
-    private void InitWidget() {
+    private void Anhxa() {
         spinerthongke = findViewById(R.id.spinner);
         toolbar = findViewById(R.id.toolbar);
         rCvSP = findViewById(R.id.rcvDanhMuc);
+        bottomNavigationView = findViewById(R.id.bottomNavigationView);
+
+        bottomNavigationView.setOnNavigationItemSelectedListener(
+                new BottomNavigationView.OnNavigationItemSelectedListener() {
+                    @Override
+                    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                        Toast.makeText(ThongKeDanhMucActivity.this, "Nhấn nút Back ở trên", Toast.LENGTH_SHORT).show();
+                        return false;
+                    }
+                });
     }
 
     @Override

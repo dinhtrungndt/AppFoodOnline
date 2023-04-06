@@ -1,25 +1,39 @@
 package com.example.appfoodv2.Activity.FragMent;
 
+import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.widget.NestedScrollView;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
+import com.example.appfoodv2.Activity.ThongKeDanhMucActivity;
 import com.example.appfoodv2.Activity.XemthemActivity;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.bottomappbar.BottomAppBar;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.bottomsheet.BottomSheetBehavior;
+import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -45,6 +59,7 @@ public class FragMent_Home extends Fragment implements SanPhamView {
     private ImageButton imgBtnDanhMuc;
     private ImageView btn_category_home;
     private TextView category_text;
+    private BottomNavigationView bottomNavigationView;
 
     FragMent_HomeListener activityCallback;
 
@@ -67,7 +82,8 @@ public class FragMent_Home extends Fragment implements SanPhamView {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_home, container, false);
-        InitWidget();
+        Anhxa();
+        onClick();
         Init();
         InitSanPham();
 
@@ -132,7 +148,7 @@ public class FragMent_Home extends Fragment implements SanPhamView {
 
     }
 
-    private void InitWidget() {
+    private void Anhxa() {
         viewPager = view.findViewById(R.id.viewpager);
         rcvSP = view.findViewById(R.id.rcvSP);
         rcvSpNoiBat = view.findViewById(R.id.rcvNB);
@@ -144,9 +160,27 @@ public class FragMent_Home extends Fragment implements SanPhamView {
         rcvSPGY = view.findViewById(R.id.rcvGY);
         imgBtnDanhMuc = view.findViewById(R.id.home_danhmuc);
         btn_category_home = view.findViewById(R.id.btn_category_home);
+        bottomNavigationView = view.findViewById(R.id.bottomNavigationView);
         category_text = view.findViewById(R.id.category_text);
-//        tab_Homeic = view.findViewById(R.id   .tab_Homeic);
 
+    }
+
+    private void onClick() {
+        NestedScrollView nestedScrollView = view.findViewById(R.id.NestedScrollView);
+        BottomAppBar bottomAppBar = view.findViewById(R.id.bottomAppBar);
+
+        nestedScrollView.setOnScrollChangeListener(new NestedScrollView.OnScrollChangeListener() {
+            @Override
+            public void onScrollChange(NestedScrollView nestedScrollView, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
+                if (scrollY < oldScrollY) {
+                    // Scroll Up
+                    bottomAppBar.setElevation(0);
+                } else if (scrollY > oldScrollY) {
+                    // Scroll Down
+                    bottomAppBar.setElevation(getResources().getDimensionPixelSize(R.dimen.bottom_app_bar_elevation));
+                }
+            }
+        });
 
         btn_category_home.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -162,82 +196,114 @@ public class FragMent_Home extends Fragment implements SanPhamView {
             }
         });
 
-//        tab_Homeic.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Toast.makeText(getContext(), "Bạn đang đứng ở trang chủ !!!", Toast.LENGTH_SHORT).show();
-//            }
-//        });
-    }
+        bottomNavigationView.setOnNavigationItemSelectedListener(
+                new BottomNavigationView.OnNavigationItemSelectedListener() {
+                    @Override
+                    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                        if (item.getItemId() == R.id.home) {
+                            Toast.makeText(getContext(), "Bạn đang ở Trang Chủ !!!", Toast.LENGTH_SHORT).show();
+                            return true;
+                        }
+                        if (item.getItemId() == R.id.chat) {
+                            Fragment newFragment = new FragMent_Message();
+                            FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                            fragmentTransaction.replace(R.id.framelayout, newFragment);
+                            fragmentTransaction.addToBackStack(null);
+                            fragmentTransaction.commit();
+                            Toast.makeText(getContext(), "Chat !!!", Toast.LENGTH_SHORT).show();
+                            return true;
+                        }
+                        if (item.getItemId() == R.id.profile) {
+                            Fragment newFragment = new FragMent_ProFile();
+                            FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                            fragmentTransaction.replace(R.id.framelayout, newFragment);
+                            fragmentTransaction.addToBackStack(null);
+                            fragmentTransaction.commit();
+                            Toast.makeText(getContext(), "Cập nhập thông tin !!!", Toast.LENGTH_SHORT).show();
+                            return true;
+                        }
+                        if (item.getItemId() == R.id.menu) {
+                            startActivity(new Intent(getContext(), ThongKeDanhMucActivity.class));
+                            Toast.makeText(getContext(), "Danh mục !!!", Toast.LENGTH_SHORT).show();
+                            return true;
+                }
 
-    @Override
-    public void getDataSanPham(String id, String tensp, Long giatien, String hinhanh, String loaisp, String mota, Long soluong,
-                               String nhasanxuat, Long type, String trongluong) {
-        arr_sp.add(new SanPhamModels(id, tensp, giatien, hinhanh, loaisp, mota, soluong, nhasanxuat, type, trongluong));
-        sanPhamAdapter = new SanPhamAdapter(getContext(), arr_sp);
-        rcvSP.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL, false));
+        return false;
+    }
+});
+
+        }
+
+@Override
+public void getDataSanPham(String id,String tensp,Long giatien,String hinhanh,String loaisp,String mota,Long soluong,
+        String nhasanxuat,Long type,String trongluong){
+        arr_sp.add(new SanPhamModels(id,tensp,giatien,hinhanh,loaisp,mota,soluong,nhasanxuat,type,trongluong));
+        sanPhamAdapter=new SanPhamAdapter(getContext(),arr_sp);
+        rcvSP.setLayoutManager(new LinearLayoutManager(getContext(),RecyclerView.HORIZONTAL,false));
         rcvSP.setAdapter(sanPhamAdapter);
 
-    }
+        }
 
-    @Override
-    public void OnEmptyList() {
+@Override
+public void OnEmptyList(){
 
-    }
+        }
 
-    @Override
-    public void getDataSanPhamNB(String id, String tensp, Long giatien, String hinhanh, String loaisp, String mota, Long soluong, String nhasanxuat, Long type, String trongluong) {
-        arr_sp_nb.add(new SanPhamModels(id, tensp, giatien, hinhanh, loaisp, mota, soluong, nhasanxuat, type, trongluong));
-        sanPhamNBAdapter = new SanPhamAdapter(getContext(), arr_sp_nb, 2);
-        rcvSpNoiBat.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL, false));
+@Override
+public void getDataSanPhamNB(String id,String tensp,Long giatien,String hinhanh,String loaisp,String mota,Long soluong,String nhasanxuat,Long type,String trongluong){
+        arr_sp_nb.add(new SanPhamModels(id,tensp,giatien,hinhanh,loaisp,mota,soluong,nhasanxuat,type,trongluong));
+        sanPhamNBAdapter=new SanPhamAdapter(getContext(),arr_sp_nb,2);
+        rcvSpNoiBat.setLayoutManager(new LinearLayoutManager(getContext(),RecyclerView.HORIZONTAL,false));
         rcvSpNoiBat.setAdapter(sanPhamNBAdapter);
-    }
+        }
 
-    @Override
-    public void getDataSanPhamTU(String id, String tensp, Long giatien, String hinhanh, String loaisp, String mota, Long soluong, String nhasanxuat, Long type, String trongluong) {
-        arr_sp_tu.add(new SanPhamModels(id, tensp, giatien, hinhanh, loaisp, mota, soluong, nhasanxuat, type, trongluong));
-        sanPhamTUAdapter = new SanPhamAdapter(getContext(), arr_sp_tu, 3);
-        rcvSPThucUong.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL, false));
+@Override
+public void getDataSanPhamTU(String id,String tensp,Long giatien,String hinhanh,String loaisp,String mota,Long soluong,String nhasanxuat,Long type,String trongluong){
+        arr_sp_tu.add(new SanPhamModels(id,tensp,giatien,hinhanh,loaisp,mota,soluong,nhasanxuat,type,trongluong));
+        sanPhamTUAdapter=new SanPhamAdapter(getContext(),arr_sp_tu,3);
+        rcvSPThucUong.setLayoutManager(new LinearLayoutManager(getContext(),RecyclerView.HORIZONTAL,false));
         rcvSPThucUong.setAdapter(sanPhamTUAdapter);
-    }
+        }
 
-    @Override
-    public void getDataSanPhamHQ(String id, String tensp, Long giatien, String hinhanh, String loaisp, String mota, Long soluong, String nhasanxuat, Long type, String trongluong) {
-        arr_sp_hq.add(new SanPhamModels(id, tensp, giatien, hinhanh, loaisp, mota, soluong, nhasanxuat, type, trongluong));
-        sanPhamHQAdapter = new SanPhamAdapter(getContext(), arr_sp_hq, 4);
-        rcvSPHQ.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL, false));
+@Override
+public void getDataSanPhamHQ(String id,String tensp,Long giatien,String hinhanh,String loaisp,String mota,Long soluong,String nhasanxuat,Long type,String trongluong){
+        arr_sp_hq.add(new SanPhamModels(id,tensp,giatien,hinhanh,loaisp,mota,soluong,nhasanxuat,type,trongluong));
+        sanPhamHQAdapter=new SanPhamAdapter(getContext(),arr_sp_hq,4);
+        rcvSPHQ.setLayoutManager(new LinearLayoutManager(getContext(),RecyclerView.HORIZONTAL,false));
         rcvSPHQ.setAdapter(sanPhamHQAdapter);
-    }
+        }
 
-    @Override
-    public void getDataSanPhamMC(String id, String tensp, Long giatien, String hinhanh, String loaisp, String mota, Long soluong, String nhasanxuat, Long type, String trongluong) {
-        arr_sp_mc.add(new SanPhamModels(id, tensp, giatien, hinhanh, loaisp, mota, soluong, nhasanxuat, type, trongluong));
-        sanPhamMCAdapter = new SanPhamAdapter(getContext(), arr_sp_mc, 5);
-        rcvSPMC.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL, false));
+@Override
+public void getDataSanPhamMC(String id,String tensp,Long giatien,String hinhanh,String loaisp,String mota,Long soluong,String nhasanxuat,Long type,String trongluong){
+        arr_sp_mc.add(new SanPhamModels(id,tensp,giatien,hinhanh,loaisp,mota,soluong,nhasanxuat,type,trongluong));
+        sanPhamMCAdapter=new SanPhamAdapter(getContext(),arr_sp_mc,5);
+        rcvSPMC.setLayoutManager(new LinearLayoutManager(getContext(),RecyclerView.HORIZONTAL,false));
         rcvSPMC.setAdapter(sanPhamMCAdapter);
-    }
+        }
 
-    @Override
-    public void getDataSanPhamYT(String id, String tensp, Long giatien, String hinhanh, String loaisp, String mota, Long soluong, String nhasanxuat, Long type, String trongluong) {
-        arr_sp_yt.add(new SanPhamModels(id, tensp, giatien, hinhanh, loaisp, mota, soluong, nhasanxuat, type, trongluong));
-        sanPhamYTAdapter = new SanPhamAdapter(getContext(), arr_sp_yt, 6);
-        rcvSPYT.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL, false));
+@Override
+public void getDataSanPhamYT(String id,String tensp,Long giatien,String hinhanh,String loaisp,String mota,Long soluong,String nhasanxuat,Long type,String trongluong){
+        arr_sp_yt.add(new SanPhamModels(id,tensp,giatien,hinhanh,loaisp,mota,soluong,nhasanxuat,type,trongluong));
+        sanPhamYTAdapter=new SanPhamAdapter(getContext(),arr_sp_yt,6);
+        rcvSPYT.setLayoutManager(new LinearLayoutManager(getContext(),RecyclerView.HORIZONTAL,false));
         rcvSPYT.setAdapter(sanPhamYTAdapter);
-    }
+        }
 
-    @Override
-    public void getDataSanPhamLau(String id, String tensp, Long giatien, String hinhanh, String loaisp, String mota, Long soluong, String nhasanxuat, Long type, String trongluong) {
-        arr_sp_lau.add(new SanPhamModels(id, tensp, giatien, hinhanh, loaisp, mota, soluong, nhasanxuat, type, trongluong));
-        sanPhamLauAdapter = new SanPhamAdapter(getContext(), arr_sp_lau, 7);
-        rcvSPLau.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL, false));
+@Override
+public void getDataSanPhamLau(String id,String tensp,Long giatien,String hinhanh,String loaisp,String mota,Long soluong,String nhasanxuat,Long type,String trongluong){
+        arr_sp_lau.add(new SanPhamModels(id,tensp,giatien,hinhanh,loaisp,mota,soluong,nhasanxuat,type,trongluong));
+        sanPhamLauAdapter=new SanPhamAdapter(getContext(),arr_sp_lau,7);
+        rcvSPLau.setLayoutManager(new LinearLayoutManager(getContext(),RecyclerView.HORIZONTAL,false));
         rcvSPLau.setAdapter(sanPhamLauAdapter);
-    }
+        }
 
-    @Override
-    public void getDataSanPhamGY(String id, String tensp, Long giatien, String hinhanh, String loaisp, String mota, Long soluong, String nhasanxuat, Long type, String trongluong) {
-        arr_sp_gy.add(new SanPhamModels(id, tensp, giatien, hinhanh, loaisp, mota, soluong, nhasanxuat, type, trongluong));
-        sanPhamGYAdapter = new SanPhamAdapter(getContext(), arr_sp_gy, 8);
-        rcvSPGY.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false));
+@Override
+public void getDataSanPhamGY(String id,String tensp,Long giatien,String hinhanh,String loaisp,String mota,Long soluong,String nhasanxuat,Long type,String trongluong){
+        arr_sp_gy.add(new SanPhamModels(id,tensp,giatien,hinhanh,loaisp,mota,soluong,nhasanxuat,type,trongluong));
+        sanPhamGYAdapter=new SanPhamAdapter(getContext(),arr_sp_gy,8);
+        rcvSPGY.setLayoutManager(new LinearLayoutManager(getContext(),RecyclerView.VERTICAL,false));
         rcvSPGY.setAdapter(sanPhamGYAdapter);
-    }
-}
+        }
+        }
