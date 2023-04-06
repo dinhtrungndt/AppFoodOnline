@@ -34,6 +34,7 @@ public class LoginActivity extends AppCompatActivity implements UserView, View.O
 
     private void onClick() {
         userPreSenter = new UserPreSenter(this);
+        btndangnhap.setOnClickListener(this);
         btnDangky.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
