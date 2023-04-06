@@ -15,13 +15,13 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.example.appfoodv2.Model.UserPreSenter;
 import com.example.appfoodv2.Interface.UserView;
 import com.example.appfoodv2.R;
-import com.example.appfoodv2.Activity.Admin.SignInAdminActivity;
+import com.example.appfoodv2.Activity.Admin.LoginAdminActivity;
 import com.example.appfoodv2.Activity.HomeActivity;
 
 public class LoginActivity extends AppCompatActivity implements UserView, View.OnClickListener {
-    private Button btnDangnhap,btnDangky;
+    private Button btndangnhap,btnDangky;
     private EditText editemail, editpass;
-    private TextView txtadmin;
+    private TextView txtAdmin;
     private UserPreSenter userPreSenter;
 
     @Override
@@ -41,22 +41,21 @@ public class LoginActivity extends AppCompatActivity implements UserView, View.O
                 startActivity(intent);
             }
         });
-        txtadmin.setOnClickListener(new View.OnClickListener() {
+        txtAdmin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(LoginActivity.this, SignInAdminActivity.class);
-                startActivity(intent);
+                startActivity(new Intent(LoginActivity.this, LoginAdminActivity.class));
             }
         });
 
     }
 
     private void Anhxa() {
-        btnDangnhap = findViewById(R.id.btndangnhap);
+        btndangnhap = findViewById(R.id.btndangnhap);
         editemail = findViewById(R.id.editEmail);
         editpass = findViewById(R.id.editmatkhau);
         btnDangky = findViewById(R.id.btnDangky);
-        txtadmin = findViewById(R.id.txtadmin);
+        txtAdmin = findViewById(R.id.txtAdmin);
     }
 
     @Override

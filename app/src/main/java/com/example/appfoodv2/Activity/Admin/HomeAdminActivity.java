@@ -40,7 +40,7 @@ public class HomeAdminActivity extends AppCompatActivity {
         cvSignOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(HomeAdminActivity.this, SignInAdminActivity.class);
+                Intent intent = new Intent(HomeAdminActivity.this, LoginAdminActivity.class);
                 startActivity(intent);
                 finish();
             }

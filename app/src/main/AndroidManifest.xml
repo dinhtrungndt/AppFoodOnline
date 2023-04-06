@@ -18,10 +18,10 @@
         android:theme="@style/AppTheme" >
 
         <activity
-            android:name=".View.Admin.ProductActivity"
+            android:name=".Activity.Admin.ProductActivity"
             android:exported="false" />
         <activity
-            android:name="com.example.appfoodv2.dangsanphamActivity"
+            android:name=".Activity.upSPActivity"
             android:exported="true">
 
             <!-- <intent-filter> -->
@@ -30,14 +30,6 @@
 
             <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
             <!-- </intent-filter> -->
-        </activity>
-        <activity
-            android:name=".Activity.Admin.ProductActivity"
-            android:exported="false" />
-        <activity
-            android:name="com.example.appfoodv2.Activity.upSPActivity"
-            android:exported="true" >
-
         </activity>
         <activity
             android:name=".Activity.Bill.CartActivity"
@@ -57,13 +49,13 @@
             android:name=".Activity.Bill.ContentProDuctActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".View.Admin.SignInAdminActivity"
+            android:name=".Activity.Admin.LoginAdminActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".Activity.ContactActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".View.Admin.ChartBillActivity"
+            android:name=".Activity.Admin.ChartBillActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".Activity.Bill.ContentBillActivity"
@@ -75,14 +67,11 @@
             android:name=".Activity.ThongKeDanhMucActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".View.Admin.HomeAdminActivity"
+            android:name=".Activity.Admin.HomeAdminActivity"
             android:exported="true"
             android:screenOrientation="portrait">
 
         </activity>
-        <activity
-            android:name=".View.Admin.BillADMiNActivity"
-            android:screenOrientation="portrait" />
         <activity
             android:name=".Activity.Admin.BillADMiNActivity"
             android:screenOrientation="portrait" />

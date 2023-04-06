@@ -16,7 +16,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 import com.example.appfoodv2.Model.UserPreSenter;
 import com.example.appfoodv2.R;
 
-public class SignInAdminActivity extends AppCompatActivity implements View.OnClickListener {
+public class LoginAdminActivity extends AppCompatActivity implements View.OnClickListener {
     private Button btndangnhap;
     private EditText editemail, editpass;
     private UserPreSenter userPreSenter;
@@ -64,10 +64,10 @@ public class SignInAdminActivity extends AppCompatActivity implements View.OnCli
                                     @Override
                                     public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
                                         if (queryDocumentSnapshots.size() > 0) {
-                                            startActivity(new Intent(SignInAdminActivity.this, HomeAdminActivity.class));
+                                            startActivity(new Intent(LoginAdminActivity.this, HomeAdminActivity.class));
                                             finish();
                                         } else {
-                                            Toast.makeText(SignInAdminActivity.this, "Sai tài khoản / Mật khẩu", Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(LoginAdminActivity.this, "Sai tài khoản / Mật khẩu", Toast.LENGTH_SHORT).show();
                                         }
 
                                     }
