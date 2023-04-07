@@ -86,7 +86,7 @@ public class FragMent_ProFile extends Fragment implements View.OnClickListener {
                     @Override
                     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                         if (item.getItemId() == R.id.home) {
-                            Fragment newFragment = new FragMent_Home();
+                            FragMent_Home newFragment = new FragMent_Home();
                             FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                             fragmentTransaction.replace(R.id.framelayout, newFragment);
@@ -96,7 +96,7 @@ public class FragMent_ProFile extends Fragment implements View.OnClickListener {
                             return true;
                         }
                         if (item.getItemId() == R.id.chat) {
-                            Fragment newFragment = new FragMent_Message();
+                            Fragment_Message newFragment = new Fragment_Message();
                             FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                             fragmentTransaction.replace(R.id.framelayout, newFragment);

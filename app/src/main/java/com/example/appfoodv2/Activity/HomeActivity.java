@@ -22,8 +22,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
-import com.example.appfoodv2.Activity.FragMent.FragMent_Message;
+import com.example.appfoodv2.Activity.FragMent.Fragment_Message;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.bottomappbar.BottomAppBar;
@@ -52,6 +54,7 @@ public class HomeActivity extends AppCompatActivity implements FragMent_Home.Fra
     private Fragment fm;
     private FirebaseAuth firebaseAuth;
     private EditText editsearch;
+    private TextView txtChat,txtThongBao,txtHoadon;
     private TextView tvusername, tvemail;
     private CircleImageView imaProfile;
 
@@ -64,10 +67,12 @@ public class HomeActivity extends AppCompatActivity implements FragMent_Home.Fra
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-        InitWidget();
+        AnhXa();
+        onClick();
         Init();
         setProFile();
     }
+
 
     private void setProFile() {
         db = FirebaseFirestore.getInstance();
@@ -140,7 +145,7 @@ public class HomeActivity extends AppCompatActivity implements FragMent_Home.Fra
                         fm = new FragMent_Bill();
                         break;
                     case R.id.message:
-                        fm = new FragMent_Message();
+                        fm = new Fragment_Message();
                         break;
                     case R.id.your_cart:
                         startActivity(new Intent(HomeActivity.this, CartActivity.class));
@@ -168,44 +173,65 @@ public class HomeActivity extends AppCompatActivity implements FragMent_Home.Fra
                 return true;
             }
         });
-//search
-        editsearch.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-            @Override
-            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                if (actionId == EditorInfo.IME_ACTION_SEARCH) {
-                    String key = editsearch.getText().toString().trim();
-                    if (key.length() > 0) {
-                        startActivity(new Intent(HomeActivity.this, ThongKeDanhMucActivity.class).putExtra("KEY", key));
-                    } else {
-                        Toast.makeText(HomeActivity.this, "Tên sản phẩm không để trống", Toast.LENGTH_SHORT).show();
-                    }
-                }
-                return true;
-            }
-        });
 
     }
 
     @Override
     protected void onRestart() {
         super.onRestart();
-        editsearch.setText("");
+//        editsearch.setText("");
         if (countDownTimer != null) {
             countDownTimer.start();
         }
     }
 
-    private void InitWidget() {
+    private void AnhXa() {
         navigationView = findViewById(R.id.navigationview);
         View headerLayout = navigationView.getHeaderView(0);
         toolbar = findViewById(R.id.toolbar);
         drawerLayout = findViewById(R.id.drawerlayout);
-        editsearch = findViewById(R.id.editSearch);
+        txtChat = findViewById(R.id.txtChat);
+        txtHoadon = findViewById(R.id.txtHoadon);
+        txtThongBao = findViewById(R.id.txtThongBao);
+//        editsearch = findViewById(R.id.editSearch);
         tvusername = headerLayout.findViewById(R.id.tvusername);
         tvemail = headerLayout.findViewById(R.id.tvemail);
         imaProfile = headerLayout.findViewById(R.id.profile_image);
 
+    }
 
+    private void onClick() {
+        txtChat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Fragment_Message myFragment = new Fragment_Message();
+                FragmentManager fragmentManager = getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.framelayout, myFragment);
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
+
+            }
+        });
+
+        txtThongBao.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(HomeActivity.this, "Bạn không có thông báo !", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        txtHoadon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FragMent_Bill myFragment = new FragMent_Bill();
+                FragmentManager fragmentManager = getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.framelayout, myFragment);
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
+            }
+        });
     }
 
     @Override

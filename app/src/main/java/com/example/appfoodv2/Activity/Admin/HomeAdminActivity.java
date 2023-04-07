@@ -11,7 +11,7 @@ import androidx.cardview.widget.CardView;
 import com.example.appfoodv2.R;
 
 public class HomeAdminActivity extends AppCompatActivity {
-    CardView cvHoaDon, cvThongKe, cvSignOut, cvSanpham;
+    CardView cvHoaDon, cvThongKe, cvSignOut, cvSanpham, cvChat;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -21,6 +21,7 @@ public class HomeAdminActivity extends AppCompatActivity {
         cvHoaDon = findViewById(R.id.cvHoaDon);
         cvThongKe = findViewById(R.id.cvThongKe);
         cvSignOut = findViewById(R.id.cvSignOut);
+        cvChat = findViewById(R.id.cvChat);
         cvSanpham = findViewById(R.id.cvSanpham);
 
         cvHoaDon.setOnClickListener(new View.OnClickListener() {
@@ -52,6 +53,13 @@ public class HomeAdminActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        cvChat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(HomeAdminActivity.this, ChatActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     public void onClick(View v) {
@@ -68,6 +76,10 @@ public class HomeAdminActivity extends AppCompatActivity {
                 break;
             case R.id.cvSanpham:
                 startActivity(new Intent(HomeAdminActivity.this, ProductActivity.class));
+                break;
+
+            case R.id.cvChat:
+                startActivity(new Intent(HomeAdminActivity.this, ChatActivity.class));
                 break;
 
         }

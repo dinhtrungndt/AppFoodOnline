@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.appfoodv2" >
+    package="com.example.appfoodv2">
 
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
@@ -15,8 +15,14 @@
         android:label="@string/app_name"
         android:roundIcon="@drawable/logo"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme" >
-
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".ChatActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
         <activity
             android:name=".Activity.Admin.ProductActivity"
             android:exported="false" />
@@ -31,6 +37,11 @@
             <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
             <!-- </intent-filter> -->
         </activity>
+        <activity
+            android:name=".Activity.Admin.ChatActivity"
+            android:label="@string/app_name"
+            android:parentActivityName=".Activity.Admin.HomeAdminActivity" />
+
         <activity
             android:name=".Activity.Bill.CartActivity"
             android:screenOrientation="portrait" />
@@ -69,16 +80,11 @@
         <activity
             android:name=".Activity.Admin.HomeAdminActivity"
             android:exported="true"
-            android:screenOrientation="portrait">
-
-        </activity>
-
+            android:screenOrientation="portrait"></activity>
         <activity
             android:name=".Activity.XemthemActivity"
             android:exported="true"
-            android:screenOrientation="portrait">
-        </activity>
-
+            android:screenOrientation="portrait"></activity>
         <activity
             android:name=".Activity.Admin.BillADMiNActivity"
             android:screenOrientation="portrait" />
@@ -90,7 +96,7 @@
             android:screenOrientation="portrait" />
         <activity
             android:name="com.example.appfoodv2.MainActivity"
-            android:exported="true" >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

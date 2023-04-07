@@ -35,6 +35,11 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.ViewHodl
         this.type = type;
     }
 
+    public void setFil(ArrayList<SanPhamModels> fillll) {
+        this.arrayList = fillll;
+        notifyDataSetChanged();
+    }
+
     @Override
     public SanPhamAdapter.ViewHodler onCreateViewHolder(ViewGroup parent, int viewType) {
         View view;

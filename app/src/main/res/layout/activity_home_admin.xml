@@ -131,7 +131,7 @@
                 android:orientation="horizontal">
 
                 <androidx.cardview.widget.CardView
-                    android:id="@+id/cvDoiMatKhau"
+                    android:id="@+id/cvChat"
                     android:layout_width="150dp"
                     android:layout_height="150dp"
                     android:layout_marginLeft="10dp"
@@ -142,14 +142,15 @@
                         android:layout_width="56dp"
                         android:layout_height="60dp"
                         android:layout_gravity="center"
-                        android:src="@drawable/key" />
+                        android:background="#8AF3DB"
+                        android:src="@drawable/ic_baseline_mark_chat_unread_24" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginTop="40dp"
-                        android:text="Đổi mật khẩu"
+                        android:text="Chat"
                         android:textColor="#ff0000"
                         android:textStyle="bold" />
                 </androidx.cardview.widget.CardView>

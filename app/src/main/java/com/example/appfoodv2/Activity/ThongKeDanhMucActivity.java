@@ -20,7 +20,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.appfoodv2.Activity.FragMent.FragMent_Home;
-import com.example.appfoodv2.Activity.FragMent.FragMent_Message;
 import com.example.appfoodv2.Activity.FragMent.FragMent_ProFile;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
