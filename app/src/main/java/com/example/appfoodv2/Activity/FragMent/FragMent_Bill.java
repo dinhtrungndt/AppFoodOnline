@@ -1,23 +1,32 @@
 package com.example.appfoodv2.Activity.FragMent;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.appfoodv2.Activity.Admin.ChatActivity;
+import com.example.appfoodv2.Activity.ThongKeDanhMucActivity;
 import com.example.appfoodv2.Adapter.HoaDonAdapter;
 import com.example.appfoodv2.Model.HoaDonModels;
 import com.example.appfoodv2.Model.HoaDonPreSenter;
 import com.example.appfoodv2.Interface.HoaDonView;
 import com.example.appfoodv2.R;
 import com.example.appfoodv2.Activity.HomeActivity;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
 
@@ -28,6 +37,7 @@ public class FragMent_Bill extends Fragment implements HoaDonView {
     private HoaDonAdapter hoaDonAdapter;
     private ArrayList<HoaDonModels> arrayList;
     private ProgressBar progressBar;
+    private BottomNavigationView bottomNavigationView;
 
     @Nullable
     @Override
@@ -37,6 +47,7 @@ public class FragMent_Bill extends Fragment implements HoaDonView {
 
         rcvBill = view.findViewById(R.id.rcvBill);
         progressBar = view.findViewById(R.id.progressbar);
+        bottomNavigationView = view.findViewById(R.id.bottomNavigationView);
         hoaDonPreSenter = new HoaDonPreSenter(this);
         arrayList = new ArrayList<>();
 
@@ -59,6 +70,50 @@ public class FragMent_Bill extends Fragment implements HoaDonView {
 
             }
         };
+
+        bottomNavigationView.setOnNavigationItemSelectedListener(
+                new BottomNavigationView.OnNavigationItemSelectedListener() {
+                    @Override
+                    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                        if (item.getItemId() == R.id.home) {
+                            FragMent_Home newFragment = new FragMent_Home();
+                            FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                            fragmentTransaction.replace(R.id.framelayout, newFragment);
+                            fragmentTransaction.addToBackStack(null);
+                            fragmentTransaction.commit();
+                            Toast.makeText(getContext(), "Trang Chủ !!!", Toast.LENGTH_SHORT).show();
+                            return true;
+                        }
+                        if (item.getItemId() == R.id.chat) {
+                            Fragment_Message newFragment = new Fragment_Message();
+                            FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                            fragmentTransaction.replace(R.id.framelayout, newFragment);
+                            fragmentTransaction.addToBackStack(null);
+                            fragmentTransaction.commit();
+                            Toast.makeText(getContext(), "Chat !!!", Toast.LENGTH_SHORT).show();
+                            return true;
+                        }
+                        if (item.getItemId() == R.id.profile) {
+                            FragMent_ProFile newFragment = new FragMent_ProFile();
+                            FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                            fragmentTransaction.replace(R.id.framelayout, newFragment);
+                            fragmentTransaction.addToBackStack(null);
+                            fragmentTransaction.commit();
+                            Toast.makeText(getContext(), "Cập nhập thông tin !!!", Toast.LENGTH_SHORT).show();
+                            return true;
+                        }
+                        if (item.getItemId() == R.id.menu) {
+                            startActivity(new Intent(getContext(), ThongKeDanhMucActivity.class));
+                            Toast.makeText(getContext(), "Danh mục !!!", Toast.LENGTH_SHORT).show();
+                            return true;
+                        }
+
+                        return false;
+                    }
+                });
         return view;
     }
 

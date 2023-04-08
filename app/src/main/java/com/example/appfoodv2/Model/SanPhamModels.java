@@ -11,7 +11,6 @@ import java.io.Serializable;
 
 public class SanPhamModels implements Serializable {
     private String id;
-
     private String idsp;
     private String tensp;
     private long giatien;

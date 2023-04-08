@@ -54,7 +54,7 @@ public class HomeActivity extends AppCompatActivity implements FragMent_Home.Fra
     private Fragment fm;
     private FirebaseAuth firebaseAuth;
     private EditText editsearch;
-    private TextView txtChat,txtThongBao,txtHoadon;
+    private TextView txtChat,txtThongBao,txtHoadon,txtTrangChu;
     private TextView tvusername, tvemail;
     private CircleImageView imaProfile;
 
@@ -189,6 +189,7 @@ public class HomeActivity extends AppCompatActivity implements FragMent_Home.Fra
         navigationView = findViewById(R.id.navigationview);
         View headerLayout = navigationView.getHeaderView(0);
         toolbar = findViewById(R.id.toolbar);
+        txtTrangChu = findViewById(R.id.txtTrangChu);
         drawerLayout = findViewById(R.id.drawerlayout);
         txtChat = findViewById(R.id.txtChat);
         txtHoadon = findViewById(R.id.txtHoadon);
@@ -201,6 +202,12 @@ public class HomeActivity extends AppCompatActivity implements FragMent_Home.Fra
     }
 
     private void onClick() {
+        txtTrangChu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(HomeActivity.this,HomeActivity.class));
+            }
+        });
         txtChat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
