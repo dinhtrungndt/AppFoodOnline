@@ -16,13 +16,7 @@
         android:roundIcon="@drawable/logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity
-            android:name=".ChatActivity"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
+        
         <activity
             android:name=".Activity.Admin.ProductActivity"
             android:exported="false" />
@@ -80,11 +74,13 @@
         <activity
             android:name=".Activity.Admin.HomeAdminActivity"
             android:exported="true"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait">
+        </activity>
         <activity
             android:name=".Activity.XemthemActivity"
             android:exported="true"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait">
+        </activity>
         <activity
             android:name=".Activity.Admin.BillADMiNActivity"
             android:screenOrientation="portrait" />
