@@ -1,18 +1,22 @@
 package com.example.appfoodv2.Activity.FragMent;
 
-import android.animation.ObjectAnimator;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.webkit.WebView;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.ScrollView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,14 +32,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
 import com.example.appfoodv2.Activity.Bill.CartActivity;
+import com.example.appfoodv2.Activity.ContactActivity;
 import com.example.appfoodv2.Activity.ThongKeDanhMucActivity;
 import com.example.appfoodv2.Activity.XemthemActivity;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomappbar.BottomAppBar;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -215,7 +218,6 @@ public class FragMent_Home extends Fragment implements SanPhamView {
                             fragmentTransaction.replace(R.id.framelayout, newFragment);
                             fragmentTransaction.addToBackStack(null);
                             fragmentTransaction.commit();
-                            Toast.makeText(getContext(), "Chat !!!", Toast.LENGTH_SHORT).show();
                             return true;
                         }
                         if (item.getItemId() == R.id.profile) {
@@ -225,12 +227,10 @@ public class FragMent_Home extends Fragment implements SanPhamView {
                             fragmentTransaction.replace(R.id.framelayout, newFragment);
                             fragmentTransaction.addToBackStack(null);
                             fragmentTransaction.commit();
-                            Toast.makeText(getContext(), "Cập nhập thông tin !!!", Toast.LENGTH_SHORT).show();
                             return true;
                         }
                         if (item.getItemId() == R.id.menu) {
                             startActivity(new Intent(getContext(), ThongKeDanhMucActivity.class));
-                            Toast.makeText(getContext(), "Danh mục !!!", Toast.LENGTH_SHORT).show();
                             return true;
                         }
 
@@ -241,8 +241,7 @@ public class FragMent_Home extends Fragment implements SanPhamView {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getContext(), CartActivity.class));
-                Toast.makeText(getContext(), "Giỏ hàng !!!", Toast.LENGTH_SHORT).show();
+                showDialog();
             }
         });
 
@@ -317,5 +316,81 @@ public class FragMent_Home extends Fragment implements SanPhamView {
         sanPhamGYAdapter = new SanPhamAdapter(getContext(), arr_sp_gy, 8);
         rcvSPGY.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false));
         rcvSPGY.setAdapter(sanPhamGYAdapter);
+    }
+
+    private void showDialog() {
+        final Dialog dialog = new Dialog(getContext());
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.dialog_menu);
+
+        LinearLayout lnGioHang = dialog.findViewById(R.id.lnGioHang);
+        LinearLayout lnDonHang = dialog.findViewById(R.id.lnDonHang);
+        LinearLayout lnThongTin = dialog.findViewById(R.id.lnThongTin);
+        LinearLayout lnLienHe = dialog.findViewById(R.id.lnLienHe);
+        LinearLayout lnShare = dialog.findViewById(R.id.lnShare);
+
+        lnGioHang.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getContext(), CartActivity.class));
+                dialog.dismiss();
+            }
+        });
+        lnDonHang.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FragMent_Bill newFragment = new FragMent_Bill();
+                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.framelayout, newFragment);
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
+                dialog.dismiss();
+            }
+        });
+        lnThongTin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FragMent_ProFile newFragment = new FragMent_ProFile();
+                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.framelayout, newFragment);
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
+                dialog.dismiss();
+            }
+        });
+        lnLienHe.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+             startActivity(new Intent(getContext(), ContactActivity.class));
+            }
+        });
+
+        lnShare.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showShare();
+                Toast.makeText(getContext(), "Đã share thành công trên mạng !", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        dialog.show();
+        dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
+        dialog.getWindow().setGravity(Gravity.BOTTOM);
+    }
+
+    private void showShare() {
+        final Dialog dialog = new Dialog(getContext());
+        dialog.setContentView(R.layout.dialog_share);
+
+        WebView gifWebView = dialog.findViewById(R.id.gifWebView);
+        gifWebView.getSettings().setLoadWithOverviewMode(true);
+        gifWebView.getSettings().setUseWideViewPort(true);
+        gifWebView.loadUrl("https://www.google.com/url?sa=i&url=https%3A%2F%2Fthtantai2.edu.vn%2Fanh-gif-cute%2F&psig=AOvVaw3FmkKWxZiUyNaiC_ON3dvM&ust=1681066453368000&source=images&cd=vfe&ved=0CBEQjRxqFwoTCJCN49j6mv4CFQAAAAAdAAAAABAO");
+
+        dialog.show();
     }
 }

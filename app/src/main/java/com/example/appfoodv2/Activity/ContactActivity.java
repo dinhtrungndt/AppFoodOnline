@@ -36,6 +36,7 @@ public class ContactActivity extends AppCompatActivity implements OnMapReadyCall
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contact);
+
         toolbar = findViewById(R.id.toolbar);
         txtdiachi = findViewById(R.id.txtdiachi);
         txtsdt = findViewById(R.id.txtsdt);
