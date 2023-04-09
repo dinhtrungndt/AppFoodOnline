@@ -6,17 +6,23 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.InputType;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,6 +33,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.example.appfoodv2.Activity.Bill.CartActivity;
+import com.example.appfoodv2.Activity.ContactActivity;
 import com.example.appfoodv2.Activity.ThongKeDanhMucActivity;
 import com.example.appfoodv2.R;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -75,8 +82,7 @@ public class FragMent_ProFile extends Fragment implements View.OnClickListener {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getContext(), CartActivity.class));
-                Toast.makeText(getContext(), "Giỏ hàng !!!", Toast.LENGTH_SHORT).show();
+                showDialog();
             }
         });
         bottomNavigationView = view.findViewById(R.id.bottomNavigationView);
@@ -102,7 +108,6 @@ public class FragMent_ProFile extends Fragment implements View.OnClickListener {
                             fragmentTransaction.replace(R.id.framelayout, newFragment);
                             fragmentTransaction.addToBackStack(null);
                             fragmentTransaction.commit();
-                            Toast.makeText(getContext(), "Chat !!!", Toast.LENGTH_SHORT).show();
                             return true;
                         }
                         if (item.getItemId() == R.id.profile) {
@@ -111,7 +116,6 @@ public class FragMent_ProFile extends Fragment implements View.OnClickListener {
                         }
                         if (item.getItemId() == R.id.menu) {
                             startActivity(new Intent(getContext(), ThongKeDanhMucActivity.class));
-                            Toast.makeText(getContext(), "Danh mục !!!", Toast.LENGTH_SHORT).show();
                             return true;
                         }
 
@@ -184,6 +188,77 @@ public class FragMent_ProFile extends Fragment implements View.OnClickListener {
         avatar.setOnClickListener(this);
 
         return view;
+    }
+
+    private void showDialog() {
+        final Dialog dialog = new Dialog(getContext());
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.dialog_menu);
+
+        LinearLayout lnGioHang = dialog.findViewById(R.id.lnGioHang);
+        LinearLayout lnDonHang = dialog.findViewById(R.id.lnDonHang);
+        LinearLayout lnThongTin = dialog.findViewById(R.id.lnThongTin);
+        LinearLayout lnLienHe = dialog.findViewById(R.id.lnLienHe);
+        LinearLayout lnShare = dialog.findViewById(R.id.lnShare);
+
+        lnGioHang.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getContext(), CartActivity.class));
+                dialog.dismiss();
+            }
+        });
+        lnDonHang.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FragMent_Bill newFragment = new FragMent_Bill();
+                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.framelayout, newFragment);
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
+                dialog.dismiss();
+            }
+        });
+        lnThongTin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getContext(), "Bạn đang chỉnh thông tin!", Toast.LENGTH_SHORT).show();
+                dialog.dismiss();
+            }
+        });
+        lnLienHe.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getContext(), ContactActivity.class));
+            }
+        });
+
+        lnShare.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showShare();
+                Toast.makeText(getContext(), "Đã share thành công trên mạng !", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        dialog.show();
+        dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
+        dialog.getWindow().setGravity(Gravity.BOTTOM);
+    }
+
+    private void showShare() {
+        final Dialog dialog = new Dialog(getContext());
+        dialog.setContentView(R.layout.dialog_share);
+
+        WebView gifWebView = dialog.findViewById(R.id.gifWebView);
+        gifWebView.getSettings().setLoadWithOverviewMode(true);
+        gifWebView.getSettings().setUseWideViewPort(true);
+        gifWebView.loadUrl("https://www.google.com/url?sa=i&url=https%3A%2F%2Fthtantai2.edu.vn%2Fanh-gif-cute%2F&psig=AOvVaw3FmkKWxZiUyNaiC_ON3dvM&ust=1681066453368000&source=images&cd=vfe&ved=0CBEQjRxqFwoTCJCN49j6mv4CFQAAAAAdAAAAABAO");
+
+        dialog.show();
     }
 
     @Override

@@ -62,6 +62,7 @@ public class CartActivity extends AppCompatActivity implements GioHangView {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_cart);
+
         InitWidget();
         Init();
     }

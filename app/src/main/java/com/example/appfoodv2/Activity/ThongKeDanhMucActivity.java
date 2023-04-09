@@ -1,11 +1,19 @@
 package com.example.appfoodv2.Activity;
 
+import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.Window;
+import android.webkit.WebView;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -19,10 +27,13 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.appfoodv2.Activity.Bill.CartActivity;
+import com.example.appfoodv2.Activity.FragMent.FragMent_Bill;
 import com.example.appfoodv2.Activity.FragMent.FragMent_Home;
 import com.example.appfoodv2.Activity.FragMent.FragMent_ProFile;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -40,6 +51,7 @@ public class ThongKeDanhMucActivity extends AppCompatActivity implements SanPham
     private FirebaseFirestore db;
     private Toolbar toolbar;
     private List<String> list;
+    private FloatingActionButton fab;
     private ArrayList<SanPhamModels> arrayList;
     private SanPhamPreSenter sanPhamPreSenter;
     private RecyclerView rCvSP;
@@ -51,6 +63,7 @@ public class ThongKeDanhMucActivity extends AppCompatActivity implements SanPham
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_thongke);
         Anhxa();
+        onClick();
         Init();
     }
 
@@ -115,16 +128,28 @@ public class ThongKeDanhMucActivity extends AppCompatActivity implements SanPham
         spinerthongke = findViewById(R.id.spinner);
         toolbar = findViewById(R.id.toolbar);
         rCvSP = findViewById(R.id.rcvDanhMuc);
+        fab = findViewById(R.id.fab);
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
 
+
+    }
+
+    private void onClick() {
         bottomNavigationView.setOnNavigationItemSelectedListener(
                 new BottomNavigationView.OnNavigationItemSelectedListener() {
                     @Override
                     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                        Toast.makeText(ThongKeDanhMucActivity.this, "Nhấn nút Back ở trên", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ThongKeDanhMucActivity.this, "Vui lòng nhấn back ở trên !", Toast.LENGTH_SHORT).show();
                         return false;
                     }
                 });
+
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(ThongKeDanhMucActivity.this, "Vui lòng nhấn back ở trên !", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     @Override
