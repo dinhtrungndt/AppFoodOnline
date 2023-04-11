@@ -4,7 +4,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bglogin">
+    android:background="@drawable/img1">
 
     <ImageView
         android:layout_marginTop="15dp"
@@ -110,7 +110,7 @@
         <TextView
             android:textSize="24sp"
             android:layout_marginBottom="10dp"
-            android:textColor="#E49116"
+            android:textColor="@color/black"
             android:padding="5dp"
             android:text="Bạn đã có tài khoản ?"
             android:layout_width="match_parent"
