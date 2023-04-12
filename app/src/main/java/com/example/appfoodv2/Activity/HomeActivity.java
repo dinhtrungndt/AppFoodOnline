@@ -1,6 +1,9 @@
 package com.example.appfoodv2.Activity;
 
+import static android.content.ContentValues.TAG;
+
 import android.animation.ObjectAnimator;
+import android.app.PendingIntent;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -20,12 +23,15 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.example.appfoodv2.Activity.FragMent.Fragment_Message;
+import com.example.appfoodv2.MainActivity;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.bottomappbar.BottomAppBar;
@@ -34,7 +40,9 @@ import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.squareup.picasso.Picasso;
 import com.example.appfoodv2.R;
@@ -224,9 +232,28 @@ public class HomeActivity extends AppCompatActivity implements FragMent_Home.Fra
         txtThongBao.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(HomeActivity.this, "Bạn không có thông báo !", Toast.LENGTH_SHORT).show();
+                db.collection("notifications")
+                        .addSnapshotListener(new EventListener<QuerySnapshot>() {
+                            @Override
+                            public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
+                                if (error != null) {
+                                    Log.w(TAG, "Listen failed.", error);
+                                    return;
+                                }
+
+                                for (DocumentSnapshot doc : value.getDocuments()) {
+                                    // Lấy thông tin từ document
+                                    String title = doc.getString("title");
+                                    String message = doc.getString("message");
+
+                                    // Hiển thị thông báo
+                                    showNotification(title, message);
+                                }
+                            }
+                        });
             }
         });
+
 
         txtHoadon.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -239,6 +266,26 @@ public class HomeActivity extends AppCompatActivity implements FragMent_Home.Fra
                 fragmentTransaction.commit();
             }
         });
+    }
+
+    private void showNotification(String title, String message) {
+        // Tạo intent cho khi người dùng click vào thông báo
+        Intent intent = new Intent(this, MainActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, 0);
+
+        // Tạo builder cho notification
+        NotificationCompat.Builder builder =
+                new NotificationCompat.Builder(this, "default")
+                        .setSmallIcon(R.drawable.ic_baseline_notifications_active_24)
+                        .setContentTitle(title)
+                        .setContentText(message)
+                        .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+                        .setContentIntent(pendingIntent)
+                        .setAutoCancel(true);
+
+        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
+        notificationManager.notify(0, builder.build());
     }
 
     @Override

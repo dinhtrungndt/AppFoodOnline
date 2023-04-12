@@ -65,17 +65,6 @@
 
         </androidx.appcompat.widget.Toolbar>
 
-        <androidx.appcompat.widget.SearchView
-            android:id="@+id/searchView"
-            android:layout_width="349dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="20dp"
-            android:background="@drawable/edt_text_bg"
-            app:iconifiedByDefault="false"
-            app:queryHint="Tìm sản phẩm" />
-
         <FrameLayout
             android:id="@+id/framelayout"
             android:layout_width="match_parent"

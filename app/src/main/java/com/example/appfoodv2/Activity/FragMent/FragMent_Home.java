@@ -23,6 +23,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.SearchView;
 import androidx.core.widget.NestedScrollView;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -33,6 +34,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.example.appfoodv2.Activity.Bill.CartActivity;
 import com.example.appfoodv2.Activity.ContactActivity;
+import com.example.appfoodv2.Activity.SearchActivity;
 import com.example.appfoodv2.Activity.ThongKeDanhMucActivity;
 import com.example.appfoodv2.Activity.XemthemActivity;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -186,6 +188,23 @@ public class FragMent_Home extends Fragment implements SanPhamView {
                     // Scroll Down
                     bottomAppBar.setElevation(getResources().getDimensionPixelSize(R.dimen.bottom_app_bar_elevation));
                 }
+            }
+        });
+
+        SearchView searchView = view.findViewById(R.id.searchView);
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                // Xử lý tìm kiếm ở đây
+                Intent intent = new Intent(getContext(), SearchActivity.class);
+                intent.putExtra("query", query);
+                startActivity(intent);
+                return true;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                return false;
             }
         });
 
