@@ -22,6 +22,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
+import com.example.appfoodv2.Activity.Admin.ProductActivity;
 import com.example.appfoodv2.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -44,7 +45,7 @@ import java.util.List;
 public class upSPActivity extends AppCompatActivity {
     private static final int LIBRARY_PICKER = 12312;
     EditText edtNsx, edtTenSp, edtTien, edtBh, edtSl, edtType, edtMt;
-    ImageView imageView;
+    ImageView imageView,btn_add_back;
     Button btnDm, btnDel, btnEdit;
     private Spinner spinerthongke;
     private List<String> list;
@@ -60,7 +61,6 @@ public class upSPActivity extends AppCompatActivity {
         initView();
         db = FirebaseFirestore.getInstance();
         list = new ArrayList<>();
-        list.add("Chọn Danh Mục");
         if (getIntent() != null && getIntent().hasExtra("SP")) {
             sanPhamModels = (SanPhamModels) getIntent().getSerializableExtra("SP");
         }
@@ -113,6 +113,7 @@ public class upSPActivity extends AppCompatActivity {
         dialog.setCanceledOnTouchOutside(false);
         edtBh = findViewById(R.id.edt_thuonghieu);
         edtNsx = findViewById(R.id.edt_nhasanxuat);
+        btn_add_back = findViewById(R.id.btn_add_back);
         edtTenSp = findViewById(R.id.edt_tensp);
         edtTien = findViewById(R.id.edt_giatien);
         edtSl = findViewById(R.id.edt_xuatxu);
@@ -151,6 +152,12 @@ public class upSPActivity extends AppCompatActivity {
             edtMt.setText("");
             image = "";
             imageView.setImageResource(R.drawable.pl);
+        });
+        btn_add_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(upSPActivity.this, ProductActivity.class));
+            }
         });
         findViewById(R.id.btn_save).setOnClickListener(view -> {
             if (!validate()) {

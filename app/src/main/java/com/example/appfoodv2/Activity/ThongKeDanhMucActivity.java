@@ -83,7 +83,6 @@ public class ThongKeDanhMucActivity extends AppCompatActivity implements SanPham
 
         list = new ArrayList<>();
         db = FirebaseFirestore.getInstance();
-        list.add("Chọn Danh Mục");
         db.collection("LoaiSP").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
             @Override
             public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
@@ -93,8 +92,11 @@ public class ThongKeDanhMucActivity extends AppCompatActivity implements SanPham
                 ArrayAdapter arrayAdapter = new ArrayAdapter(ThongKeDanhMucActivity.this, android.R.layout.simple_list_item_1, list);
                 spinerthongke.setAdapter(arrayAdapter);
 
+                int position = list.indexOf("Chọn loại món ăn");
+                spinerthongke.setSelection(position);
             }
         });
+
 
         if (intent.hasExtra("KEY")) {
             arrayList.clear();
