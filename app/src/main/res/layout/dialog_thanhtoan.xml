@@ -11,7 +11,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="530dp"
-        android:background="@drawable/roud"
+        android:background="@drawable/bgsinup"
         android:orientation="vertical">
 
         <ImageView
@@ -19,7 +19,7 @@
             android:layout_width="32dp"
             android:layout_height="32dp"
             android:layout_gravity="end"
-            android:background="#008000"
+            android:background="#FF0000"
             android:src="@android:drawable/ic_menu_close_clear_cancel" />
 
         <com.google.android.material.textfield.TextInputLayout

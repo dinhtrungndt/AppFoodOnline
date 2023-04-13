@@ -3,10 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bglogin"
-    android:orientation="vertical">
+    android:background="@drawable/bgsinup">
 
     <ImageView
+        android:layout_marginTop="40dp"
+        android:src="@drawable/user"
+        android:layout_gravity="center"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_gravity="center"
@@ -22,6 +24,8 @@
         app:cardElevation="5dp">
 
         <LinearLayout
+            android:background="#FF9800"
+            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#5BC3F1"
@@ -100,7 +104,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="150dp" />
+        android:layout_height="20dp" />
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -112,6 +116,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
+            android:textColor="@color/black"
             android:padding="5dp"
             android:text="Bạn đã có tài khoản ?"
             android:textColor="#E49116"
