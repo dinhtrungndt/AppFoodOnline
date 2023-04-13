@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="370dp"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-
     android:orientation="vertical"
     app:cardCornerRadius="20dp"
     app:cardElevation="10dp">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="530dp"
-        android:background="@drawable/roud"
+        android:layout_height="550dp"
+        android:background="@drawable/bg_dialog_thanhtoan"
+        android:backgroundTint="#CED8B386"
         android:orientation="vertical">
 
         <ImageView
@@ -19,7 +19,7 @@
             android:layout_width="32dp"
             android:layout_height="32dp"
             android:layout_gravity="end"
-            android:background="#008000"
+            android:background="#D32323"
             android:src="@android:drawable/ic_menu_close_clear_cancel" />
 
         <com.google.android.material.textfield.TextInputLayout

@@ -179,7 +179,7 @@
                     android:layout_height="wrap_content"
                     android:background="?attr/selectableItemBackground"
                     android:text="Xem thêm..."
-                    android:textColor="#0A1D87"
+                    android:textColor="@color/white"
                     android:textSize="16sp" />
 
                 <ImageView

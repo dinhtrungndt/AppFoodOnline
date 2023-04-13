@@ -2,13 +2,20 @@ package com.example.appfoodv2.Activity.Bill;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -20,10 +27,13 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.appfoodv2.Activity.HomeActivity;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.example.appfoodv2.Adapter.GioHangAdapter;
 import com.example.appfoodv2.Model.SanPhamModels;
@@ -118,9 +128,14 @@ public class CartActivity extends AppCompatActivity implements GioHangView {
     }
 
     private void DiaLogThanhToan() {
-        Dialog dialog = new Dialog(CartActivity.this);
+        final Dialog dialog = new Dialog(this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(R.layout.dialog_thanhtoan);
         dialog.show();
+        dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
+        dialog.getWindow().setGravity(Gravity.BOTTOM);
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         CustomInit(dialog);
 
@@ -216,7 +231,31 @@ public class CartActivity extends AppCompatActivity implements GioHangView {
     @Override
     public void OnSucess() {
         if (check == 0) {
-            Toast.makeText(CartActivity.this, "Đặt Hàng Thành Công!", Toast.LENGTH_SHORT).show();
+            // Tạo thông báo
+            NotificationCompat.Builder builder =
+                    new NotificationCompat.Builder(this, "default")
+                            .setSmallIcon(R.drawable.ic_baseline_shopping_cart_24)
+                            .setContentTitle("Đặt hàng thành công")
+                            .setContentText("Cảm ơn bạn đã đặt hàng. Đơn hàng của bạn sẽ được xử lý sớm nhất có thể!")
+                            .setPriority(NotificationCompat.PRIORITY_DEFAULT);
+
+// Hiển thị icon thông báo lên thanh thông báo
+            NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
+            notificationManager.notify(0, builder.build());
+            // Hiển thị dialog khi đặt hàng thành công
+            AlertDialog.Builder builderTC = new AlertDialog.Builder(this);
+            builderTC.setTitle("Đặt hàng thành công")
+                    .setMessage("Cảm ơn bạn đã đặt hàng. Đơn hàng của bạn sẽ được xử lý sớm nhất có thể!")
+                    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            // Chuyển đến trang chủ khi người dùng nhấn nút OK
+                            startActivity(new Intent(CartActivity.this, HomeActivity.class));
+                        }
+                    });
+
+            // Tạo và hiển thị dialog
+            AlertDialog dialog = builderTC.create();
+            dialog.show();
         } else {
             Toast.makeText(CartActivity.this, "Thao tác thành công!", Toast.LENGTH_SHORT).show();
         }
@@ -225,6 +264,25 @@ public class CartActivity extends AppCompatActivity implements GioHangView {
 
 
     }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        createNotificationChannel();
+    }
+
+    private void createNotificationChannel() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            CharSequence name = "Thông báo đặt hàng";
+            String description = "Thông báo khi đặt hàng thành công";
+            int importance = NotificationManager.IMPORTANCE_DEFAULT;
+            NotificationChannel channel = new NotificationChannel("default", name, importance);
+            channel.setDescription(description);
+            NotificationManager notificationManager = getSystemService(NotificationManager.class);
+            notificationManager.createNotificationChannel(channel);
+        }
+    }
+
 
     @Override
     public void OnFail() {

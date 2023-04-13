@@ -16,7 +16,7 @@
             style="@style/ThemeOverlay.AppCompat.Dark"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/purple_200"
+            android:background="#CEEA8C18"
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
             <TextView
@@ -35,32 +35,34 @@
                 android:layout_gravity="center"
                 android:layout_marginLeft="50dp">
 
-                <TextView
-                    android:id="@+id/txtChat"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="50dp"
-                    android:background="@drawable/ic_baseline_mark_chat_unread_24"
-                    android:backgroundTint="#8A8A8A" />
-
-                <TextView
-                    android:id="@+id/txtThongBao"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="20dp"
-                    android:background="@drawable/ic_baseline_notifications_active_24"
-                    android:backgroundTint="#8A8A8A" />
-
-                <TextView
-                    android:id="@+id/txtHoadon"
+                <ImageView
+                    android:id="@+id/ivThongbao"
                     android:layout_width="25dp"
                     android:layout_height="25dp"
                     android:layout_gravity="center"
                     android:layout_marginLeft="20dp"
-                    android:background="@drawable/bill"
-                    android:backgroundTint="#8A8A8A" />
+                    android:layout_marginStart="60dp"
+                    android:src="@drawable/ic_notifications_black_24dp"
+                    app:tint="@color/white" />
+
+                <ImageView
+                    android:id="@+id/ivDonhang"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="20dp"
+                    android:src="@drawable/bill"
+                    app:tint="@color/white" />
+
+                <ImageView
+                    android:id="@+id/ivCall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="20dp"
+                    android:src="@drawable/ic_baseline_phone_callback_24"
+                    app:tint="@color/white" />
+
             </LinearLayout>
 
         </androidx.appcompat.widget.Toolbar>
@@ -78,8 +80,8 @@
         android:layout_height="match_parent"
         android:layout_gravity="start"
         app:headerLayout="@layout/app_bar_main_screen"
-        app:itemIconTint="#ff0000"
-        app:itemTextColor="#ff0000"
+        app:itemIconTint="#CEEA8C18"
+        app:itemTextColor="#CEEA8C18"
         app:menu="@menu/menu_dashboard" />
 
 </androidx.drawerlayout.widget.DrawerLayout>

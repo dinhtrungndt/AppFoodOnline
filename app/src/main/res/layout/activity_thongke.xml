@@ -10,7 +10,7 @@
         style="@style/ThemeOverlay.AppCompat.Dark"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/purple_200"
+        android:background="#CEE89C3E"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <Spinner

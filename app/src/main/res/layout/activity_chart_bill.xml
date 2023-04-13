@@ -9,7 +9,7 @@
         style="@style/ThemeOverlay.AppCompat.Dark"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/purple_200"
+        android:background="#CEEA8C18"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <com.github.mikephil.charting.charts.PieChart

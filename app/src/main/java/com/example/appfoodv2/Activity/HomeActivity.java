@@ -2,9 +2,14 @@ package com.example.appfoodv2.Activity;
 
 import static android.content.ContentValues.TAG;
 
+import android.Manifest;
 import android.animation.ObjectAnimator;
+import android.app.AlertDialog;
 import android.app.PendingIntent;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.graphics.PorterDuff;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.util.Log;
@@ -13,7 +18,9 @@ import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -23,8 +30,10 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.ActivityCompat;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
+import androidx.core.content.ContextCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -32,17 +41,21 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.example.appfoodv2.Activity.FragMent.Fragment_Message;
 import com.example.appfoodv2.MainActivity;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.bottomappbar.BottomAppBar;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.squareup.picasso.Picasso;
 import com.example.appfoodv2.R;
@@ -51,6 +64,9 @@ import com.example.appfoodv2.Activity.Bill.CartActivity;
 import com.example.appfoodv2.Activity.FragMent.FragMent_Bill;
 import com.example.appfoodv2.Activity.FragMent.FragMent_Home;
 import com.example.appfoodv2.Activity.FragMent.FragMent_ProFile;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -62,13 +78,19 @@ public class HomeActivity extends AppCompatActivity implements FragMent_Home.Fra
     private Fragment fm;
     private FirebaseAuth firebaseAuth;
     private EditText editsearch;
-    private TextView txtChat,txtThongBao,txtHoadon,txtTrangChu;
+    private ImageView ivThongbao,ivDonhang,ivCall;
+    private TextView txtTrangChu;
     private TextView tvusername, tvemail;
     private CircleImageView imaProfile;
 
     public static CountDownTimer countDownTimer;
 
     private FirebaseFirestore db;
+
+    boolean isThongBaoSelected = false;
+    boolean isHoaDonSelected = false;
+    boolean isChatSelected = false;
+
 
 
     @Override
@@ -199,9 +221,9 @@ public class HomeActivity extends AppCompatActivity implements FragMent_Home.Fra
         toolbar = findViewById(R.id.toolbar);
         txtTrangChu = findViewById(R.id.txtTrangChu);
         drawerLayout = findViewById(R.id.drawerlayout);
-        txtChat = findViewById(R.id.txtChat);
-        txtHoadon = findViewById(R.id.txtHoadon);
-        txtThongBao = findViewById(R.id.txtThongBao);
+        ivThongbao = findViewById(R.id.ivThongbao);
+        ivDonhang = findViewById(R.id.ivDonhang);
+        ivCall = findViewById(R.id.ivCall);
 //        editsearch = findViewById(R.id.editSearch);
         tvusername = headerLayout.findViewById(R.id.tvusername);
         tvemail = headerLayout.findViewById(R.id.tvemail);
@@ -216,54 +238,118 @@ public class HomeActivity extends AppCompatActivity implements FragMent_Home.Fra
                 startActivity(new Intent(HomeActivity.this,HomeActivity.class));
             }
         });
-        txtChat.setOnClickListener(new View.OnClickListener() {
+
+        ivCall.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Fragment_Message myFragment = new Fragment_Message();
-                FragmentManager fragmentManager = getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.framelayout, myFragment);
-                fragmentTransaction.addToBackStack(null);
-                fragmentTransaction.commit();
+                if (isThongBaoSelected) {
+                    ivThongbao.setColorFilter(ContextCompat.getColor(getApplicationContext(), R.color.white), PorterDuff.Mode.SRC_IN);
+                    isThongBaoSelected = false;
+                }
+                if (isHoaDonSelected) {
+                    ivDonhang.setColorFilter(ContextCompat.getColor(getApplicationContext(), R.color.white), PorterDuff.Mode.SRC_IN);
+                    isHoaDonSelected = false;
+                }
+                if (isChatSelected) {
+                    ivCall.setColorFilter(ContextCompat.getColor(getApplicationContext(), R.color.white), PorterDuff.Mode.SRC_IN);
+                    isChatSelected = false;
+                } else {
+                    ivCall.setColorFilter(ContextCompat.getColor(getApplicationContext(), R.color.icon_mau), PorterDuff.Mode.SRC_IN);
+                    isChatSelected = true;
 
+                    if (ActivityCompat.checkSelfPermission(HomeActivity.this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+                        ActivityCompat.requestPermissions(HomeActivity.this, new String[]{Manifest.permission.CALL_PHONE}, 1);
+                        return;
+                    }
+                    Intent callIntent = new Intent(Intent.ACTION_CALL);
+                    callIntent.setData(Uri.parse("tel:0889541507"));
+                    startActivity(callIntent);
+                }
             }
         });
 
-        txtThongBao.setOnClickListener(new View.OnClickListener() {
+        ivThongbao.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                db.collection("notifications")
-                        .addSnapshotListener(new EventListener<QuerySnapshot>() {
-                            @Override
-                            public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
-                                if (error != null) {
-                                    Log.w(TAG, "Listen failed.", error);
-                                    return;
-                                }
-
-                                for (DocumentSnapshot doc : value.getDocuments()) {
-                                    // Lấy thông tin từ document
-                                    String title = doc.getString("title");
-                                    String message = doc.getString("message");
-
-                                    // Hiển thị thông báo
-                                    showNotification(title, message);
-                                }
-                            }
-                        });
+                if (isHoaDonSelected) {
+                    ivDonhang.setColorFilter(ContextCompat.getColor(getApplicationContext(), R.color.white), PorterDuff.Mode.SRC_IN);
+                    isHoaDonSelected = false;
+                }
+                if (isChatSelected) {
+                    ivCall.setColorFilter(ContextCompat.getColor(getApplicationContext(), R.color.white), PorterDuff.Mode.SRC_IN);
+                    isChatSelected = false;
+                }
+                if (isThongBaoSelected) {
+                    ivThongbao.setColorFilter(ContextCompat.getColor(getApplicationContext(), R.color.white), PorterDuff.Mode.SRC_IN);
+                    isThongBaoSelected = false;
+                } else {
+                    ivThongbao.setColorFilter(ContextCompat.getColor(getApplicationContext(), R.color.icon_mau), PorterDuff.Mode.SRC_IN);
+                    isThongBaoSelected = true;
+                }
+                showNotificationDialog();
             }
         });
 
 
-        txtHoadon.setOnClickListener(new View.OnClickListener() {
+        ivDonhang.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (isThongBaoSelected) {
+                    ivThongbao.setColorFilter(ContextCompat.getColor(getApplicationContext(), R.color.white), PorterDuff.Mode.SRC_IN);
+                    isThongBaoSelected = false;
+                }
+                if (isChatSelected) {
+                    ivCall.setColorFilter(ContextCompat.getColor(getApplicationContext(), R.color.white), PorterDuff.Mode.SRC_IN);
+                    isChatSelected = false;
+                }
+                if (isHoaDonSelected) {
+                    ivDonhang.setColorFilter(ContextCompat.getColor(getApplicationContext(), R.color.white), PorterDuff.Mode.SRC_IN);
+                    isHoaDonSelected = false;
+                } else {
+                    ivDonhang.setColorFilter(ContextCompat.getColor(getApplicationContext(), R.color.icon_mau), PorterDuff.Mode.SRC_IN);
+                    isHoaDonSelected = true;
+                }
+
                 FragMent_Bill myFragment = new FragMent_Bill();
                 FragmentManager fragmentManager = getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.framelayout, myFragment);
                 fragmentTransaction.addToBackStack(null);
                 fragmentTransaction.commit();
+            }
+        });
+    }
+
+    private void showNotificationDialog() {
+        // Tạo dialog hiển thị danh sách thông báo
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Danh sách thông báo đặt hàng");
+
+        // Truy vấn dữ liệu thông báo đã đặt hàng từ Firebase
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        CollectionReference notificationsRef = db.collection("notifications");
+        notificationsRef.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if (task.isSuccessful()) {
+                    // Tạo danh sách thông báo
+                    List<String> notificationList = new ArrayList<>();
+                    for (QueryDocumentSnapshot document : task.getResult()) {
+                        String notificationMessage = document.getString("message");
+                        notificationList.add(notificationMessage);
+                    }
+
+                    // Hiển thị danh sách thông báo lên dialog
+                    ArrayAdapter<String> adapter = new ArrayAdapter<>(HomeActivity.this,
+                            android.R.layout.simple_list_item_1, notificationList);
+                    builder.setAdapter(adapter, null);
+
+                    // Hiển thị dialog
+                    AlertDialog dialog = builder.create();
+                    dialog.show();
+                } else {
+                    Log.d(TAG, "Error getting notifications: ", task.getException());
+                }
             }
         });
     }
