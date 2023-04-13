@@ -21,6 +21,13 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".CustomerManagement"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".View.Admin.ProductActivity"
             android:exported="false" />
         <activity
@@ -72,9 +79,7 @@
         <activity
             android:name=".View.Admin.HomeAdminActivity"
             android:exported="true"
-            android:screenOrientation="portrait">
-
-        </activity>
+            android:screenOrientation="portrait"></activity>
         <activity
             android:name=".View.Admin.BillADMiNActivity"
             android:screenOrientation="portrait" />
