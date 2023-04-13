@@ -1,5 +1,7 @@
 package com.example.appfoodv2.Interface;
 
+import android.content.Context;
+
 public interface UserView {
     void OnLengthEmail();
 
@@ -14,4 +16,5 @@ public interface UserView {
     void OnFail();
 
     void OnPassNotSame();
+
 }

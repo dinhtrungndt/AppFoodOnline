@@ -1,16 +1,22 @@
 package com.example.appfoodv2.Activity.Account;
 
+import static android.content.ContentValues.TAG;
+
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.example.appfoodv2.Model.UserPreSenter;
 import com.example.appfoodv2.Interface.UserView;
@@ -21,7 +27,7 @@ import com.example.appfoodv2.Activity.HomeActivity;
 public class LoginActivity extends AppCompatActivity implements UserView, View.OnClickListener {
     private Button btndangnhap,btnDangky;
     private EditText editemail, editpass;
-    private TextView txtAdmin;
+    private TextView txtAdmin,forgotUser;
     private UserPreSenter userPreSenter;
 
     @Override
@@ -49,6 +55,13 @@ public class LoginActivity extends AppCompatActivity implements UserView, View.O
             }
         });
 
+        forgotUser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(LoginActivity.this,Forgot_Activity.class));
+            }
+        });
+
     }
 
     private void Anhxa() {
@@ -56,6 +69,7 @@ public class LoginActivity extends AppCompatActivity implements UserView, View.O
         editemail = findViewById(R.id.editEmail);
         editpass = findViewById(R.id.editmatkhau);
         btnDangky = findViewById(R.id.btnDangky);
+        forgotUser = findViewById(R.id.forgotUser);
         txtAdmin = findViewById(R.id.txtAdmin);
     }
 

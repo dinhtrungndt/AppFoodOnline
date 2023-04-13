@@ -16,7 +16,13 @@
         android:roundIcon="@drawable/home_app"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
+        <activity
+            android:name=".Activity.Account.Forgot_Activity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
         <activity
             android:name=".Activity.Admin.ProductActivity"
             android:exported="false" />
@@ -35,7 +41,6 @@
             android:name=".Activity.Admin.ChatActivity"
             android:label="@string/app_name"
             android:parentActivityName=".Activity.Admin.HomeAdminActivity" />
-
         <activity
             android:name=".Activity.Bill.CartActivity"
             android:screenOrientation="portrait" />
@@ -74,13 +79,11 @@
         <activity
             android:name=".Activity.Admin.HomeAdminActivity"
             android:exported="true"
-            android:screenOrientation="portrait">
-        </activity>
+            android:screenOrientation="portrait"></activity>
         <activity
             android:name=".Activity.XemthemActivity"
             android:exported="true"
-            android:screenOrientation="portrait">
-        </activity>
+            android:screenOrientation="portrait"></activity>
         <activity
             android:name=".Activity.Admin.BillADMiNActivity"
             android:screenOrientation="portrait" />

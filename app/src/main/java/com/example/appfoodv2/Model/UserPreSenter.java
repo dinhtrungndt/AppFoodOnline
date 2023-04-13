@@ -1,5 +1,8 @@
 package com.example.appfoodv2.Model;
 
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
+
 import com.example.appfoodv2.Interface.IUSER;
 import com.example.appfoodv2.Interface.UserView;
 
@@ -58,4 +61,5 @@ public class UserPreSenter implements IUSER {
     public void HandleRegist(String email, String pass, String repass) {
         userModel.HandleRegistUser(email, pass, repass);
     }
+
 }
