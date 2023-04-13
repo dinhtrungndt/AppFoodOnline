@@ -20,21 +20,22 @@
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
 
-        android:orientation="horizontal">
+        android:orientation="vertical">
 
         <ImageView
+            android:layout_marginTop="5dp"
             android:id="@+id/image_product"
-            android:layout_width="150dp"
+            android:layout_gravity="center"
+            android:layout_width="250dp"
             android:layout_height="200dp" />
 
         <LinearLayout
+            android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
             android:orientation="vertical">
-
             <TextView
-
                 android:id="@+id/txttensp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -42,19 +43,15 @@
                 android:text="Món ăn 1"
                 android:textColor="#ff0000"
                 android:textSize="23sp" />
-
             <TextView
                 android:id="@+id/txtgiatien"
-
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:text="255,555 đ"
                 android:textColor="#008000"
                 android:textSize="20sp" />
-
             <TextView
-
                 android:id="@+id/txtthuonghieu"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -63,28 +60,22 @@
                 android:text="Loại sản phẩm"
                 android:textColor="#000000"
                 android:textSize="16sp" />
-
             <TextView
                 android:id="@+id/txtbaohanh"
-
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
                 android:layout_marginTop="10dp"
                 android:text="thông tin sản phẩn"
                 android:textColor="#4b0082"
                 android:textSize="14sp" />
-
             <ImageView
-
                 android:id="@+id/img_thongtin"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_marginStart="1dp"
-                android:layout_marginTop="40dp"
+                android:layout_marginTop="20dp"
                 android:background="@drawable/sach"
                 android:scaleType="fitXY" />
-
             <TextView
                 android:id="@+id/text_thongtin"
                 android:layout_width="80dp"
@@ -100,7 +91,6 @@
                 android:layout_marginTop="-105dp"
                 android:background="@drawable/momo"
                 android:scaleType="fitXY" />
-
             <TextView
                 android:layout_width="80dp"
                 android:layout_height="wrap_content"

@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bglogin"
+    android:background="@drawable/backgroundfood"
     android:orientation="vertical">
 
     <ImageView
@@ -24,7 +24,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#5BC3F1"
+            android:background="#FFC107"
             android:orientation="vertical">
 
             <com.google.android.material.textfield.TextInputLayout
@@ -100,7 +100,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="150dp" />
+        android:layout_height="0dp" />
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -114,9 +114,8 @@
             android:layout_marginBottom="10dp"
             android:padding="5dp"
             android:text="Bạn đã có tài khoản ?"
-            android:textColor="#E49116"
+            android:textColor="#000000"
             android:textSize="24sp" />
-
         <TextView
             android:id="@+id/txtLogin"
             android:layout_width="match_parent"
@@ -125,7 +124,7 @@
             android:onClick="txtLogin"
             android:padding="5dp"
             android:text="Đăng nhập"
-            android:textColor="#FF0000"
+            android:textColor="#FD0000"
             android:textSize="24sp"
             android:textStyle="bold" />
     </LinearLayout>
