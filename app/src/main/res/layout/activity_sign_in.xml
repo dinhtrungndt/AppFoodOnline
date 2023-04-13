@@ -7,10 +7,10 @@
     android:orientation="vertical">
 
     <TextView
-        android:text="HELLO"
+        android:text="Log In"
         android:textSize="36sp"
         android:textStyle="bold"
-        android:textColor="#03A9F4"
+        android:textColor="#F1FBFF"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -70,7 +70,7 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
-                android:id="@+id/forgot_password"
+                android:id="@+id/forgotUser"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="right"
@@ -85,7 +85,7 @@
                 android:layout_width="200dp"
                 android:layout_height="55dp"
                 android:layout_gravity="center"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="15dp"
                 android:layout_marginBottom="5dp"
                 android:background="@drawable/button"
                 android:elevation="8dp"
