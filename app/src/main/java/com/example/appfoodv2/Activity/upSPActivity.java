@@ -246,24 +246,24 @@ public class upSPActivity extends AppCompatActivity {
     }
 
     private boolean validate() {
-        if (TextUtils.isEmpty(image)) {
-            Toast.makeText(this, "Vui lòng chọn hình ảnh", Toast.LENGTH_SHORT).show();
+        if (TextUtils.isEmpty(edtTenSp.getText().toString())) {
+            Toast.makeText(this, "Vui lòng nhập tên sản phẩm", Toast.LENGTH_SHORT).show();
             return false;
         }
         if (TextUtils.isEmpty(edtTien.getText().toString())) {
             Toast.makeText(this, "Vui lòng nhập giá tiền", Toast.LENGTH_SHORT).show();
             return false;
         }
-        if (TextUtils.isEmpty(edtTenSp.getText().toString())) {
-            Toast.makeText(this, "Vui lòng nhập tên sản phẩm", Toast.LENGTH_SHORT).show();
+        if (TextUtils.isEmpty(image)) {
+            Toast.makeText(this, "Vui lòng chọn hình ảnh", Toast.LENGTH_SHORT).show();
             return false;
         }
         if (TextUtils.isEmpty(edtNsx.getText().toString())) {
-            Toast.makeText(this, "Vui lòng nhập nhà sản xuất", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Vui lòng nhập hạn sử dụng", Toast.LENGTH_SHORT).show();
             return false;
         }
         if (TextUtils.isEmpty(edtBh.getText().toString())) {
-            Toast.makeText(this, "Vui lòng nhập bảo hành", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Vui lòng nhập trọng lượng", Toast.LENGTH_SHORT).show();
             return false;
         }
         if (TextUtils.isEmpty(edtSl.getText().toString())) {
@@ -334,7 +334,7 @@ public class upSPActivity extends AppCompatActivity {
                                     image = uri.toString();
                                 }
                             });
-                            Toast.makeText(upSPActivity.this, "Thành công", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(upSPActivity.this, "Tải hình lên thành công", Toast.LENGTH_SHORT).show();
                         }
                         dialog.dismiss();
                     }
