@@ -74,7 +74,6 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
             txttensp = itemView.findViewById(R.id.txttensp);
             hinhanh = itemView.findViewById(R.id.hinhanh);
             txtbaohanh = itemView.findViewById(R.id.txtbaohanh);
-            txtsoluong = itemView.findViewById(R.id.txtsoluong);
 
             itemView.setOnClickListener(this);
         }

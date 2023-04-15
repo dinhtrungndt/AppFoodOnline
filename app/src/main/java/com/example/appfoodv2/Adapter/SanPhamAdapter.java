@@ -84,10 +84,6 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.ViewHodl
                 context.startActivity(intent);
             }
         });
-        if (type == 1) {
-            holder.txtbaohanh.setText(sanPhamModels.getTrongluong());
-            holder.txtsoluong.setText(sanPhamModels.getSoluong() + "");
-        }
 
     }
 
@@ -97,7 +93,7 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.ViewHodl
     }
 
     public class ViewHodler extends RecyclerView.ViewHolder implements View.OnClickListener {
-        TextView txttensp, txtgiasp, txtbaohanh, txtsoluong;
+        TextView txttensp, txtgiasp;
         ImageView hinhanh;
         SetOnItemClick itemClick;
 
@@ -106,10 +102,6 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.ViewHodl
             txtgiasp = itemView.findViewById(R.id.txtgiatien);
             txttensp = itemView.findViewById(R.id.txttensp);
             hinhanh = itemView.findViewById(R.id.hinhanh);
-            if (type == 1) {
-                txtbaohanh = itemView.findViewById(R.id.txtbaohanh);
-                txtsoluong = itemView.findViewById(R.id.txtsoluong);
-            }
             itemView.setOnClickListener(this);
         }
 

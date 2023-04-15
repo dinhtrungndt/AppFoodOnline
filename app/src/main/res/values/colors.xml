@@ -14,7 +14,11 @@
     <color name="colorGray">#EEEEEE</color>
     <color name="colorOrange">#FFCC80</color>
     <color name="colorRed">#D50000</color>
+    <color name="intro_title_color">#000000</color>
     <color name="colorBlue">#4054C5</color>
+    <color name="gradient_start_color">#4c84ff</color>
+    <color name="tab_indicator_gray">#c0c0c0</color>
+    <color name="vang_foodapp">#FF9800</color>
     <color name="colorTransparent">#00ff0000</color>
     <color name="light_blue_600">#FF039BE5</color>
     <color name="light_blue_900">#FF01579B</color>

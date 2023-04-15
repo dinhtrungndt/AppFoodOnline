@@ -8,9 +8,9 @@
     <androidx.core.widget.NestedScrollView
         android:id="@+id/NestedScrollView"
         android:layout_width="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:layout_height="match_parent"
         android:fitsSystemWindows="true"
-        android:layout_height="match_parent">
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -32,7 +32,7 @@
             <androidx.cardview.widget.CardView
 
                 android:layout_width="match_parent"
-                android:layout_height="120dp"
+                android:layout_height="150dp"
                 android:layout_margin="10dp"
                 app:cardCornerRadius="10dp"
                 app:cardElevation="8dp">
@@ -40,114 +40,124 @@
                 <androidx.viewpager.widget.ViewPager
                     android:id="@+id/viewpager"
                     android:layout_width="390dp"
-                    android:layout_height="120dp" />
+                    android:layout_height="150dp" />
 
             </androidx.cardview.widget.CardView>
 
-            <LinearLayout
-                android:id="@+id/home_btn"
+            <HorizontalScrollView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="25dp"
-                android:layout_marginTop="15dp"
-                android:orientation="horizontal">
-
-                <ImageButton
-                    android:id="@+id/home_danhmuc"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_marginStart="15dp"
-                    android:background="@drawable/home_danhmuc"
-                    android:src="@drawable/ic_apps_black_35dp" />
-
-                <ImageButton
-                    android:id="@+id/home_btn_uathich"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_marginStart="20dp"
-                    android:background="@drawable/home_uathich"
-                    android:src="@drawable/ic_insert_emoticon_black_24dp" />
-
-                <ImageButton
-                    android:id="@+id/home_btn_deal"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_marginStart="20dp"
-                    android:background="@drawable/home_deal"
-                    android:src="@drawable/ic_whatshot_black_24dp" />
-
-                <ImageButton
-                    android:id="@+id/home_vi"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_marginStart="20dp"
-                    android:background="@drawable/mo" />
-
-                <ImageButton
-                    android:id="@+id/home_btn_food"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_marginStart="20dp"
-                    android:background="@drawable/home_food"
-                    android:src="@drawable/ic_baseline_card_giftcard_24" />
-
-
-            </LinearLayout>
+                android:scrollbars="none">
 
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/home_btn"
-                android:layout_marginLeft="27dp"
-                android:layout_marginBottom="10dp"
-                android:orientation="horizontal">
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:layout_margin="16dp"
+                    android:orientation="horizontal">
 
-                <TextView
+                    <LinearLayout
+                        android:id="@+id/lnDoannhanh"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_menu_icon"
+                        android:layout_gravity="center"
+                        android:padding="7dp"
+                        android:gravity="center"
+                        android:backgroundTint="#CBEAEAEA"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/hamboger1" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:textColor="@color/black"
+                            android:layout_height="wrap_content"
+                            android:text="Đồ ăn vặt" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/lnNuoc"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_menu_icon"
+                        android:layout_gravity="center"
+                        android:padding="7dp"
+                        android:backgroundTint="#CBEAEAEA"
+                        android:layout_marginStart="10dp"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="50dp"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/nuoc1" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:textColor="@color/black"
+                            android:layout_height="wrap_content"
+                            android:text="Nước uống" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/lnMonAn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_menu_icon"
+                        android:layout_gravity="center"
+                        android:padding="7dp"
+                        android:backgroundTint="#CBEAEAEA"
+                        android:layout_marginStart="10dp"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="50dp"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/an" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:textColor="@color/black"
+                            android:layout_height="wrap_content"
+                            android:text="Món ăn" />
+                    </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lnHuongVi"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:background="@drawable/bg_menu_icon"
+                    android:layout_gravity="center"
+                    android:padding="7dp"
+                    android:backgroundTint="#CBEAEAEA"
                     android:layout_marginStart="10dp"
-                    android:background="?android:attr/selectableItemBackground"
-                    android:text="Danh mục"
-                    android:textColor="@color/colorBlack" />
+                    android:gravity="center"
+                    android:orientation="horizontal">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="12dp"
-                    android:layout_marginTop="1dp"
-                    android:background="?android:attr/selectableItemBackground"
-                    android:text="Ưa thích"
-                    android:textColor="@color/colorBlack" />
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/non" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="30dp"
-                    android:layout_marginTop="1dp"
-                    android:background="?android:attr/selectableItemBackground"
-                    android:text="Deal"
-                    android:textColor="@color/colorBlack" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:textColor="@color/black"
+                        android:layout_height="wrap_content"
+                        android:text="Hương vị" />
+                </LinearLayout>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="28dp"
-                    android:layout_marginTop="1dp"
-                    android:background="?android:attr/selectableItemBackground"
-                    android:text="Ví Momo"
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/logo_menu" />
 
-                    android:textColor="@color/colorBlack" />
+                </LinearLayout>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="28dp"
-                    android:layout_marginTop="1dp"
-                    android:background="?android:attr/selectableItemBackground"
-                    android:text="Gift"
-                    android:textColor="@color/colorBlack" />
-
-            </LinearLayout>
+            </HorizontalScrollView>
 
             <Button
                 android:layout_width="match_parent"
@@ -202,6 +212,7 @@
                 android:layout_height="393dp"
                 android:layout_marginTop="-100dp"
                 android:layout_marginBottom="-120dp"
+                android:paddingTop="15dp"
                 android:src="@drawable/banner5" />
 
             <TextView
@@ -211,6 +222,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:elevation="5dp"
+                android:paddingTop="20dp"
                 android:text="Danh Sách Sản Phẩm"
                 android:textColor="@color/purple_200"
                 android:textSize="16sp"
@@ -235,13 +247,14 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rcvNB"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:layout_marginTop="-10dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginBottom="2dp"
                 android:elevation="5dp"
                 android:text="Bạn ơi đặt món ngay đi"
@@ -252,7 +265,8 @@
             <LinearLayout
 
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp">
 
                 <ImageView
                     android:layout_width="190dp"
@@ -273,7 +287,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:layout_marginTop="3dp"
+                android:layout_marginTop="10dp"
                 android:elevation="5dp"
                 android:text="Thức uống đa dạng cho bạn chọn"
                 android:textColor="@color/purple_200"
@@ -283,20 +297,23 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rcvTU"
                 android:layout_width="match_parent"
+                android:layout_marginTop="10dp"
                 android:layout_height="wrap_content" />
 
             <ImageView
                 android:layout_width="370dp"
                 android:layout_height="130dp"
                 android:layout_marginLeft="10dp"
-                android:layout_marginTop="-10dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginRight="10dp"
                 android:background="@drawable/com" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rcvHQ"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -323,7 +340,9 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rcvMC"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                />
 
             <ImageView
                 android:layout_width="370dp"
@@ -336,7 +355,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:layout_marginTop="2dp"
+                android:layout_marginTop="10dp"
                 android:elevation="5dp"
                 android:text="Món ăn được yêu thích của quán"
                 android:textColor="#000000"
@@ -346,6 +365,7 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rcvYT"
                 android:layout_width="match_parent"
+                android:layout_marginTop="10dp"
                 android:layout_height="wrap_content" />
 
             <ImageView
@@ -424,8 +444,7 @@
             android:layout_height="wrap_content"
             android:layout_marginRight="16dp"
             android:background="@drawable/transparent_background"
-            app:menu="@menu/bottom_nav_menu"
-            />
+            app:menu="@menu/bottom_nav_menu" />
 
     </com.google.android.material.bottomappbar.BottomAppBar>
 
@@ -434,7 +453,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/icon_bottom5"
-        app:layout_anchor="@id/bottomAppBar"
-        />
+        app:layout_anchor="@id/bottomAppBar" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -63,7 +63,7 @@ public class FragMent_Home extends Fragment implements SanPhamView {
     private ArrayList<SanPhamModels> arr_sp, arr_sp_nb, arr_sp_tu, arr_sp_hq, arr_sp_mc, arr_sp_yt, arr_sp_lau, arr_sp_gy;
     private SanPhamAdapter sanPhamAdapter, sanPhamNBAdapter, sanPhamTUAdapter, sanPhamHQAdapter, sanPhamMCAdapter, sanPhamYTAdapter, sanPhamLauAdapter, sanPhamGYAdapter;
     private RecyclerView rcvSP, rcvSpNoiBat, rcvSPThucUong, rcvSPHQ, rcvSPMC, rcvSPYT, rcvSPLau, rcvSPGY;
-    private ImageButton imgBtnDanhMuc;
+    private LinearLayout lnDoannhanh,lnNuoc,lnMonAn,lnHuongVi;
     private ImageView btn_category_home;
     private TextView category_text;
     private FloatingActionButton fab;
@@ -95,7 +95,7 @@ public class FragMent_Home extends Fragment implements SanPhamView {
         Init();
         InitSanPham();
 
-        imgBtnDanhMuc.setOnClickListener(view -> {
+        lnDoannhanh.setOnClickListener(view -> {
             activityCallback.onButtonClick();
         });
 
@@ -167,7 +167,10 @@ public class FragMent_Home extends Fragment implements SanPhamView {
         rcvSPYT = view.findViewById(R.id.rcvYT);
         rcvSPLau = view.findViewById(R.id.rcvLau);
         rcvSPGY = view.findViewById(R.id.rcvGY);
-        imgBtnDanhMuc = view.findViewById(R.id.home_danhmuc);
+        lnNuoc = view.findViewById(R.id.lnNuoc);
+        lnDoannhanh = view.findViewById(R.id.lnDoannhanh);
+        lnMonAn = view.findViewById(R.id.lnMonAn);
+        lnHuongVi = view.findViewById(R.id.lnHuongVi);
         btn_category_home = view.findViewById(R.id.btn_category_home);
         bottomNavigationView = view.findViewById(R.id.bottomNavigationView);
         category_text = view.findViewById(R.id.category_text);
@@ -264,6 +267,26 @@ public class FragMent_Home extends Fragment implements SanPhamView {
             }
         });
 
+        lnNuoc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+               startActivity(new Intent(getContext(),ThongKeDanhMucActivity.class));
+            }
+        });
+
+        lnMonAn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getContext(),ThongKeDanhMucActivity.class));
+            }
+        });
+
+        lnHuongVi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getContext(),ThongKeDanhMucActivity.class));
+            }
+        });
     }
 
     @Override
