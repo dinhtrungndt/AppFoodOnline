@@ -81,11 +81,15 @@
         <activity
             android:name=".Activity.Admin.HomeAdminActivity"
             android:exported="true"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait">
+
+        </activity>
         <activity
             android:name=".Activity.XemthemActivity"
             android:exported="true"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait">
+
+        </activity>
         <activity
             android:name=".Activity.Admin.BillADMiNActivity"
             android:screenOrientation="portrait" />

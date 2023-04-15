@@ -19,6 +19,7 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
@@ -156,7 +157,8 @@ public class upSPActivity extends AppCompatActivity {
         btn_add_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(upSPActivity.this, ProductActivity.class));
+                Intent intent = new Intent(upSPActivity.this, ProductActivity.class);
+                startActivity(intent);
             }
         });
         findViewById(R.id.btn_save).setOnClickListener(view -> {
@@ -174,13 +176,16 @@ public class upSPActivity extends AppCompatActivity {
                 sp.setTrongluong(edtBh.getText().toString());
                 sp.setLoaisp(spinerthongke.getSelectedItem().toString());
                 sp.setHinhanh(image);
-                db.collection("SanPham").add(sp).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                db.collection("SanPham").whereEqualTo("tensp", edtTenSp.getText().toString()).get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                     @Override
-                    public void onSuccess(DocumentReference documentReference) {
-                        Toast.makeText(upSPActivity.this, "Thành công!!!", Toast.LENGTH_SHORT).show();
-                        setResult(RESULT_OK);
-                        finish();
-
+                    public void onSuccess(@NonNull QuerySnapshot queryDocumentSnapshots) {
+                        if (queryDocumentSnapshots.size() > 0) {
+                            Toast.makeText(upSPActivity.this, "Sản phẩm đã tồn tại trong cơ sở dữ liệu.", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(upSPActivity.this, "Thành công", Toast.LENGTH_SHORT).show();
+                            setResult(RESULT_OK);
+                            finish();
+                        }
                     }
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override
@@ -241,24 +246,24 @@ public class upSPActivity extends AppCompatActivity {
     }
 
     private boolean validate() {
-        if (TextUtils.isEmpty(image)) {
-            Toast.makeText(this, "Vui lòng chọn hình ảnh", Toast.LENGTH_SHORT).show();
+        if (TextUtils.isEmpty(edtTenSp.getText().toString())) {
+            Toast.makeText(this, "Vui lòng nhập tên sản phẩm", Toast.LENGTH_SHORT).show();
             return false;
         }
         if (TextUtils.isEmpty(edtTien.getText().toString())) {
             Toast.makeText(this, "Vui lòng nhập giá tiền", Toast.LENGTH_SHORT).show();
             return false;
         }
-        if (TextUtils.isEmpty(edtTenSp.getText().toString())) {
-            Toast.makeText(this, "Vui lòng nhập tên sản phẩm", Toast.LENGTH_SHORT).show();
+        if (TextUtils.isEmpty(image)) {
+            Toast.makeText(this, "Vui lòng chọn hình ảnh", Toast.LENGTH_SHORT).show();
             return false;
         }
         if (TextUtils.isEmpty(edtNsx.getText().toString())) {
-            Toast.makeText(this, "Vui lòng nhập nhà sản xuất", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Vui lòng nhập hạn sử dụng", Toast.LENGTH_SHORT).show();
             return false;
         }
         if (TextUtils.isEmpty(edtBh.getText().toString())) {
-            Toast.makeText(this, "Vui lòng nhập bảo hành", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Vui lòng nhập trọng lượng", Toast.LENGTH_SHORT).show();
             return false;
         }
         if (TextUtils.isEmpty(edtSl.getText().toString())) {
@@ -329,7 +334,7 @@ public class upSPActivity extends AppCompatActivity {
                                     image = uri.toString();
                                 }
                             });
-                            Toast.makeText(upSPActivity.this, "Thành công", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(upSPActivity.this, "Tải hình lên thành công", Toast.LENGTH_SHORT).show();
                         }
                         dialog.dismiss();
                     }
