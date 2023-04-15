@@ -44,6 +44,13 @@
 
             </androidx.cardview.widget.CardView>
 
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="10dp"
+                android:background="#C9C9C9" />
+
             <HorizontalScrollView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -51,7 +58,7 @@
 
             <LinearLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="50dp"
+                    android:layout_height="70dp"
                     android:layout_margin="16dp"
                     android:orientation="horizontal">
 
@@ -159,9 +166,16 @@
 
             </HorizontalScrollView>
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#C9C9C9" />
+
             <Button
                 android:layout_width="match_parent"
-                android:layout_height="2dp" />
+                android:layout_height="2dp"
+                android:layout_marginTop="20dp"
+                />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -207,22 +221,13 @@
 
             </LinearLayout>
 
-            <ImageView
-                android:layout_width="400dp"
-                android:layout_height="393dp"
-                android:layout_marginTop="-100dp"
-                android:layout_marginBottom="-120dp"
-                android:paddingTop="15dp"
-                android:src="@drawable/banner5" />
-
             <TextView
-
                 android:id="@+id/txtsp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:elevation="5dp"
-                android:paddingTop="20dp"
+                android:paddingTop="15dp"
                 android:text="Danh Sách Sản Phẩm"
                 android:textColor="@color/purple_200"
                 android:textSize="16sp"
@@ -233,11 +238,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="230dp" />
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#C9C9C9" />
+
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="-10dp"
+                android:layout_marginTop="20dp"
                 android:elevation="5dp"
                 android:text="Sản Phẩm Nổi Bật"
                 android:textColor="@color/purple_200"
@@ -249,6 +259,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="10dp"
+                android:background="#C9C9C9" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -283,6 +299,12 @@
 
             </LinearLayout>
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="20dp"
+                android:background="#C9C9C9" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -300,13 +322,25 @@
                 android:layout_marginTop="10dp"
                 android:layout_height="wrap_content" />
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="20dp"
+                android:background="#C9C9C9" />
+
             <ImageView
                 android:layout_width="370dp"
                 android:layout_height="130dp"
                 android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="20dp"
                 android:layout_marginRight="10dp"
                 android:background="@drawable/com" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="20dp"
+                android:background="#C9C9C9" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rcvHQ"
@@ -314,6 +348,12 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="20dp"
+                android:background="#C9C9C9" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -344,18 +384,31 @@
                 android:layout_marginTop="10dp"
                 />
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="20dp"
+                android:background="#C9C9C9" />
+
             <ImageView
                 android:layout_width="370dp"
                 android:layout_height="80dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
+                android:layout_marginTop="20dp"
                 android:background="@drawable/flashs" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="20dp"
+                android:background="#C9C9C9" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="20dp"
                 android:elevation="5dp"
                 android:text="Món ăn được yêu thích của quán"
                 android:textColor="#000000"
@@ -368,17 +421,30 @@
                 android:layout_marginTop="10dp"
                 android:layout_height="wrap_content" />
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="20dp"
+                android:background="#C9C9C9" />
+
             <ImageView
                 android:layout_width="390dp"
                 android:layout_height="150dp"
-
+android:layout_marginTop="20dp"
                 android:background="@drawable/banner3" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="20dp"
+                android:background="#C9C9C9" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
                 android:elevation="5dp"
                 android:text="Lẩu cùng bạn bè và gia đình"
                 android:textColor="#000000"
@@ -401,12 +467,25 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="20dp"
+                android:background="#C9C9C9" />
+
             <ImageView
                 android:layout_width="380dp"
                 android:layout_height="130dp"
                 android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
                 android:background="@drawable/kem1"
                 android:paddingRight="-200dp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="20dp"
+                android:background="#C9C9C9" />
 
             <TextView
                 android:layout_width="wrap_content"

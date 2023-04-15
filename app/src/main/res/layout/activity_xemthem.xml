@@ -12,8 +12,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#2ACDC0"
-        app:title="ỨNG DỤNG HỖ TRỢ HỌC TẬP"
-        app:titleMarginStart="60dp"
+        app:title="Xem thêm"
+        android:layout_gravity="center"
+        android:gravity="center"
+        app:titleMarginStart="150dp"
         app:titleTextColor="@color/white" />
 
 

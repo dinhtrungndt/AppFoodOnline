@@ -78,7 +78,7 @@ public class HomeActivity extends AppCompatActivity implements FragMent_Home.Fra
     private Fragment fm;
     private FirebaseAuth firebaseAuth;
     private EditText editsearch;
-    private ImageView ivThongbao,ivDonhang,ivCall;
+    private ImageView ivCark,ivDonhang,ivCall;
     private TextView txtTrangChu;
     private TextView tvusername, tvemail;
     private CircleImageView imaProfile;
@@ -221,7 +221,7 @@ public class HomeActivity extends AppCompatActivity implements FragMent_Home.Fra
         toolbar = findViewById(R.id.toolbar);
         txtTrangChu = findViewById(R.id.txtTrangChu);
         drawerLayout = findViewById(R.id.drawerlayout);
-        ivThongbao = findViewById(R.id.ivThongbao);
+        ivCark = findViewById(R.id.ivCark);
         ivDonhang = findViewById(R.id.ivDonhang);
         ivCall = findViewById(R.id.ivCall);
 //        editsearch = findViewById(R.id.editSearch);
@@ -243,7 +243,7 @@ public class HomeActivity extends AppCompatActivity implements FragMent_Home.Fra
             @Override
             public void onClick(View view) {
                 if (isThongBaoSelected) {
-                    ivThongbao.setColorFilter(ContextCompat.getColor(getApplicationContext(), R.color.white), PorterDuff.Mode.SRC_IN);
+                    ivCark.setColorFilter(ContextCompat.getColor(getApplicationContext(), R.color.white), PorterDuff.Mode.SRC_IN);
                     isThongBaoSelected = false;
                 }
                 if (isHoaDonSelected) {
@@ -268,7 +268,7 @@ public class HomeActivity extends AppCompatActivity implements FragMent_Home.Fra
             }
         });
 
-        ivThongbao.setOnClickListener(new View.OnClickListener() {
+        ivCark.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (isHoaDonSelected) {
@@ -280,13 +280,13 @@ public class HomeActivity extends AppCompatActivity implements FragMent_Home.Fra
                     isChatSelected = false;
                 }
                 if (isThongBaoSelected) {
-                    ivThongbao.setColorFilter(ContextCompat.getColor(getApplicationContext(), R.color.white), PorterDuff.Mode.SRC_IN);
+                    ivCark.setColorFilter(ContextCompat.getColor(getApplicationContext(), R.color.white), PorterDuff.Mode.SRC_IN);
                     isThongBaoSelected = false;
                 } else {
-                    ivThongbao.setColorFilter(ContextCompat.getColor(getApplicationContext(), R.color.icon_mau), PorterDuff.Mode.SRC_IN);
+                    ivCark.setColorFilter(ContextCompat.getColor(getApplicationContext(), R.color.icon_mau), PorterDuff.Mode.SRC_IN);
                     isThongBaoSelected = true;
                 }
-                showNotificationDialog();
+                startActivity(new Intent(HomeActivity.this,CartActivity.class));
             }
         });
 
@@ -295,7 +295,7 @@ public class HomeActivity extends AppCompatActivity implements FragMent_Home.Fra
             @Override
             public void onClick(View view) {
                 if (isThongBaoSelected) {
-                    ivThongbao.setColorFilter(ContextCompat.getColor(getApplicationContext(), R.color.white), PorterDuff.Mode.SRC_IN);
+                    ivCark.setColorFilter(ContextCompat.getColor(getApplicationContext(), R.color.white), PorterDuff.Mode.SRC_IN);
                     isThongBaoSelected = false;
                 }
                 if (isChatSelected) {
@@ -318,60 +318,6 @@ public class HomeActivity extends AppCompatActivity implements FragMent_Home.Fra
                 fragmentTransaction.commit();
             }
         });
-    }
-
-    private void showNotificationDialog() {
-        // Tạo dialog hiển thị danh sách thông báo
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Danh sách thông báo đặt hàng");
-
-        // Truy vấn dữ liệu thông báo đã đặt hàng từ Firebase
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-        CollectionReference notificationsRef = db.collection("notifications");
-        notificationsRef.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                if (task.isSuccessful()) {
-                    // Tạo danh sách thông báo
-                    List<String> notificationList = new ArrayList<>();
-                    for (QueryDocumentSnapshot document : task.getResult()) {
-                        String notificationMessage = document.getString("message");
-                        notificationList.add(notificationMessage);
-                    }
-
-                    // Hiển thị danh sách thông báo lên dialog
-                    ArrayAdapter<String> adapter = new ArrayAdapter<>(HomeActivity.this,
-                            android.R.layout.simple_list_item_1, notificationList);
-                    builder.setAdapter(adapter, null);
-
-                    // Hiển thị dialog
-                    AlertDialog dialog = builder.create();
-                    dialog.show();
-                } else {
-                    Log.d(TAG, "Error getting notifications: ", task.getException());
-                }
-            }
-        });
-    }
-
-    private void showNotification(String title, String message) {
-        // Tạo intent cho khi người dùng click vào thông báo
-        Intent intent = new Intent(this, MainActivity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, 0);
-
-        // Tạo builder cho notification
-        NotificationCompat.Builder builder =
-                new NotificationCompat.Builder(this, "default")
-                        .setSmallIcon(R.drawable.ic_baseline_notifications_active_24)
-                        .setContentTitle(title)
-                        .setContentText(message)
-                        .setPriority(NotificationCompat.PRIORITY_DEFAULT)
-                        .setContentIntent(pendingIntent)
-                        .setAutoCancel(true);
-
-        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
-        notificationManager.notify(0, builder.build());
     }
 
     @Override

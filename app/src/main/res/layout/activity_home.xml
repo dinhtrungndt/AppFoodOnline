@@ -36,13 +36,13 @@
                 android:layout_marginLeft="50dp">
 
                 <ImageView
-                    android:id="@+id/ivThongbao"
+                    android:id="@+id/ivCark"
                     android:layout_width="25dp"
                     android:layout_height="25dp"
                     android:layout_gravity="center"
                     android:layout_marginLeft="20dp"
                     android:layout_marginStart="60dp"
-                    android:src="@drawable/ic_notifications_black_24dp"
+                    android:src="@drawable/ic_shopping_cart_black_24dp"
                     app:tint="@color/white" />
 
                 <ImageView
@@ -51,7 +51,7 @@
                     android:layout_height="25dp"
                     android:layout_gravity="center"
                     android:layout_marginLeft="20dp"
-                    android:src="@drawable/bill"
+                    android:src="@drawable/ic_baseline_content_paste_search_24"
                     app:tint="@color/white" />
 
                 <ImageView
