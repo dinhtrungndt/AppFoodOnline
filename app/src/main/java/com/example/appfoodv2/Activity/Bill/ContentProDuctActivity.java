@@ -53,11 +53,11 @@ ContentProDuctActivity extends AppCompatActivity implements GioHangView {
         });
         intent = getIntent();
         sanPhamModels = (SanPhamModels) intent.getSerializableExtra("SP");
-        txtnsx.setText("Hạn sử dụng: " + sanPhamModels.getHansudung());
-        txtmota.setText("Mô tả: " + sanPhamModels.getMota());
-        txtbaohanh.setText("Trọng lượng: " + sanPhamModels.getTrongluong());
+        txtnsx.setText("- Hạn sử dụng: " + sanPhamModels.getHansudung());
+        txtmota.setText("- Mô tả: " + sanPhamModels.getMota());
+        txtbaohanh.setText("- Trọng lượng: " + sanPhamModels.getTrongluong());
         txttensp.setText("Tên sản phẩm: " + sanPhamModels.getTensp());
-        txtgiatien.setText("Giá tiền: " + NumberFormat.getNumberInstance().format(sanPhamModels.getGiatien()));
+        txtgiatien.setText("Giá: " + NumberFormat.getNumberInstance().format(sanPhamModels.getGiatien()) + " đ");
         Picasso.get().load(sanPhamModels.getHinhanh()).into(hinhanh);
         gioHangPreSenter = new GioHangPreSenter(this);
         btndathang.setOnClickListener(new View.OnClickListener() {
