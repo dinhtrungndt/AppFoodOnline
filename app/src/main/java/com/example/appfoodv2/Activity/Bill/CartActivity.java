@@ -104,7 +104,7 @@ public class CartActivity extends AppCompatActivity implements GioHangView {
                 int pos = viewHolder.getAdapterPosition();
                 AlertDialog.Builder buidler = new AlertDialog.Builder(CartActivity.this);
                 buidler.setMessage("Bạn có muôn xóa  sản phẩm " + arrayList.get(pos).getTensp());
-                buidler.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                buidler.setPositiveButton("Đồng ý", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         sanPhamAdapter.notifyDataSetChanged();
@@ -114,7 +114,7 @@ public class CartActivity extends AppCompatActivity implements GioHangView {
 
                     }
                 });
-                buidler.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                buidler.setNegativeButton("Hủy", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         sanPhamAdapter.notifyDataSetChanged();
