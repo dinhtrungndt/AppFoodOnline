@@ -53,6 +53,8 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
                 context.startActivityForResult(intent, 100);
             }
         });
+        holder.txtbaohanh.setText(sanPhamModels.getTrongluong());
+        holder.txtsoluong.setText(sanPhamModels.getSoluong() + "");
     }
 
     @Override
@@ -62,7 +64,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
 
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        TextView txttensp, txtgiasp;
+        TextView txttensp, txtgiasp, txtbaohanh, txtsoluong;
         ImageView hinhanh;
         SetOnItemClick itemClick;
 
@@ -71,6 +73,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
             txtgiasp = itemView.findViewById(R.id.txtgiatien);
             txttensp = itemView.findViewById(R.id.txttensp);
             hinhanh = itemView.findViewById(R.id.hinhanh);
+            txtbaohanh = itemView.findViewById(R.id.txtbaohanh);
 
             itemView.setOnClickListener(this);
         }
