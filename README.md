@@ -1,5 +1,4 @@
 # This is an application for ordering food online
-![navigation](https://github.com/dinhtrungndt/AppFoodOnline/assets/127390593/25c35019-4f19-45e6-904b-7c40763d68f9)
 
 # General introduction to the app:
 ![Food_App](https://github.com/dinhtrungndt/AppFoodOnline/assets/127390593/cd108a14-7598-4302-8c87-21138909dbf1)
