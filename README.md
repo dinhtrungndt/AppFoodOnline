@@ -1,10 +1,10 @@
 # This is an application for ordering food online 🍔🍕🍿
-# The application has 2 roles: Admin and User ~
+# The application has 2 roles: Admin and User 🧑🏻👨🏻‍💻 ~
 
-# General introduction to the app:
+# General introduction to the app 📱:
 ![Food_App](https://github.com/dinhtrungndt/AppFoodOnline/assets/127390593/cd108a14-7598-4302-8c87-21138909dbf1)
 
-# Admin:
+# Admin 👨🏻‍💻:
 ![admin](https://github.com/dinhtrungndt/AppFoodOnline/assets/127390593/2853f2e0-984a-4d02-b515-31959bc5a73c)
 
 # Splash:
