@@ -5,6 +5,9 @@
 # General introduction to the app:
 ![Food_App](https://github.com/dinhtrungndt/AppFoodOnline/assets/127390593/cd108a14-7598-4302-8c87-21138909dbf1)
 
+# Admin:
+![admin](https://github.com/dinhtrungndt/AppFoodOnline/assets/127390593/2853f2e0-984a-4d02-b515-31959bc5a73c)
+
 # Splash:
 ![splash](https://github.com/dinhtrungndt/AppFoodOnline/assets/127390593/ef304f51-ec30-400b-ab31-1a1689bcc585)
 
