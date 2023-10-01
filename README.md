@@ -1,5 +1,4 @@
-# Food app 🍔
-# This is an application for ordering food online
+# This is an application for ordering food online 🍔🍕🍿
 # The application has 2 roles: Admin and User ~
 
 # General introduction to the app:
